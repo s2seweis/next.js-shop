@@ -16,8 +16,7 @@ You can check [demo](https://next-typescript-pwa-starter.vercel.app/)
 - [Husky 8](https://typicode.github.io/husky/#/) - Documentation of husky. https://www.youtube.com/watch?v=tuzys2b1J70
 - [Lint Staged 14](https://github.com/okonet/lint-staged) - Documentation of lint staged.
 
-from https://github.com/danangekal/next-typescript-pwa-starter 
-
+from https://github.com/danangekal/next-typescript-pwa-starter
 
 ## Usage
 
@@ -87,6 +86,7 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
 - https://dev.to/ankusht2307/nextjs-typescript-setup-with-prettier-husky-3dih - Go and Check it out!
 
 ## Deploy on Vercel

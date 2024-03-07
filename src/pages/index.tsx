@@ -11,7 +11,7 @@ export default function Home() {
       <Nav />
 
       <main className={`${styles.main} ${inter.className}`}>
-        <h3>Hello World2</h3>
+        <h3>Hello World3</h3>
       </main>
     </>
   );
