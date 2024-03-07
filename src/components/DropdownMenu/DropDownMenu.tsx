@@ -16,8 +16,8 @@ const DropdownMenu: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
-  // Remove the unused 'item' parameter
-  const handleMenuItemClick = () => {
+  // const handleMenuItemClick = (item: string) => {
+  const handleMenuItemClick = (item: string) => {
     // console.log(`Clicked on ${item}`);
     // Add your logic here, such as navigating to a different page
   };
@@ -32,7 +32,7 @@ const DropdownMenu: React.FC = () => {
           <Link href="/contact">
             <div
               className={styles.menuLink}
-              onClick={() => handleMenuItemClick()}
+              onClick={() => handleMenuItemClick('Favorite')}
             >
               <AiFillHeart /> Contact
             </div>
@@ -40,7 +40,7 @@ const DropdownMenu: React.FC = () => {
           <Link href="/">
             <div
               className={styles.menuLink}
-              onClick={() => handleMenuItemClick()}
+              onClick={() => handleMenuItemClick('List')}
             >
               <AiOutlineBars /> Home
             </div>
@@ -48,7 +48,7 @@ const DropdownMenu: React.FC = () => {
           <Link href="/settings">
             <div
               className={styles.menuLink}
-              onClick={() => handleMenuItemClick()}
+              onClick={() => handleMenuItemClick('Settings')}
             >
               <AiFillSetting /> Settings
             </div>
