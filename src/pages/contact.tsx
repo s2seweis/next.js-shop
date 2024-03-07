@@ -1,7 +1,7 @@
 // src/components/ContactForm.tsx
+/* eslint-disable */
 import React, { useState } from 'react';
-// import styles from '@/styles/ContactForm.module.css';
-import styles from '@/src/styles/ContactForm.module.css';
+import styles from '@/src/styles/css/ContactForm.module.css';
 
 interface FormData {
   name: string;
@@ -16,7 +16,9 @@ const Contact: React.FC = () => {
     message: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -31,26 +33,51 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className='main' style={{height:"100vh", display:"flex", alignItems:"center"}}>
-    <div className={styles.card}>
-      <form className={styles.contactForm} onSubmit={handleSubmit}>
-        <label className={styles.formLabel}>
-          Name:
-          <input type="text" name="name" value={formData.name} onChange={handleChange} className={styles.inputField} />
-        </label>
-        <label className={styles.formLabel}>
-          Email:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} className={styles.inputField} />
-        </label>
-        <label className={styles.formLabel}>
-          Message:
-          <textarea name="message" value={formData.message} onChange={handleChange} className={styles.textareaField} />
-        </label>
-        <button type="submit" className={styles.submitButton}>
-          Submit
-        </button>
-      </form>
-    </div>
+    <div
+      className="main"
+      style={{
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <div className={styles.card}>
+        <form className={styles.contactForm} onSubmit={handleSubmit}>
+          <label className={styles.formLabel}>
+            Name:
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className={styles.inputField}
+            />
+          </label>
+          <label className={styles.formLabel}>
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={styles.inputField}
+            />
+          </label>
+          <label className={styles.formLabel}>
+            Message:
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              className={styles.textareaField}
+            />
+          </label>
+          <button type="submit" className={styles.submitButton}>
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

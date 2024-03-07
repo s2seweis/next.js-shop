@@ -1,22 +1,34 @@
-// import '@/styles/globals.css';
-import '@/src/styles/globals.css';
-// import '../styles/globals.css';
-import type { AppProps /* , AppContext */ } from 'next/app';
+import React, { useState, useEffect } from 'react';
+import { AppProps } from 'next/app';
+import { AuthProvider } from '../context/AuthContext';
+import Layout from '../components/Layout/Layout';
+import Loader from '../components/Loader/Loader'; // Import the Loader component
+import '../styles/css/globals.css';
 
-function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
-}
+const App: React.FC<AppProps> = ({ Component, pageProps }) => {
+  const [loading, setLoading] = useState(true);
 
-// Only uncomment this method if you have blocking data requirements for
-// every single page in your application. This disables the ability to
-// perform automatic static optimization, causing every page in your app to
-// be server-side rendered.
-//
-// App.getInitialProps = async (appContext: AppContext) => {
-//   // calls page's `getInitialProps` and fills `appProps.pageProps`
-//   const appProps = await App.getInitialProps(appContext);
+  useEffect(() => {
+    // Simulate some asynchronous operation
+    const fetchData = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulating a delay of 2 seconds
+      setLoading(false);
+    };
 
-//   return { ...appProps }
-// }
+    fetchData();
+  }, []);
+
+  return (
+    <AuthProvider>
+      {loading ? (
+        <Loader /> // Show the loader while loading
+      ) : (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      )}
+    </AuthProvider>
+  );
+};
 
 export default App;

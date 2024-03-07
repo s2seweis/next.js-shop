@@ -1,5 +1,4 @@
-/* src/styles/ContactForm.module.css
-.card {
+src/styles/ContactForm.module.css .card {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -10,7 +9,7 @@
 
 .formLabel {
   display: block;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .inputField,
@@ -28,4 +27,4 @@
   padding: 10px 15px;
   border: none;
   cursor: pointer;
-} */
+}

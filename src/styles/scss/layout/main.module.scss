@@ -1,0 +1,30 @@
+/* main.module.scss */
+
+/* Local class for body styling */
+.body {
+  margin: 0px !important;
+  margin-top: 90px !important; /* Adjust the value based on your navbar height */
+
+  /* Global typography */
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+// h1, h2, h3, h4, h5, h6 {
+//   font-weight: bold;
+// }
+
+// p {
+//   margin-bottom: 1rem;
+// }
+
+/* Links */
+// a {
+//   color: #0070f3;
+//   text-decoration: none;
+//   cursor: pointer;
+
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// }
