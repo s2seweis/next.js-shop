@@ -14,6 +14,7 @@ You can check [demo](https://next-typescript-pwa-starter.vercel.app/)
 - [Eslint 8](https://eslint.org/docs/user-guide/getting-started) - Documentation of eslint.
 - [Prettier 3](https://prettier.io/docs/en/index.html) - Documentation of prettier.
 - [Husky 8](https://typicode.github.io/husky/#/) - Documentation of husky. https://www.youtube.com/watch?v=tuzys2b1J70
+    - ->Husky so far excepting prettier but has probs by run eslint --fix before commit it to the repository
 - [Lint Staged 14](https://github.com/okonet/lint-staged) - Documentation of lint staged.
 
 from https://github.com/danangekal/next-typescript-pwa-starter
@@ -87,7 +88,7 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-- https://dev.to/ankusht2307/nextjs-typescript-setup-with-prettier-husky-3dih - Go and Check it out, There also a Next.js Starter available!
+- https://dev.to/ankusht2307/nextjs-typescript-setup-with-prettier-husky-3dih - Go and Check it out, There also a Next.js Starter!
 
 ## Deploy on Vercel
 
