@@ -22,6 +22,12 @@
     "lint-staged",
     "pwa"
   ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -31,7 +37,9 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
     "test": "echo \"Write tests!\" && exit 0",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint-fix": "eslint --fix .",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "next": "^13.5.4",

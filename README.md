@@ -87,7 +87,7 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-- https://dev.to/ankusht2307/nextjs-typescript-setup-with-prettier-husky-3dih - Go and Check it out!
+- https://dev.to/ankusht2307/nextjs-typescript-setup-with-prettier-husky-3dih - Go and Check it out, There also a Next.js Starter available!
 
 ## Deploy on Vercel
 
