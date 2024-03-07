@@ -1,5 +1,4 @@
 // context/SidebarContext.tsx
-/* eslint-disable */
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 

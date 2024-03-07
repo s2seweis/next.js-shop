@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa'; // Import FaTimes for the close icon
 import Select, { ActionMeta, SingleValue } from 'react-select';

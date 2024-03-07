@@ -1,5 +1,4 @@
 // src/components/ContactForm.tsx
-/* eslint-disable */
 import React, { useState } from 'react';
 import styles from '@/src/styles/css/ContactForm.module.css';
 
