@@ -1,5 +1,4 @@
 // Sidebar.tsx
-/* eslint-disable */
 import React, { useState, useEffect, useRef } from 'react';
 import { FaRegWindowClose, FaAngleDown, FaAngleRight } from 'react-icons/fa';
 import { useSidebarContext } from '../../context/SidebarContext';
