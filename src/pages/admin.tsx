@@ -8,7 +8,7 @@ const Admin = () => {
   const router = useRouter();
 
   if (!isAuth) {
-    router.push("/"); // Corrected the redirection
+    router.push('/'); // Corrected the redirection
     return null; // You may want to return null or another component while the redirection is in progress
   }
 
@@ -18,7 +18,7 @@ const Admin = () => {
       <div className={`${styles.mainContainer}`}>
         <main className={`${styles.main}}`}>
           {/* <main className={`${styles.main} ${inter.className}`}> */}
-          <h3 style={{textAlign:"center"}}>Hello Admin</h3>
+          <h3 style={{ textAlign: 'center' }}>Hello Admin</h3>
         </main>
       </div>
     </>

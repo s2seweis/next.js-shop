@@ -16,6 +16,7 @@ You can check [demo](https://next-typescript-pwa-starter.vercel.app/)
 - [Husky 8](https://typicode.github.io/husky/#/) - Documentation of husky. https://www.youtube.com/watch?v=tuzys2b1J70
   - ->Husky so far excepting prettier but has probs by run eslint --fix before commit it to the repository
 - [Lint Staged 14](https://github.com/okonet/lint-staged) - Documentation of lint staged.
+- Examples for UI-Design: https://mobivention.com/referenzen/
 
 from https://github.com/danangekal/next-typescript-pwa-starter
 

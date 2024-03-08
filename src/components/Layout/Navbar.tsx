@@ -18,10 +18,10 @@ const options = [
 ];
 
 // # - Destructure it and take out direct the properties
-const Navbar = ({login, isAuth}) => {
-  console.log("line:21", login);
-  console.log("line:23", isAuth);
-  
+const Navbar = ({ login, isAuth }) => {
+  console.log('line:21', login);
+  console.log('line:23', isAuth);
+
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -94,7 +94,7 @@ const Navbar = ({login, isAuth}) => {
             <DropdownMenu />
           </div>
           {/* <AuthController isAuth={isAuth} login={login} /> */}
-          <AnyComponent/>
+          <AnyComponent />
         </nav>
       </header>
 

@@ -33,7 +33,7 @@ const Contact: React.FC = () => {
 
   return (
     <div>
-      <h3 style={{marginTop:"100px", textAlign:"center"}}>Contact</h3>
+      <h3 style={{ marginTop: '100px', textAlign: 'center' }}>Contact</h3>
       <div
         className="main"
         style={{
@@ -41,7 +41,7 @@ const Contact: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop:"-100px"
+          marginTop: '-100px',
         }}
       >
         <div className={styles.card}>

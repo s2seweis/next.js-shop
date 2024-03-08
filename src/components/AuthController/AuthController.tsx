@@ -2,12 +2,11 @@ import React, { useContext } from 'react';
 // import { AuthContext } from '../../context/AuthProvider.js';
 
 const AuthController = ({ login, isAuth }) => {
-
   // const { isLoggedIn, logout } = useContext(AuthContext);
-  
-  console.log("line:40", login);
-  console.log("line:42", isAuth);
-  
+
+  console.log('line:40', login);
+  console.log('line:42', isAuth);
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <div

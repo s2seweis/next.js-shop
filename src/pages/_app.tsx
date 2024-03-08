@@ -6,10 +6,9 @@ import Loader from '../components/Loader/Loader'; // Import the Loader component
 import '../styles/css/globals.css';
 
 const App = ({ Component, pageProps }) => {
-
   const [loading, setLoading] = useState(true);
   const [isAuth, setIsAuth] = useState(true);
-  console.log("line:100", isAuth);
+  console.log('line:100', isAuth);
 
   const login = () => {
     // Toggle the value of isAuth
@@ -35,7 +34,7 @@ const App = ({ Component, pageProps }) => {
         <Loader /> // Show the loader while loading
       ) : (
         <Layout
-          login={login}   // Pass login function as a prop
+          login={login} // Pass login function as a prop
           isAuth={isAuth} // Pass isAuth state as a prop
         >
           <Component {...pageProps} isAuth={isAuth} />

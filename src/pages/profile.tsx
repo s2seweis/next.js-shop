@@ -6,14 +6,13 @@ import styles from '@/src/styles/CSS/Home.module.css';
 
 const Profile = () => {
   const { isLoggedIn } = useAuth(); // Use the useAuth hook to access the AuthContext
-  console.log("line:999", isLoggedIn);
-  
+  console.log('line:999', isLoggedIn);
 
   const router = useRouter();
 
   useEffect(() => {
     if (!isLoggedIn) {
-      router.push("/");
+      router.push('/');
     }
   }, [isLoggedIn, router]);
 
@@ -26,7 +25,7 @@ const Profile = () => {
       <Nav />
       <div className={`${styles.mainContainer}`}>
         <main className={`${styles.main}`}>
-          <h3 style={{ textAlign: "center" }}>Hello Profile</h3>
+          <h3 style={{ textAlign: 'center' }}>Hello Profile</h3>
         </main>
       </div>
     </>
