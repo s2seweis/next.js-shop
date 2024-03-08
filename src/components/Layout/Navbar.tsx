@@ -5,18 +5,23 @@ import { useSidebarContext } from '../../context/SidebarContext';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import DropdownMenu from '../DropdownMenu/DropDownMenu';
+// import AuthController from '../AuthController/AuthController';
+import AnyComponent from '../AnyComponent/AnyComponent.js';
 
-interface Option {
-  value: string;
-  label: string;
-}
-
-const options: Option[] = [
+const options = [
   { value: '', label: 'Home' },
-  { value: 'contact', label: 'Products' },
+  { value: 'contact', label: 'Contact' },
+  { value: 'admin', label: 'Admin' },
+  { value: 'dashboard', label: 'Dashboard' },
+  { value: 'profile', label: 'Profile' },
+  { value: 'login', label: 'Login' },
 ];
 
-const Navbar: React.FC = () => {
+// # - Destructure it and take out direct the properties
+const Navbar = ({login, isAuth}) => {
+  console.log("line:21", login);
+  console.log("line:23", isAuth);
+  
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,7 +33,6 @@ const Navbar: React.FC = () => {
       const currentScrollPos = window.scrollY;
 
       if (currentScrollPos > 100) {
-        // Allow scroll functionality only when scrolled more than 100px from the top
         if (currentScrollPos > prevScrollPos) {
           setIsMenuOpen(false);
           setIsNavbarVisible(false);
@@ -46,14 +50,6 @@ const Navbar: React.FC = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [prevScrollPos]);
-
-  // const handleOptionChange = (newValue: SingleValue<Option>, actionMeta: ActionMeta<Option>) => {
-  //   if (newValue && 'value' in newValue) {
-  //     router.push(`/${newValue.value}`);
-  //     setIsMenuOpen(false);
-  //     setIsNavbarVisible(true);
-  //   }
-  // };
 
   const handleToggleClick = () => {
     toggleSidebar();
@@ -97,12 +93,8 @@ const Navbar: React.FC = () => {
           <div style={{ alignItems: 'center', display: 'flex' }}>
             <DropdownMenu />
           </div>
-          {/* <Select
-            className={styles.select}
-            options={options}
-            defaultValue={options[0]}
-            onChange={handleOptionChange}
-          /> */}
+          {/* <AuthController isAuth={isAuth} login={login} /> */}
+          <AnyComponent/>
         </nav>
       </header>
 

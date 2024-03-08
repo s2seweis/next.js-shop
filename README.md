@@ -14,7 +14,7 @@ You can check [demo](https://next-typescript-pwa-starter.vercel.app/)
 - [Eslint 8](https://eslint.org/docs/user-guide/getting-started) - Documentation of eslint.
 - [Prettier 3](https://prettier.io/docs/en/index.html) - Documentation of prettier.
 - [Husky 8](https://typicode.github.io/husky/#/) - Documentation of husky. https://www.youtube.com/watch?v=tuzys2b1J70
-    - ->Husky so far excepting prettier but has probs by run eslint --fix before commit it to the repository
+  - ->Husky so far excepting prettier but has probs by run eslint --fix before commit it to the repository
 - [Lint Staged 14](https://github.com/okonet/lint-staged) - Documentation of lint staged.
 
 from https://github.com/danangekal/next-typescript-pwa-starter

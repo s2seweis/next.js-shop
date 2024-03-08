@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { AppProps } from 'next/app';
-import { AuthProvider } from '../context/AuthContext';
+import { AuthProvider } from '../context/AuthProvider.js';
 import Layout from '../components/Layout/Layout';
 import Loader from '../components/Loader/Loader'; // Import the Loader component
 import '../styles/css/globals.css';
 
-const App: React.FC<AppProps> = ({ Component, pageProps }) => {
+const App = ({ Component, pageProps }) => {
+
   const [loading, setLoading] = useState(true);
+  const [isAuth, setIsAuth] = useState(true);
+  console.log("line:100", isAuth);
+
+  const login = () => {
+    // Toggle the value of isAuth
+    const updatedIsAuth = !isAuth;
+
+    // Set the updated value using setIsAuth
+    setIsAuth(updatedIsAuth);
+  };
 
   useEffect(() => {
     // Simulate some asynchronous operation
@@ -23,8 +34,11 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
       {loading ? (
         <Loader /> // Show the loader while loading
       ) : (
-        <Layout>
-          <Component {...pageProps} />
+        <Layout
+          login={login}   // Pass login function as a prop
+          isAuth={isAuth} // Pass isAuth state as a prop
+        >
+          <Component {...pageProps} isAuth={isAuth} />
         </Layout>
       )}
     </AuthProvider>

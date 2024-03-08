@@ -19,7 +19,7 @@ const options: Option[] = [
 
 const Navbar: React.FC = () => {
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
-  console.log('Line:200', isSidebarOpen);
+  console.log('Line:20', isSidebarOpen);
 
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
