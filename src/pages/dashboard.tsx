@@ -11,7 +11,7 @@ const Dashboard = () => {
       <div className={`${styles.mainContainer}`}>
         <main className={`${styles.main}}`}>
           {/* <main className={`${styles.main} ${inter.className}`}> */}
-          <h3 style={{ textAlign: 'center' }}>Hello Dashboard</h3>
+          <h3 style={{ textAlign: 'center' }}>Hello Dashboard (HOC)</h3>
         </main>
       </div>
     </>

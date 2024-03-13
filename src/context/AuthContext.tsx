@@ -1,9 +1,14 @@
-// AuthContext.js - Custom Hook
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, FC } from 'react';
 
-const AuthContext = createContext();
+interface AuthContextType {
+  isLoggedIn: boolean;
+  login: () => void;
+  logout: () => void;
+}
 
-export const useAuth = () => {
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (!context) {
     throw new Error('useAuth must be used within an AuthProvider');
@@ -11,7 +16,7 @@ export const useAuth = () => {
   return context;
 };
 
-export const AuthProvider = ({ children }) => {
+const AuthProvider: FC = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const login = () => {
@@ -22,7 +27,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoggedIn(false);
   };
 
-  const contextValue = {
+  const contextValue: AuthContextType = {
     isLoggedIn,
     login,
     logout,
@@ -32,3 +37,5 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
+
+export default AuthProvider;

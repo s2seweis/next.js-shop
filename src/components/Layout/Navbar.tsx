@@ -5,8 +5,7 @@ import { useSidebarContext } from '../../context/SidebarContext';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import DropdownMenu from '../DropdownMenu/DropDownMenu';
-// import AuthController from '../AuthController/AuthController';
-import AnyComponent from '../AnyComponent/AnyComponent.js';
+import AnyComponent from '../LoginButton/LoginButton.js';
 
 const options = [
   { value: '', label: 'Home' },
@@ -93,7 +92,6 @@ const Navbar = ({ login, isAuth }) => {
           <div style={{ alignItems: 'center', display: 'flex' }}>
             <DropdownMenu />
           </div>
-          {/* <AuthController isAuth={isAuth} login={login} /> */}
           <AnyComponent />
         </nav>
       </header>

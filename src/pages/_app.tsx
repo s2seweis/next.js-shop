@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AppProps } from 'next/app';
-import { AuthProvider } from '../context/AuthProvider.js';
+import AuthProvider from '../context/AuthContext';
 import Layout from '../components/Layout/Layout';
 import Loader from '../components/Loader/Loader'; // Import the Loader component
 import '../styles/css/globals.css';

@@ -1,4 +1,4 @@
-import { useAuth } from '../../context/AuthProvider.js';
+import { useAuth } from '../../context/AuthContext';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 

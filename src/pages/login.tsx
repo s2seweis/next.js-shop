@@ -1,18 +1,58 @@
-// pages/login.tsx
-import { signIn } from 'next-auth/react';
-import styles from '../styles/css/Login.module.css';
+// LoginForm.tsx
+import React, { useState } from 'react';
+import axios from 'axios';
+// import '../styles/css/Login.css'
 
-const LoginPage: React.FC = () => {
-  const handleSignIn = () => {
-    signIn('credentials', { redirect: false });
+interface LoginFormProps {
+  onLoginSuccess: () => void;
+}
+
+const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      // Replace 'http://your-api-server/login' with your actual login API endpoint
+      const response = await axios.post('http://your-api-server/login', {
+        username,
+        password,
+      });
+
+      // Assuming your server returns a token upon successful login
+      const token = response.data.token;
+
+      // Store the token in local storage or cookies as needed
+      localStorage.setItem('token', token);
+
+      // Trigger the onLoginSuccess callback to handle the successful login on the parent component
+      onLoginSuccess();
+    } catch (error) {
+      console.error('Login failed:', error);
+      // Handle login failure, e.g., display an error message to the user
+    }
   };
 
   return (
-    <div className={styles.loginContainer}>
-      <h1>Login</h1>
-      <button onClick={handleSignIn}>Sign In</button>
-    </div>
+    <form onSubmit={handleLogin}>
+      <label>
+        Username:
+        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      </label>
+      <br />
+      <button type="submit">Login</button>
+    </form>
   );
 };
 
-export default LoginPage;
+export default LoginForm;
+
+// For Later
+// ### https://www.youtube.com/watch?v=w2h54xz6Ndw1

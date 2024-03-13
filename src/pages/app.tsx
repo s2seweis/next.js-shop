@@ -1,6 +1,6 @@
 // pages/index.tsx
 import Head from 'next/head';
-import styles from '../../src/styles/css/app.module.css';
+import styles from '../../src/styles/css/App.module.css';
 
 const App: React.FC = () => {
   const handleInstall = () => {

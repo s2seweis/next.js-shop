@@ -5,7 +5,7 @@ import { useSidebarContext } from '../../context/SidebarContext';
 import Link from 'next/link';
 import styles from '../../styles/scss/layout/sidebar.module.scss'; // Import your CSS Modules styles
 import { menuItems } from './menuItems';
-import AuthController from '../AuthController/AuthController';
+import LoginButton from '../LoginButton/LoginButton';
 
 const Sidebar: React.FC = () => {
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
@@ -54,7 +54,9 @@ const Sidebar: React.FC = () => {
       {submenus.map((submenu) => (
         <Link key={submenu.path} href={submenu.path}>
           <span
-            className={`${styles.submenuLink} ${isLinkActive(submenu.path) ? styles.active : ''}`}
+            className={`${styles.submenuLink} ${
+              isLinkActive(submenu.path) ? styles.active : ''
+            }`}
           >
             {submenu.title}
           </span>
@@ -96,7 +98,9 @@ const Sidebar: React.FC = () => {
           {menuItems.map((menuItem) => (
             <span
               key={menuItem.path || menuItem.title}
-              className={`${styles.navLink} ${isSubMenuActive(menuItem.title) ? styles.active : ''}`}
+              className={`${styles.navLink} ${
+                isSubMenuActive(menuItem.title) ? styles.active : ''
+              }`}
               onClick={() => handleMenuClick(menuItem.title)}
             >
               {menuItem.title}{' '}
@@ -112,7 +116,7 @@ const Sidebar: React.FC = () => {
           ))}
         </div>
         <div className="controllerContainer" style={{ marginTop: '60%' }}>
-          <AuthController />
+          <LoginButton/>
         </div>
       </nav>
     </div>

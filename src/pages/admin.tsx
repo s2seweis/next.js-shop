@@ -1,4 +1,4 @@
-import { isAuthenticated } from '@/src/utils/Auth';
+import { isAuthenticated } from '@/src/components/IsAuth/Auth';
 import { useRouter } from 'next/router';
 import Nav from '@/src/components/nav';
 import styles from '@/src/styles/CSS/Home.module.css';
