@@ -4,7 +4,7 @@ import styles from '@/src/styles/CSS/Home.module.css';
 import Link from 'next/link';
 // import UserCard from '../components/Usercard/UserCard';
 // import { getServerSession } from 'next-auth/next';
-import { useSession } from "next-auth/react"
+import { useSession } from 'next-auth/react';
 import { options } from '../app/api/auth/[...nextauth]/options';
 
 interface HomeProps {
@@ -12,9 +12,9 @@ interface HomeProps {
 }
 
 export default function Home({ isAuth }: HomeProps) {
-  const { data: session } = useSession()
-  console.log("line: 1", session);
-  
+  const { data: session } = useSession();
+  console.log('line: 1', session);
+
   // const [session, setSession] = useState(null);
   // console.log("line:1", session);
 
@@ -23,7 +23,7 @@ export default function Home({ isAuth }: HomeProps) {
   return (
     <div>
       {session !== null ? (
-      // {session !== null ? (
+        // {session !== null ? (
         <div>
           <Nav />
           <div className={`${styles.mainContainer}`}>
@@ -34,10 +34,12 @@ export default function Home({ isAuth }: HomeProps) {
               </h5>
               <div className={styles.linkContainer}>
                 <Link href="/">Home</Link>
-                <Link href="/contact">Contact</Link>
+                <Link href="/contact/page">Contact</Link>
                 <Link href="/admin">Admin</Link>
+                <h5 style={{display:"grid"}}>not working need to change the provider for it
                 <Link href="/dashboard">Dashboard (HOC)</Link>
                 <Link href="/profile">Profile (Auth Provider)</Link>
+                </h5>
                 <Link href="/login">Login</Link>
                 <Link href="/api/auth/signin">Login With Github 1</Link>
                 <Link href="/server">Server</Link>
@@ -48,8 +50,7 @@ export default function Home({ isAuth }: HomeProps) {
           </div>
         </div>
       ) : (
-
-        <div style={{marginTop:"100px", textAlign:"center"}}>
+        <div style={{ marginTop: '100px', textAlign: 'center' }}>
           <h1 className="text-5xl">You Shall Not Pass!</h1>
         </div>
       )}

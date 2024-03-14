@@ -14,14 +14,14 @@ const Layout = ({ children, login, isAuth }, props) => {
 
   return (
     // <AuthProvider>
-      <SidebarProvider>
-        <Navbar isAuth={isAuth} login={login} />
-        <Sidebar />
-        <main className={styles.content} style={{ minHeight: '100vh' }}>
-          {children}
-        </main>
-        <Footer />
-      </SidebarProvider>
+    <SidebarProvider>
+      <Navbar isAuth={isAuth} login={login} />
+      <Sidebar />
+      <main className={styles.content} style={{ minHeight: '100vh' }}>
+        {children}
+      </main>
+      <Footer />
+    </SidebarProvider>
     // </AuthProvider>
   );
 };

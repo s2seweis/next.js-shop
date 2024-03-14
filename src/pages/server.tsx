@@ -7,7 +7,6 @@ interface HomeProps {
 }
 
 export default function Server({ isAuth }: HomeProps) {
-
   return (
     <div>
       <Nav />

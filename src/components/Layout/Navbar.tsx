@@ -18,7 +18,6 @@ const options = [
 ];
 // # - Destructure it and take out direct the properties
 const Navbar = ({ login, isAuth }) => {
-
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
