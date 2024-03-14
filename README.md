@@ -99,4 +99,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ---
 
+## Git Commands:
+
+```bash
+- git reset --hard HEAD
+- git pull
+```
+
 Copyright © 2021 by Danang Eko Alfianto
