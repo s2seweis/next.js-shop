@@ -1,7 +1,7 @@
 // LoginForm.tsx
 import React, { useState } from 'react';
 import axios from 'axios';
-// import '../styles/css/Login.css'
+import '../styles/css/Login.css';
 
 interface LoginFormProps {
   onLoginSuccess: () => void;
@@ -36,19 +36,30 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      <br />
-      <button type="submit">Login</button>
-    </form>
+    <div className="loginContainer">
+      <form onSubmit={handleLogin}>
+        <h3>Login</h3>
+        <label>
+          Username:
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <br />
+        <button type="submit">Login</button>
+      </form>
+    </div>
   );
 };
 

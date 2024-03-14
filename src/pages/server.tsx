@@ -6,7 +6,7 @@ interface HomeProps {
   isAuth: boolean; // Specify the type of 'isAuth' as boolean
 }
 
-export default function Home({ isAuth }: HomeProps) {
+export default function Server({ isAuth }: HomeProps) {
   console.log('line:55', isAuth);
 
   return (
@@ -27,7 +27,7 @@ export default function Home({ isAuth }: HomeProps) {
             <Link href="/profile">Profile (Auth Provider)</Link>
             <Link href="/login">Login</Link>
             <Link href="/api/auth/signin">Login With Github 1</Link>
-            <Link href="/server">Server</Link>
+            <Link href="/server">Login With Github 2</Link>
           </div>
         </main>
       </div>

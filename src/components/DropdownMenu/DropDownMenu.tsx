@@ -8,6 +8,7 @@ import {
 } from 'react-icons/ai';
 import Link from 'next/link'; // Import Link from next/link
 import styles from '../../styles/scss/layout/drowDownMenu.module.scss';
+import LoginButton from '../LoginButton/LoginButton.js';
 
 const DropdownMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,6 +54,7 @@ const DropdownMenu: React.FC = () => {
               <AiFillSetting /> Settings
             </div>
           </Link>
+          <LoginButton />
         </div>
       )}
     </div>

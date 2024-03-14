@@ -5,14 +5,14 @@ import { useSidebarContext } from '../../context/SidebarContext';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import DropdownMenu from '../DropdownMenu/DropDownMenu';
-import AnyComponent from '../LoginButton/LoginButton.js';
+// import LoginButton from '../LoginButton/LoginButton.js';
 
 const options = [
   { value: '', label: 'Home' },
-  { value: 'contact', label: 'Contact' },
-  { value: 'admin', label: 'Admin' },
-  { value: 'dashboard', label: 'Dashboard' },
-  { value: 'profile', label: 'Profile' },
+  { value: '/contact/page', label: 'Contact' },
+  // { value: 'admin', label: 'Admin' },
+  // { value: 'dashboard', label: 'Dashboard' },
+  // { value: 'profile', label: 'Profile' },
   { value: 'login', label: 'Login' },
 ];
 
@@ -83,21 +83,29 @@ const Navbar = ({ login, isAuth }) => {
           <div className={styles.navLinks}>
             {options.map((option) => (
               <div key={option.value}>
-                <Link href={`/${option.value}`}>
+                <Link
+                  className={styles.linkContainer}
+                  href={`/${option.value}`}
+                >
                   <span className={styles.navLink}>{option.label}</span>
                 </Link>
               </div>
             ))}
           </div>
-          <div style={{ alignItems: 'center', display: 'flex' }}>
-            <DropdownMenu />
-          </div>
-          <AnyComponent />
+          <div style={{ alignItems: 'center', display: 'flex' }}></div>
+          <DropdownMenu />
         </nav>
       </header>
-
-      <div className="loginButton" style={{ marginRight: '15px' }}>
-        {/* ... */}
+      <div
+        className="dropDownContainer"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          right: '25%',
+          position: 'absolute',
+        }}
+      >
+        <DropdownMenu />
       </div>
     </nav>
   );
