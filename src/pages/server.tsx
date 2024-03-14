@@ -7,7 +7,6 @@ interface HomeProps {
 }
 
 export default function Server({ isAuth }: HomeProps) {
-  console.log('line:55', isAuth);
 
   return (
     <div>
@@ -28,6 +27,8 @@ export default function Server({ isAuth }: HomeProps) {
             <Link href="/login">Login</Link>
             <Link href="/api/auth/signin">Login With Github 1</Link>
             <Link href="/server">Login With Github 2</Link>
+            <Link href="/api/auth/signin">Sign In</Link>
+            <Link href="/api/auth/signout">Sign Out</Link>
           </div>
         </main>
       </div>

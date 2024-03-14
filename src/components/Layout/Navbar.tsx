@@ -14,12 +14,10 @@ const options = [
   // { value: 'dashboard', label: 'Dashboard' },
   // { value: 'profile', label: 'Profile' },
   { value: 'login', label: 'Login' },
+  { value: '/api/auth/signin', label: 'Sign In' },
 ];
-
 // # - Destructure it and take out direct the properties
 const Navbar = ({ login, isAuth }) => {
-  console.log('line:21', login);
-  console.log('line:23', isAuth);
 
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
   const router = useRouter();

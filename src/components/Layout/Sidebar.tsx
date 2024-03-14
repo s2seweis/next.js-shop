@@ -116,7 +116,7 @@ const Sidebar: React.FC = () => {
           ))}
         </div>
         <div className="controllerContainer" style={{ marginTop: '60%' }}>
-          <LoginButton />
+          {/* <LoginButton /> */}
         </div>
       </nav>
     </div>

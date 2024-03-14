@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AppProps } from 'next/app';
-import AuthProvider from '../context/AuthContext';
+import AuthProvider from '../context/AuthProvider';
 import Layout from '../components/Layout/Layout';
 import Loader from '../components/Loader/Loader'; // Import the Loader component
 import '../styles/css/globals.css';
@@ -8,7 +8,7 @@ import '../styles/css/globals.css';
 const App = ({ Component, pageProps }) => {
   const [loading, setLoading] = useState(true);
   const [isAuth, setIsAuth] = useState(true);
-  console.log('line:100', isAuth);
+  // console.log('line:100', isAuth);
 
   const login = () => {
     // Toggle the value of isAuth

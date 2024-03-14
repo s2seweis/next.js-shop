@@ -54,7 +54,7 @@ const DropdownMenu: React.FC = () => {
               <AiFillSetting /> Settings
             </div>
           </Link>
-          <LoginButton />
+          {/* <LoginButton /> */}
         </div>
       )}
     </div>
