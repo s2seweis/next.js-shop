@@ -7,6 +7,7 @@ import NotFoundPage from '../pages/404.tsx'
 import LoginPage from '../pages/auth/signIn/page.tsx';
 import Server from '../pages/server.tsx';
 import LoginForm from '../pages/login.tsx';
+import Profile from '../pages/profile.tsx';
 import { useSession } from 'next-auth/react';
 
 const AppRouter = () => {
@@ -22,6 +23,7 @@ const AppRouter = () => {
     '/auth/signIn/page': { component: LoginPage },
     '/server': { component: Server, allowedRoles: ['user'] },
     '/login': { component: LoginForm, allowedRoles: ['admin', 'user'] },
+    '/profile': { component: Profile },
   };
 
   useEffect(() => {
