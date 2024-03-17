@@ -1,6 +1,6 @@
 // dashboard/page.tsx
 
-import isAuth from '@/src/components/IsAuth/isAuth';
+import IsAuth from '@/src/components/IsAuth/isAuth'; // Note the capital "I" in IsAuth
 import Nav from '../components/nav';
 import styles from '@/src/styles/CSS/Home.module.css';
 
@@ -18,4 +18,4 @@ const Dashboard = () => {
   );
 };
 
-export default isAuth(Dashboard);
+export default IsAuth(Dashboard); // Use IsAuth as a higher-order component

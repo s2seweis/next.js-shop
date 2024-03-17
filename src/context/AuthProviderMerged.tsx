@@ -1,5 +1,7 @@
+import { SessionProvider } from 'next-auth/react';
 import React, { createContext, useContext, useState, FC } from 'react';
-import { SessionProvider, useSession } from 'next-auth/react';
+
+// ### Part: 1
 
 interface AuthContextType {
   isLoggedIn: boolean;
@@ -17,9 +19,10 @@ export const useAuth = (): AuthContextType => {
   return context;
 };
 
+// ### Part:2
+
 const AuthProvider: FC = ({ children }) => {
-  const { data: session, status } = useSession();
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!session);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const login = () => {
     setIsLoggedIn(true);
@@ -36,12 +39,14 @@ const AuthProvider: FC = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={contextValue}>
-      <SessionProvider session={session} loading={status === 'loading'}>
+    <SessionProvider>
+      <AuthContext.Provider value={contextValue}>
         {children}
-      </SessionProvider>
-    </AuthContext.Provider>
+      </AuthContext.Provider>
+    </SessionProvider>
   );
 };
 
 export default AuthProvider;
+
+// ###

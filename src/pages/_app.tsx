@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { AppProps } from 'next/app';
-import AuthProvider from '../context/AuthProvider';
+import AuthProvider from '../context/AuthProviderMerged';
 import Layout from '../components/Layout/Layout';
 import Loader from '../components/Loader/Loader'; // Import the Loader component
 import '../styles/css/globals.css';
+import AppRouter from '../pages/AppRouter.js';
 
 const App = ({ Component, pageProps }) => {
   const [loading, setLoading] = useState(true);
@@ -37,7 +38,9 @@ const App = ({ Component, pageProps }) => {
           login={login} // Pass login function as a prop
           isAuth={isAuth} // Pass isAuth state as a prop
         >
-          <Component {...pageProps} isAuth={isAuth} />
+          <AppRouter>
+            <Component {...pageProps} isAuth={isAuth} />
+          </AppRouter>
         </Layout>
       )}
     </AuthProvider>

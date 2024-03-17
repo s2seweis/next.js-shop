@@ -1,4 +1,6 @@
-import { useAuth } from '../../context/AuthContext';
+// src/components/IsAuth/isAuth.tsx
+
+import { useAuth } from '../../context/AuthProviderMerged';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
@@ -16,4 +18,4 @@ const IsAuth = (WrappedComponent) => (props) => {
   return <WrappedComponent {...props} />;
 };
 
-export default IsAuth;
+export default IsAuth; // Export IsAuth as a named export

@@ -7,18 +7,19 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { options } from '../app/api/auth/[...nextauth]/options';
 
+
 interface HomeProps {
   isAuth: boolean;
 }
 
 export default function Home({ isAuth }: HomeProps) {
   const { data: session } = useSession();
-  console.log('line: 1', session);
+  // console.log('line: 1', session);
 
   // const [session, setSession] = useState(null);
   // console.log("line:1", session);
 
-  console.log('line:3', isAuth);
+  // console.log('line:3', isAuth);
 
   return (
     <div>
@@ -34,17 +35,17 @@ export default function Home({ isAuth }: HomeProps) {
               </h5>
               <div className={styles.linkContainer}>
                 <Link href="/">Home</Link>
-                <Link href="/contact/page">Contact</Link>
+                <Link href="contact/page">Contact</Link>
                 <Link href="/admin">Admin</Link>
                 <h5 style={{display:"grid"}}>not working need to change the provider for it
-                <Link href="/dashboard">Dashboard (HOC)</Link>
+                <Link href="/dashboard">Dashboard (HOC) not working currently !!!</Link>
                 <Link href="/profile">Profile (Auth Provider)</Link>
                 </h5>
                 <Link href="/login">Login</Link>
-                <Link href="/api/auth/signin">Login With Github 1</Link>
+                <Link href="api/auth/signin">Login With Github 1</Link>
                 <Link href="/server">Server</Link>
-                <Link href="/api/auth/signin">Sign In</Link>
-                <Link href="/api/auth/signout">Sign Out</Link>
+                <Link href="auth/signIn/page">Sign In</Link>
+                <Link href="api/auth/signout">Sign Out</Link>
               </div>
             </main>
           </div>

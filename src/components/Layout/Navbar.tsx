@@ -5,16 +5,17 @@ import { useSidebarContext } from '../../context/SidebarContext';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import DropdownMenu from '../DropdownMenu/DropDownMenu';
+import LoginButtonNew from '../LoginButtonNew/LoginButtonNew';
 // import LoginButton from '../LoginButton/LoginButton.js';
 
 const options = [
   { value: '', label: 'Home' },
-  { value: '/contact/page', label: 'Contact' },
+  { value: 'contact/page', label: 'Contact' },
   // { value: 'admin', label: 'Admin' },
   // { value: 'dashboard', label: 'Dashboard' },
   // { value: 'profile', label: 'Profile' },
   { value: 'login', label: 'Login' },
-  { value: '/api/auth/signin', label: 'Sign In' },
+  { value: 'auth/signIn/page', label: 'Sign In' },
 ];
 // # - Destructure it and take out direct the properties
 const Navbar = ({ login, isAuth }) => {
@@ -91,6 +92,7 @@ const Navbar = ({ login, isAuth }) => {
           </div>
           <div style={{ alignItems: 'center', display: 'flex' }}></div>
           <DropdownMenu />
+          <LoginButtonNew />
         </nav>
       </header>
       <div
@@ -103,6 +105,7 @@ const Navbar = ({ login, isAuth }) => {
         }}
       >
         <DropdownMenu />
+        <LoginButtonNew />
       </div>
     </nav>
   );
