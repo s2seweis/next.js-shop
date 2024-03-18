@@ -4,7 +4,7 @@ export default function Nav() {
   return (
     <nav>
       <Head>
-        <title>Next Typescript PWA Starter</title>
+        <title>Next Typescript PWA Starter1</title>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
