@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Home from './index.tsx'; // Assuming Home page is defined in index.js
-import Contact from '../pages/contact/page'
+import Contact from '../pages/contact/page';
 import Admin from '../pages/admin.tsx';
-import NotFoundPage from '../pages/404.tsx'
+import NotFoundPage from '../pages/404.tsx';
 import LoginPage from '../pages/auth/signIn/page.tsx';
 import Server from '../pages/server.tsx';
 import LoginForm from '../pages/login.tsx';
@@ -16,7 +16,11 @@ import { useSession } from 'next-auth/react';
 const AppRouter = () => {
   const router = useRouter();
   const { data: session } = useSession();
-  console.log("line:600", session);
+  console.log("line:1", session);
+
+  const [userData, setUserData] = useState(null);
+  console.log("line:2", userData);
+  const [userId, setUserId] = useState(null);
 
   // Define the route mapping
   const routes = {
@@ -35,6 +39,11 @@ const AppRouter = () => {
 
   useEffect(() => {
     if (!session) return; // Return if session is not loaded yet
+
+    // Extract user ID from the image URL
+    const userId = extractUserIdFromImageUrl(session.user.image);
+    console.log("line:3", userId);
+    setUserId(userId); // Set userId state
 
     // Get the current route
     const currentRoute = routes[router.pathname];
@@ -55,6 +64,26 @@ const AppRouter = () => {
     }
   }, [router.pathname, session]); // Execute this effect when route changes or session changes
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(`https://api.github.com/user/${userId}`);
+        if (response.ok) {
+          const data = await response.json();
+          setUserData(data);
+        } else {
+          console.error('Failed to fetch user data from GitHub API:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    if (userId) {
+      fetchUserData();
+    }
+  }, [userId, session]); // Include userId and session as dependencies
+
   // Get the component corresponding to the current route
   const Component = routes[router.pathname]?.component || NotFoundPage;
 
@@ -64,6 +93,14 @@ const AppRouter = () => {
 // Function to check if user's role allows access
 const userHasAccess = (userRole, allowedRoles) => {
   return allowedRoles.includes(userRole);
+};
+
+// Function to extract user ID from the image URL
+const extractUserIdFromImageUrl = (imageUrl) => {
+  if (!imageUrl) return null;
+  const regex = /\/u\/(\d+)\?v=/; // Modified regex to match the user ID from GitHub avatar URL
+  const match = imageUrl.match(regex);
+  return match ? match[1] : null;
 };
 
 export default AppRouter;

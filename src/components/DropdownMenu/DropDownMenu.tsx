@@ -13,7 +13,8 @@ import { useSession } from "next-auth/react";
 
 const DropdownMenu: React.FC = () => {
   const { data: session, status } = useSession();
-  console.log("line:555", session);
+  console.log("line:4", session);
+  console.log("line:5", session?.user?.userData?.login);
   
   const [isOpen, setIsOpen] = useState(false);
 
@@ -38,7 +39,7 @@ const DropdownMenu: React.FC = () => {
         <AiFillCrown />
         <p style={{position:"absolute", marginTop:"-8px", marginLeft:"-4px"}}>
           <div style={{fontSize:"18px", marginLeft:"-60px", width:"150px", display:"flex", justifyContent:"center"}}>
-            {getTruncatedName(session?.user.name)}
+            {getTruncatedName(session?.user?.userData?.login || session?.user.name)}
           </div>
         </p>
       </div>
