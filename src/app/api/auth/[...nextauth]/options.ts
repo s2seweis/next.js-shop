@@ -16,6 +16,10 @@ export const options: NextAuthOptions = {
       clientId: process.env.GITHUB_ID as string,
       clientSecret: process.env.GITHUB_SECRET as string,
     }),
+
+    // after the auth i need to look with the email for the user profile in the db and if not available i need to build one
+    // 2 tables (auth & profile)
+
     CredentialsProvider({
       name: 'Credentials',
       credentials: {

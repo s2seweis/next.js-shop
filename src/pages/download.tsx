@@ -2,10 +2,14 @@ import Head from 'next/head';
 import styles from '../../src/styles/css/App.module.css';
 import { useEffect, useState } from 'react';
 
-const Test: React.FC = () => {
+const Download: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showInstallButton, setShowInstallButton] = useState<boolean>(false);
   const [isAppInstalled, setIsAppInstalled] = useState<boolean>(false);
+  console.log("line:1", isAppInstalled);
+  console.log("line:2", showInstallButton);
+  console.log("line:3", deferredPrompt);
+  
 
   useEffect(() => {
     // Check if the browser supports the beforeinstallprompt event
@@ -22,6 +26,17 @@ const Test: React.FC = () => {
     if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
       setIsAppInstalled(true);
     }
+  }, []);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    if (showInstallButton) {
+      timeout = setTimeout(() => {
+        window.location.reload();
+      }, 3000); // 3 seconds
+    }
+
+    return () => clearTimeout(timeout);
   }, []);
 
   const handleInstallClick = () => {
@@ -47,11 +62,11 @@ const Test: React.FC = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <title>Your PWA Test</title>
+        <title>Your PWA Download</title>
       </Head>
 
       <header className={styles.header}>
-        <h1>Welcome to Your PWA Test</h1>
+        <h1>Welcome to Your PWA Download</h1>
         <p>Enjoy a seamless experience with our progressive web app.</p>
       </header>
 
@@ -64,4 +79,4 @@ const Test: React.FC = () => {
   );
 };
 
-export default Test;
+export default Download;

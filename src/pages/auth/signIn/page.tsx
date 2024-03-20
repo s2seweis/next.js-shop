@@ -21,7 +21,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="ape" style={{ marginTop: "150px", justifyContent: "center", display: "flex" }}>
+    <div className="ape" style={{ justifyContent: "center", display: "flex", height:"100vh", alignItems:"center" }}>
       <div className="px-7 py-4 shadow bg-white rounded-md flex flex-col gap-2">
         <TextBox labelText="User Name" onChange={(e) => (userName.current = e.target.value)} />
         <TextBox labelText="Password" type={"password"} onChange={(e) => (pass.current = e.target.value)} />

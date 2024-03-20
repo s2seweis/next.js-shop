@@ -8,7 +8,9 @@ import LoginPage from '../pages/auth/signIn/page.tsx';
 import Server from '../pages/server.tsx';
 import LoginForm from '../pages/login.tsx';
 import Profile from '../pages/profile.tsx';
-import Test from '../pages/test.tsx';
+import Download from '../pages/download.tsx';
+import Dashboard from '../pages/dashboard.tsx';
+import Example from '../pages/example.tsx';
 import { useSession } from 'next-auth/react';
 
 const AppRouter = () => {
@@ -18,14 +20,17 @@ const AppRouter = () => {
 
   // Define the route mapping
   const routes = {
-    '/': { component: Home, allowedRoles: ['admin', 'user'] },
-    '/contact/page': { component: Contact, allowedRoles: ['admin'] },
+    '/': { component: Home },
+    '/contact/page': { component: Contact },
     '/admin': { component: Admin, allowedRoles: ['admin'] },
     '/auth/signIn/page': { component: LoginPage },
-    '/server': { component: Server, allowedRoles: ['user'] },
-    '/login': { component: LoginForm, allowedRoles: ['admin', 'user'] },
-    '/profile': { component: Profile },
-    '/test': { component: Test },
+    '/server': { component: Server, allowedRoles: ['user', 'admin'] },
+    '/login': { component: LoginForm },
+    // '/login': { component: LoginForm, allowedRoles: ['admin', 'user'] },
+    '/profile': { component: Profile, allowedRoles: ['user', 'admin'] },
+    '/download': { component: Download },
+    '/dashboard': { component: Dashboard },
+    '/example': { component: Example },
   };
 
   useEffect(() => {

@@ -26,19 +26,22 @@ export default function Home({ isAuth }: HomeProps) {
                 Overview Links:
               </h5>
               <div className={styles.linkContainer}>
-                <Link href="/">Home</Link>
-                <Link href="contact/page">Contact</Link>
-                <Link href="/admin">Admin</Link>
-                <h5 style={{display:"grid"}}>not working need to change the provider for it
-                <Link href="/dashboard">Dashboard (HOC) not working currently !!!</Link>
-                <Link href="/profile">Profile (Auth Provider)</Link>
+                <h5 style={{ display: "grid" }}>Authentication with SignIn Form
+                  <Link href="/">Home (visible for all)</Link>
+                  <Link href="contact/page">Contact (visible for all)</Link>
+                  <Link href="/admin">Admin (visible for admin)</Link>
+                  <Link href="/login">Login (visible for all)</Link>
+                  <Link href="/server">Server (only visible for admin and user)</Link>
+                  <Link href="auth/signIn/page">Sign In (visible for all)</Link>
+                  {/* <Link href="api/auth/signout">Sign Out (visible for all)</Link> */}
+                  <Link href="download">Download Button</Link>
+                  <Link href="example">Example</Link>
+                  
                 </h5>
-                <Link href="/login">Login</Link>
-                <Link href="api/auth/signin">Login With Github 1</Link>
-                <Link href="/server">Server</Link>
-                <Link href="auth/signIn/page">Sign In</Link>
-                <Link href="api/auth/signout">Sign Out</Link>
-                <Link href="test">Download Button</Link>
+                <h5 style={{ display: "grid" }}>Authentication with Button
+                  <Link href="/dashboard">Dashboard (HOC) with SignInButton</Link>
+                  <Link href="/profile">Profile (Auth Provider) with SignInButton</Link>
+                </h5>
               </div>
             </main>
           </div>
@@ -46,7 +49,7 @@ export default function Home({ isAuth }: HomeProps) {
       ) : (
         <div style={{ marginTop: '100px', textAlign: 'center' }}>
           <h1 className="text-5xl">You Shall Not Pass!</h1>
-          
+
         </div>
       )}
     </div>

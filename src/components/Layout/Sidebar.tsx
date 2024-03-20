@@ -5,7 +5,8 @@ import { useSidebarContext } from '../../context/SidebarContext';
 import Link from 'next/link';
 import styles from '../../styles/scss/layout/sidebar.module.scss'; // Import your CSS Modules styles
 import { menuItems } from './menuItems';
-import LoginButton from '../LoginButton/LoginButton';
+// import AuthButton from '../AuthButton/AuthButton';
+import SignInButton from '../SignInButton/SignInButton';
 
 const Sidebar: React.FC = () => {
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
@@ -116,7 +117,8 @@ const Sidebar: React.FC = () => {
           ))}
         </div>
         <div className="controllerContainer" style={{ marginTop: '60%' }}>
-          {/* <LoginButton /> */}
+          {/* <AuthButton /> */}
+          <SignInButton/>
         </div>
       </nav>
     </div>

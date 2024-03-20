@@ -1,4 +1,3 @@
-// DropdownMenu.tsx
 import React, { useState } from 'react';
 import {
   AiFillCrown,
@@ -8,25 +7,40 @@ import {
 } from 'react-icons/ai';
 import Link from 'next/link'; // Import Link from next/link
 import styles from '../../styles/scss/layout/drowDownMenu.module.scss';
-import LoginButton from '../LoginButton/LoginButton.js';
+// import AuthButton from '../AuthButton/AuthButton.js';
+import SignInButton from '../SignInButton/SignInButton';
+import { useSession } from "next-auth/react";
 
 const DropdownMenu: React.FC = () => {
+  const { data: session, status } = useSession();
+  console.log("line:555", session);
+  
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  // const handleMenuItemClick = (item: string) => {
-  const handleMenuItemClick = (item: string) => {
-    // console.log(`Clicked on ${item}`);
-    // Add your logic here, such as navigating to a different page
+  // Function to get the truncated name
+  const getTruncatedName = (name: string) => {
+    if (!name || name.length <= 0) {
+      return 'Guest';
+    } else if (name.length <= 10) {
+      return name;
+    } else {
+      return name.substring(0, 10) + '.';
+    }
   };
 
   return (
     <div className={styles.dropdown}>
       <div className={styles.icon} onClick={toggleMenu}>
         <AiFillCrown />
+        <p style={{position:"absolute", marginTop:"-8px", marginLeft:"-4px"}}>
+          <div style={{fontSize:"18px", marginLeft:"-60px", width:"150px", display:"flex", justifyContent:"center"}}>
+            {getTruncatedName(session?.user.name)}
+          </div>
+        </p>
       </div>
       {isOpen && (
         <div className={styles.menu}>
@@ -54,7 +68,8 @@ const DropdownMenu: React.FC = () => {
               <AiFillSetting /> Settings
             </div>
           </Link>
-          <LoginButton />
+          {/* <AuthButton /> */}
+          <SignInButton/>
         </div>
       )}
     </div>

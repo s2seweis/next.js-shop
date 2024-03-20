@@ -1,10 +1,10 @@
-// LoginButton.js
+// AuthButton.js
 import React from 'react';
 import { useAuth } from '../../context/AuthProviderMerged';
 // import { useAuth } from '../../context/AuthContext';
-import '../../styles/css/LoginButton.css';
+import '../../styles/css/AuthButton.css';
 
-const LoginButton = () => {
+const AuthButton = () => {
   const { isLoggedIn, login, logout } = useAuth();
 
   const handleLogin = () => {
@@ -34,4 +34,4 @@ const LoginButton = () => {
   );
 };
 
-export default LoginButton;
+export default AuthButton;
