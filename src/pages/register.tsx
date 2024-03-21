@@ -1,8 +1,9 @@
 // Register.tsx
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link'; // Import Link from Next.js
-import '../styles/css/Login.css';
+import styles from '../styles/scss/pages/Register.module.scss'; // Import SCSS file
 
 interface RegisterFormProps {
   onRegisterSuccess: () => void;
@@ -40,54 +41,62 @@ const Register: React.FC<RegisterFormProps> = ({ onRegisterSuccess }) => {
   };
 
   return (
-    <div className="registerContainer" style={{ display: "flex", alignItems: "center", height: "100vh" }}>
-      <form onSubmit={handleRegister}>
-        <h3>Register</h3>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        {/* <br /> */}
-        <label>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        {/* <br /> */}
-        <label>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        {/* <br /> */}
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        {/* <br /> */}
-        <Link style={{ fontSize: "1rem", marginLeft:"10px" }} href="/auth/signIn/page"> {/* Specify the path to your login page */}
-          <a style={{ textDecoration: "none", fontSize: "1rem"}} className=''>Go to Register</a>
-        </Link>
-
-        <div className='registerButtonContainer' style={{ display: "flex", justifyContent: "", alignItems:"center", marginTop:"10px" }}>
-          <button className='buttonRegister' style={{fontSize:"1rem"}} type="submit">Register</button>
-          
+    <div className={styles.registerContainer}>
+      <form className={styles.registerForm} onSubmit={handleRegister}>
+        <h3 className={styles.registerTitle}>Register</h3>
+        <div className={styles.registerInputWrapper}>
+          <label>
+            Name:
+            <input
+              className={styles.registerInput}
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className={styles.registerInputWrapper}>
+          <label>
+            Email:
+            <input
+              className={styles.registerInput}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className={styles.registerInputWrapper}>
+          <label>
+            Username:
+            <input
+              className={styles.registerInput}
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className={styles.registerInputWrapper}>
+          <label>
+            Password:
+            <input
+              className={styles.registerInput}
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className={styles.registerButtonContainer}>
+          <button className={styles.registerButton} type="submit">
+            Register
+          </button>
         </div>
       </form>
+      <div className={styles.goToLogin}>
+        <Link href="/auth/signIn/page">Go to Login</Link>
+      </div>
     </div>
   );
 };

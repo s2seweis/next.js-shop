@@ -1,52 +1,81 @@
-import React, { useRef } from "react";
-import Button from "./Button";
-import TextBox from "./TextBox";
-import { signIn } from "next-auth/react";
+// SignIn.tsx
+
+import React, { useRef } from 'react';
+import { signIn } from 'next-auth/react';
 import Link from 'next/link'; // Import Link from Next.js
+import styles from '@/src/styles/scss/pages/SignIn.module.scss'; // Import SCSS file
+import Button from './Button';
 
-const LoginPage = () => {
-  const userName = useRef("");
-  const pass = useRef("");
+const SignIn = () => {
+  const userNameRef = useRef<HTMLInputElement>(null);
+  const passRef = useRef<HTMLInputElement>(null);
 
-  const onSubmit = async () => {
-    const result = await signIn("credentials", {
-      username: userName.current,
-      password: pass.current,
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    const username = userNameRef.current?.value || '';
+    const password = passRef.current?.value || '';
+
+    const result = await signIn('credentials', {
+      username,
+      password,
       redirect: true,
-      callbackUrl: "/",
+      callbackUrl: '/',
     });
   };
 
   const handleGitHubSignIn = async () => {
-    await signIn("github", { callbackUrl: "/" });
+    await signIn('github', { callbackUrl: '/' });
   };
 
   return (
-    <div className="ape" style={{ justifyContent: "center", display: "flex", height: "100vh", alignItems: "center", maxWidth:"300px", margin:"auto" }}>
-      <div style={{width:"85%"}} className="px-7 py-4 shadow bg-white rounded-md flex flex-col gap-2">
-        <h3>Login</h3>
-        <TextBox labelText="User Name" onChange={(e) => (userName.current = e.target.value)} />
-        <TextBox labelText="Password" type={"password"} onChange={(e) => (pass.current = e.target.value)} />
-        <Link style={{ fontSize: "1rem", marginLeft: "10px" }} href="/register"> {/* Specify the path to your login page */}
-          <a style={{ textDecoration: "none", fontSize: "1rem" }} className=''>Go to Register</a>
-        </Link>
-        <div className="signInButtonContainer" style={{ display: "flex", gap: "15px", marginTop: "10px", justifyContent:"center" }}>
-          <Button onClick={onSubmit} style={{ backgroundColor: "#34A853", color: "#fff", padding: "10px 15px", width:"50%" }}>SIGN IN with E-Mail</Button>
-          {/* GitHub Sign-In Button */}
-          <Button onClick={handleGitHubSignIn} style={{ backgroundColor: "#333", color: "#fff", padding: "10px 15px", width:"50%" }}>
-            SIGN IN with GitHub
-          </Button>
-        </div>
-        <div className="signInButtonContainer" style={{ display: "flex", gap: "15px", marginTop: "10px", justifyContent:"center" }}>
-          <Button onClick={onSubmit} style={{ backgroundColor: "#FBBC05", color: "#fff", padding: "10px 15px", width:"50%" }}>SIGN IN with Google</Button>
-          {/* GitHub Sign-In Button */}
-          <Button onClick={handleGitHubSignIn} style={{ backgroundColor: "#4285F4", color: "#fff", padding: "10px 15px", width:"50%" }}>
-            SIGN IN with Facebook
-          </Button>
-        </div>
+    <div style={{display:"flex", height:"100vh", alignItems:"center"}} className={styles.loginPageContainer}>
+      <div style={{margin:"auto"}} className={styles.loginFormContainer}>
+        <h3 className={styles.loginFormTitle}>Login</h3>
+        <form onSubmit={onSubmit}>
+          <div className={styles.formField}>
+            <label htmlFor="username">User Name</label>
+            <input
+              type="text"
+              id="username"
+              ref={userNameRef}
+              className={styles.inputField}
+            />
+          </div>
+          <div className={styles.formField}>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              ref={passRef}
+              className={styles.inputField}
+            />
+          </div>
+          <div className={styles.formField}>
+            <Link href="/register">
+              <span className={styles.goToRegister}>Go to Register</span>
+            </Link>
+          </div>
+          <div className={styles.signInButtonContainer}>
+            <Button type="submit" className={styles.signInButton}>
+              SIGN IN with E-Mail
+            </Button>
+            <Button onClick={handleGitHubSignIn} className={styles.signInButton}>
+              SIGN IN with GitHub
+            </Button>
+          </div>
+          <div className={styles.signInButtonContainer}>
+            <Button onClick={onSubmit} className={`${styles.signInButtonGoogle} ${styles.signInButton}`}>
+              SIGN IN with Google
+            </Button>
+            <Button onClick={handleGitHubSignIn} className={`${styles.signInButtonFacebook} ${styles.signInButton}`}>
+              SIGN IN with Facebook
+            </Button>
+          </div>
+        </form>
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignIn;

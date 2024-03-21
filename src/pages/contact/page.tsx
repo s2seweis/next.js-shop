@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
         }}
       >
         <div className={styles.card}>
-        <h3 style={{ marginTop: '100px', textAlign: '' }}>Contact</h3>
+          <h3 style={{ marginTop: '100px', textAlign: '' }}>Contact</h3>
           <form className={styles.contactForm} onSubmit={handleSubmit}>
             <label className={styles.formLabel}>
               Name:

@@ -1,0 +1,68 @@
+// Register.module.scss
+
+.registerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .registerForm {
+    width: 300px; // Adjust width as needed
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .registerTitle {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .registerInputWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .registerInput {
+    width: 92%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px; // Adjust margin as needed
+  }
+  
+  .registerButton {
+    width: 100%;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 20px; // Adjust margin as needed
+  }
+  
+  .registerButton:hover {
+    background-color: #258cd1;
+  }
+  
+  .goToLogin {
+    margin-top: 20px;
+  }
+  
+  .goToLogin a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .goToLogin a:hover {
+    text-decoration: underline;
+  }
+  

@@ -55,8 +55,9 @@ const Sidebar: React.FC = () => {
       {submenus.map((submenu) => (
         <Link key={submenu.path} href={submenu.path}>
           <span
-            className={`${styles.submenuLink} ${isLinkActive(submenu.path) ? styles.active : ''
-              }`}
+            className={`${styles.submenuLink} ${
+              isLinkActive(submenu.path) ? styles.active : ''
+            }`}
           >
             {submenu.title}
           </span>
@@ -88,9 +89,9 @@ const Sidebar: React.FC = () => {
           className="logo"
           style={{ display: 'flex', justifyContent: 'center' }}
         >
-          <div
-            style={{ width: '80px', marginTop: '40px' }}
-          ><SignInButton /></div>
+          <div style={{ width: '80px', marginTop: '40px' }}>
+            <SignInButton />
+          </div>
           {/* <img
             style={{ width: '80px', marginTop: '40px' }}
             src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg"
@@ -98,13 +99,13 @@ const Sidebar: React.FC = () => {
           /> */}
         </div>
 
-
         <div className={styles.navLinks}>
           {menuItems.map((menuItem) => (
             <span
               key={menuItem.path || menuItem.title}
-              className={`${styles.navLink} ${isSubMenuActive(menuItem.title) ? styles.active : ''
-                }`}
+              className={`${styles.navLink} ${
+                isSubMenuActive(menuItem.title) ? styles.active : ''
+              }`}
               onClick={() => handleMenuClick(menuItem.title)}
             >
               {menuItem.title}{' '}

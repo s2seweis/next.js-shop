@@ -36,7 +36,9 @@ export const options: NextAuthOptions = {
       async authorize(credentials) {
         const { username, password } = credentials;
         // Find the user in the array based on the provided credentials
-        const user = users.find(user => user.name === username && user.password === password);
+        const user = users.find(
+          (user) => user.name === username && user.password === password,
+        );
         if (user) {
           // Return the user object with the role included
           return { ...user, role: user.role };
@@ -65,7 +67,6 @@ export const options: NextAuthOptions = {
       return token;
     },
 
-    
     async session({ session, token }) {
       session.user.role = token.role; // Add role to session object
       if (token.userId) {
@@ -76,10 +77,8 @@ export const options: NextAuthOptions = {
     },
   },
 
-  
-
   pages: {
-    signIn: "/auth/signIn/page",
+    signIn: '/auth/signIn/page',
   },
 };
 
@@ -97,7 +96,10 @@ const fetchUserData = async (userId: string) => {
       const data = await response.json();
       return data;
     } else {
-      console.error('Failed to fetch user data from GitHub API:', response.statusText);
+      console.error(
+        'Failed to fetch user data from GitHub API:',
+        response.statusText,
+      );
       return null;
     }
   } catch (error) {

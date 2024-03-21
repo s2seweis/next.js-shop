@@ -12,7 +12,7 @@ export default function Server({ isAuth }: HomeProps) {
       <Nav />
       <div className={`${styles.mainContainer}`}>
         <main className={`${styles.main}}`}>
-          <h3 style={{ textAlign: 'center' }}>Hello Server</h3>        
+          <h3 style={{ textAlign: 'center' }}>Hello Server</h3>
         </main>
       </div>
     </div>

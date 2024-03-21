@@ -1,7 +1,7 @@
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from 'next-auth/react';
 // import { FiLogIn, FiLogOut } from "react-icons/fi"; // Importing icons from React Icons
-import { GoSignIn, GoSignOut } from "react-icons/go";
-import React from "react";
+import { GoSignIn, GoSignOut } from 'react-icons/go';
+import React from 'react';
 
 const SignInButton = () => {
   const { data: session, status } = useSession();
@@ -17,18 +17,57 @@ const SignInButton = () => {
   };
 
   return (
-    <div className="ml-auto flex gap-2" style={{justifyContent:"center", display:"flex"}}>
+    <div
+      className="ml-auto flex gap-2"
+      style={{ justifyContent: 'center', display: 'flex' }}
+    >
       {session?.user ? (
         <>
-          <div className="containerSignIn" style={{display:"flex", gap:"10px", justifyContent:"center", marginTop:"-10px" }}>
-            <p style={{position:"absolute", marginTop:"36px", marginLeft:"4px", color:"black"}} className="text-sky-600">{getTruncatedName(session?.user.name)}</p>
-            <button style={{background:"#EA4335", fontSize:"1.3rem", display:"flex", alignItems:"center"}} className="text-red-500" onClick={() => signOut()}>
+          <div
+            className="containerSignIn"
+            style={{
+              display: 'flex',
+              gap: '10px',
+              justifyContent: 'center',
+              marginTop: '-10px',
+            }}
+          >
+            <p
+              style={{
+                position: 'absolute',
+                marginTop: '36px',
+                marginLeft: '4px',
+                color: 'black',
+              }}
+              className="text-sky-600"
+            >
+              {getTruncatedName(session?.user.name)}
+            </p>
+            <button
+              style={{
+                background: '#EA4335',
+                fontSize: '1.3rem',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+              className="text-red-500"
+              onClick={() => signOut()}
+            >
               <GoSignOut className="inline-block align-text-bottom mr-1" />
             </button>
           </div>
         </>
       ) : (
-        <button style={{fontSize:"1.3rem", display:"flex", alignItems:"center", background:"#34A853"}} className="text-green-600" onClick={() => signIn()}>
+        <button
+          style={{
+            fontSize: '1.3rem',
+            display: 'flex',
+            alignItems: 'center',
+            background: '#34A853',
+          }}
+          className="text-green-600"
+          onClick={() => signIn()}
+        >
           <GoSignIn className="inline-block align-text-bottom mr-1" />
         </button>
       )}

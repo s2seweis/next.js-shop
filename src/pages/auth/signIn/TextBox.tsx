@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   labelText?: string;
   error?: string;
@@ -6,9 +6,9 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const TextBox = React.forwardRef<HTMLInputElement, IProps>(
-  ({ className, children, labelText, type = "text", error, ...props }, ref) => {
+  ({ className, children, labelText, type = 'text', error, ...props }, ref) => {
     return (
-      <div className={className + " relative"}>
+      <div className={className + ' relative'}>
         {labelText && (
           <label
             className="block text-gray-600  mb-2 text-xs lg:text-sm xl:text-base"
@@ -22,9 +22,9 @@ const TextBox = React.forwardRef<HTMLInputElement, IProps>(
             id="txt"
             autoComplete="off"
             className={`border border-slate-400 disabled:border-slate-100 w-full block outline-none py-2 px-1 transition-all text-xs lg:text-sm xl:text-base  bg-slate-50 focus:shadow focus:shadow-blue-500
-              ${error && "border-red-500 border  animate-shake"} ${
-              children ? "rounded-r-md" : "rounded-md"
-            }`}
+              ${error && 'border-red-500 border  animate-shake'} ${
+                children ? 'rounded-r-md' : 'rounded-md'
+              }`}
             {...props}
             ref={ref}
             type={type}
@@ -37,8 +37,8 @@ const TextBox = React.forwardRef<HTMLInputElement, IProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
-TextBox.displayName = "TextBox";
+TextBox.displayName = 'TextBox';
 export default TextBox;

@@ -16,10 +16,10 @@ import { useSession } from 'next-auth/react';
 const AppRouter = () => {
   const router = useRouter();
   const { data: session } = useSession();
-  console.log("line:1", session);
+  console.log('line:1', session);
 
   const [userData, setUserData] = useState(null);
-  console.log("line:2", userData);
+  console.log('line:2', userData);
   const [userId, setUserId] = useState(null);
 
   // Define the route mapping
@@ -42,7 +42,7 @@ const AppRouter = () => {
 
     // Extract user ID from the image URL
     const userId = extractUserIdFromImageUrl(session.user.image);
-    console.log("line:3", userId);
+    console.log('line:3', userId);
     setUserId(userId); // Set userId state
 
     // Get the current route
@@ -72,7 +72,10 @@ const AppRouter = () => {
           const data = await response.json();
           setUserData(data);
         } else {
-          console.error('Failed to fetch user data from GitHub API:', response.statusText);
+          console.error(
+            'Failed to fetch user data from GitHub API:',
+            response.statusText,
+          );
         }
       } catch (error) {
         console.error('Error fetching user data:', error);

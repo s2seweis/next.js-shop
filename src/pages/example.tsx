@@ -5,8 +5,7 @@ import { useEffect, useState } from 'react';
 const UserPage = () => {
   const userId = '58604870'; // Your GitHub user ID
   const [userData, setUserData] = useState(null);
-  console.log("line:2", userData);
-  
+  console.log('line:2', userData);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -31,7 +30,11 @@ const UserPage = () => {
       {userData ? (
         <div>
           <h1>{userData.login}</h1>
-          <img src={userData.avatar_url} alt={userData.login} style={{ width: '100px', borderRadius: '50%' }} />
+          <img
+            src={userData.avatar_url}
+            alt={userData.login}
+            style={{ width: '100px', borderRadius: '50%' }}
+          />
           <p>Name: {userData.name}</p>
           <p>Location: {userData.location}</p>
           <p>Followers: {userData.followers}</p>

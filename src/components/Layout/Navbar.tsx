@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { SiWolfram } from "react-icons/si";
+import { SiWolfram } from 'react-icons/si';
 import styles from '../../styles/scss/layout/navbar.module.scss';
 import { useSidebarContext } from '../../context/SidebarContext';
 import Link from 'next/link';
@@ -71,13 +71,19 @@ const Navbar = ({ login, isAuth }) => {
         <div className={styles.logo}>
           <Link href="/">
             <div style={{ cursor: 'pointer' }}>
-              <div style={{ width: '80px', fontSize: "4rem", display: "flex", color:"white" }}>
+              <div
+                style={{
+                  width: '80px',
+                  fontSize: '4rem',
+                  display: 'flex',
+                  color: 'white',
+                }}
+              >
                 <SiWolfram />
               </div>
             </div>
           </Link>
         </div>
-
       </div>
 
       <header className={styles.menu1}>
@@ -93,7 +99,14 @@ const Navbar = ({ login, isAuth }) => {
           <div className={styles.logo}>
             <Link href="/">
               <div style={{ cursor: 'pointer' }}>
-                <div style={{ width: '80px', fontSize: "4rem", display: "flex", color:"white" }}>
+                <div
+                  style={{
+                    width: '80px',
+                    fontSize: '4rem',
+                    display: 'flex',
+                    color: 'white',
+                  }}
+                >
                   <SiWolfram />
                 </div>
               </div>

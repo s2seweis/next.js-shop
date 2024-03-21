@@ -6,10 +6,9 @@ const Download: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showInstallButton, setShowInstallButton] = useState<boolean>(false);
   const [isAppInstalled, setIsAppInstalled] = useState<boolean>(false);
-  console.log("line:1", isAppInstalled);
-  console.log("line:2", showInstallButton);
-  console.log("line:3", deferredPrompt);
-  
+  console.log('line:1', isAppInstalled);
+  console.log('line:2', showInstallButton);
+  console.log('line:3', deferredPrompt);
 
   useEffect(() => {
     // Check if the browser supports the beforeinstallprompt event
@@ -23,7 +22,10 @@ const Download: React.FC = () => {
     });
 
     // Check if the app is already installed
-    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+    if (
+      window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone
+    ) {
       setIsAppInstalled(true);
     }
   }, []);
@@ -71,7 +73,11 @@ const Download: React.FC = () => {
       </header>
 
       <main className={styles.main}>
-        <button id="installButton" onClick={handleInstallClick} disabled={isAppInstalled}>
+        <button
+          id="installButton"
+          onClick={handleInstallClick}
+          disabled={isAppInstalled}
+        >
           {showInstallButton ? 'Install Now' : 'Already Installed'}
         </button>
       </main>

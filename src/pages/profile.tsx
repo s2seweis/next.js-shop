@@ -26,7 +26,7 @@ const Profile: React.FC = () => {
         <main className={`${styles.main}}`}>
           {/* <main className={`${styles.main} ${inter.className}`}> */}
           <h3 style={{ textAlign: 'center' }}>Hello Profile (Auth Provider)</h3>
-          <AuthButton/>
+          <AuthButton />
         </main>
       </div>
     </>

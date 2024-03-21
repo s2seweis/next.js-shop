@@ -13,7 +13,7 @@ const Dashboard = () => {
         <main className={`${styles.main}}`}>
           {/* <main className={`${styles.main} ${inter.className}`}> */}
           <h3 style={{ textAlign: 'center' }}>Hello Dashboard (HOC)</h3>
-          <AuthButton/>
+          <AuthButton />
         </main>
       </div>
     </>
