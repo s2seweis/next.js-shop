@@ -12,7 +12,7 @@ const SignIn = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     const username = userNameRef.current?.value || '';
     const password = passRef.current?.value || '';
 
@@ -29,8 +29,11 @@ const SignIn = () => {
   };
 
   return (
-    <div style={{display:"flex", height:"100vh", alignItems:"center"}} className={styles.loginPageContainer}>
-      <div style={{margin:"auto"}} className={styles.loginFormContainer}>
+    <div
+      style={{ display: 'flex', height: '100vh', alignItems: 'center' }}
+      className={styles.loginPageContainer}
+    >
+      <div style={{ margin: 'auto' }} className={styles.loginFormContainer}>
         <h3 className={styles.loginFormTitle}>Login</h3>
         <form onSubmit={onSubmit}>
           <div className={styles.formField}>
@@ -60,15 +63,24 @@ const SignIn = () => {
             <Button type="submit" className={styles.signInButton}>
               SIGN IN with E-Mail
             </Button>
-            <Button onClick={handleGitHubSignIn} className={styles.signInButton}>
+            <Button
+              onClick={handleGitHubSignIn}
+              className={styles.signInButton}
+            >
               SIGN IN with GitHub
             </Button>
           </div>
           <div className={styles.signInButtonContainer}>
-            <Button onClick={onSubmit} className={`${styles.signInButtonGoogle} ${styles.signInButton}`}>
+            <Button
+              onClick={onSubmit}
+              className={`${styles.signInButtonGoogle} ${styles.signInButton}`}
+            >
               SIGN IN with Google
             </Button>
-            <Button onClick={handleGitHubSignIn} className={`${styles.signInButtonFacebook} ${styles.signInButton}`}>
+            <Button
+              onClick={handleGitHubSignIn}
+              className={`${styles.signInButtonFacebook} ${styles.signInButton}`}
+            >
               SIGN IN with Facebook
             </Button>
           </div>

@@ -38,7 +38,10 @@ export default function Home({ isAuth }: HomeProps) {
                   <Link href="auth/signIn/page">Sign In (visible for all)</Link>
                   {/* <Link href="api/auth/signout">Sign Out (visible for all)</Link> */}
                   <Link href="download">Download Button</Link>
-                  <Link href="example">App Download Button (currently a page needs to be a component)</Link>
+                  <Link href="example">
+                    App Download Button (currently a page needs to be a
+                    component)
+                  </Link>
                 </h5>
                 <h5 style={{ display: 'grid' }}>
                   Authentication with Button
