@@ -23,11 +23,11 @@ const AuthButton = () => {
       {/* <p>User is {isLoggedIn ? 'logged in' : 'logged out'}</p> */}
       {isLoggedIn ? (
         <button className="buttonLogout" onClick={handleLogout}>
-          Logout1
+          Logout
         </button>
       ) : (
         <button className="buttonLogin" onClick={handleLogin}>
-          Login1
+          Login
         </button>
       )}
     </div>

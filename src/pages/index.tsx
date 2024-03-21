@@ -4,7 +4,7 @@ import styles from '@/src/styles/CSS/Home.module.css';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { options } from '../app/api/auth/[...nextauth]/options';
-
+import AuthButton from '../components/AuthButton/AuthButton.js'
 
 interface HomeProps {
   isAuth: boolean;
@@ -42,6 +42,7 @@ export default function Home({ isAuth }: HomeProps) {
                   <Link href="/dashboard">Dashboard (HOC) with SignInButton</Link>
                   <Link href="/profile">Profile (Auth Provider) with SignInButton</Link>
                 </h5>
+                <AuthButton/>
               </div>
             </main>
           </div>

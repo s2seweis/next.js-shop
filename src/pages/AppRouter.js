@@ -6,7 +6,7 @@ import Admin from '../pages/admin.tsx';
 import NotFoundPage from '../pages/404.tsx';
 import LoginPage from '../pages/auth/signIn/page.tsx';
 import Server from '../pages/server.tsx';
-import LoginForm from '../pages/login.tsx';
+import Register from '../pages/register.tsx';
 import Profile from '../pages/profile.tsx';
 import Download from '../pages/download.tsx';
 import Dashboard from '../pages/dashboard.tsx';
@@ -29,8 +29,8 @@ const AppRouter = () => {
     '/admin': { component: Admin, allowedRoles: ['admin'] },
     '/auth/signIn/page': { component: LoginPage },
     '/server': { component: Server, allowedRoles: ['user', 'admin'] },
-    '/login': { component: LoginForm },
-    // '/login': { component: LoginForm, allowedRoles: ['admin', 'user'] },
+    '/register': { component: Register },
+    // '/login': { component: Register, allowedRoles: ['admin', 'user'] },
     '/profile': { component: Profile, allowedRoles: ['user', 'admin'] },
     '/download': { component: Download },
     '/dashboard': { component: Dashboard },

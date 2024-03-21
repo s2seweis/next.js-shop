@@ -5,6 +5,7 @@ import {
   AiOutlineBars,
   AiFillSetting,
 } from 'react-icons/ai';
+import { IoPerson } from "react-icons/io5";
 import Link from 'next/link'; // Import Link from next/link
 import styles from '../../styles/scss/layout/drowDownMenu.module.scss';
 // import AuthButton from '../AuthButton/AuthButton.js';
@@ -36,7 +37,7 @@ const DropdownMenu: React.FC = () => {
   return (
     <div className={styles.dropdown}>
       <div className={styles.icon} onClick={toggleMenu}>
-        <AiFillCrown />
+        <IoPerson />
         <p style={{position:"absolute", marginTop:"-8px", marginLeft:"-4px"}}>
           <div style={{fontSize:"18px", marginLeft:"-60px", width:"150px", display:"flex", justifyContent:"center"}}>
             {getTruncatedName(session?.user?.userData?.login || session?.user.name)}
@@ -45,10 +46,10 @@ const DropdownMenu: React.FC = () => {
       </div>
       {isOpen && (
         <div className={styles.menu}>
-          <Link href="/contact">
+          <Link href="contact/page">
             <div
               className={styles.menuLink}
-              onClick={() => handleMenuItemClick('Favorite')}
+              // onClick={() => handleMenuItemClick('Favorite')}
             >
               <AiFillHeart /> Contact
             </div>
@@ -56,17 +57,17 @@ const DropdownMenu: React.FC = () => {
           <Link href="/">
             <div
               className={styles.menuLink}
-              onClick={() => handleMenuItemClick('List')}
+              // onClick={() => handleMenuItemClick('List')}
             >
               <AiOutlineBars /> Home
             </div>
           </Link>
-          <Link href="/settings">
+          <Link href="/profile">
             <div
               className={styles.menuLink}
-              onClick={() => handleMenuItemClick('Settings')}
+              // onClick={() => handleMenuItemClick('Settings')}
             >
-              <AiFillSetting /> Settings
+              <IoPerson /> Profile
             </div>
           </Link>
           {/* <AuthButton /> */}

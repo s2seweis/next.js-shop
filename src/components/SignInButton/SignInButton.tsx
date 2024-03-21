@@ -20,15 +20,15 @@ const SignInButton = () => {
     <div className="ml-auto flex gap-2" style={{justifyContent:"center", display:"flex"}}>
       {session?.user ? (
         <>
-          <div className="containerSignIn" style={{display:"flex", gap:"10px", justifyContent:"center" }}>
+          <div className="containerSignIn" style={{display:"flex", gap:"10px", justifyContent:"center", marginTop:"-10px" }}>
             <p style={{position:"absolute", marginTop:"36px", marginLeft:"4px", color:"black"}} className="text-sky-600">{getTruncatedName(session?.user.name)}</p>
-            <button className="text-red-500" onClick={() => signOut()}>
+            <button style={{background:"#EA4335", fontSize:"1.3rem", display:"flex", alignItems:"center"}} className="text-red-500" onClick={() => signOut()}>
               <GoSignOut className="inline-block align-text-bottom mr-1" />
             </button>
           </div>
         </>
       ) : (
-        <button className="text-green-600" onClick={() => signIn()}>
+        <button style={{fontSize:"1.3rem", display:"flex", alignItems:"center", background:"#34A853"}} className="text-green-600" onClick={() => signIn()}>
           <GoSignIn className="inline-block align-text-bottom mr-1" />
         </button>
       )}

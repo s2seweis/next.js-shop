@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { SiWolfram } from "react-icons/si";
 import styles from '../../styles/scss/layout/navbar.module.scss';
 import { useSidebarContext } from '../../context/SidebarContext';
 import Link from 'next/link';
@@ -13,7 +14,7 @@ const options = [
   // { value: 'admin', label: 'Admin' },
   // { value: 'dashboard', label: 'Dashboard' },
   // { value: 'profile', label: 'Profile' },
-  { value: 'login', label: 'Login' },
+  { value: 'register', label: 'Register' },
   { value: 'auth/signIn/page', label: 'Sign In' },
 ];
 // # - Destructure it and take out direct the properties
@@ -59,24 +60,46 @@ const Navbar = ({ login, isAuth }) => {
         <div className={styles.sidebarToggle} onClick={handleToggleClick}>
           {isSidebarOpen ? <FaTimes /> : <FaBars />}
         </div>
-        <div className={styles.logoMobile}>
+        {/* <div className={styles.logoMobile}>
           <img
             style={{ width: '80px', marginRight: '15px' }}
             src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg"
             alt="Logo"
           />
+        </div> */}
+
+        <div className={styles.logo}>
+          <Link href="/">
+            <div style={{ cursor: 'pointer' }}>
+              <div style={{ width: '80px', fontSize: "4rem", display: "flex", color:"white" }}>
+                <SiWolfram />
+              </div>
+            </div>
+          </Link>
         </div>
+
       </div>
 
       <header className={styles.menu1}>
         <nav className={styles.navbar}>
-          <div className={styles.logo}>
+          {/* <div className={styles.logo}>
             <img
               style={{ width: '80px' }}
               src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg"
               alt="Logo"
             />
+          </div> */}
+
+          <div className={styles.logo}>
+            <Link href="/">
+              <div style={{ cursor: 'pointer' }}>
+                <div style={{ width: '80px', fontSize: "4rem", display: "flex", color:"white" }}>
+                  <SiWolfram />
+                </div>
+              </div>
+            </Link>
           </div>
+
           <div className={styles.navLinks}>
             {options.map((option) => (
               <div key={option.value}>
