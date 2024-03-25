@@ -1,7 +1,7 @@
 import { isAuthenticated } from '@/src/components/IsAuth/Auth';
 import { useRouter } from 'next/router';
 import Nav from '@/src/components/nav';
-import styles from '@/src/styles/CSS/Home.module.css';
+import styles from '@/src/styles/scss/pages/Admin.module.scss';
 
 const Admin = () => {
   const isAuth = isAuthenticated;
@@ -13,15 +13,14 @@ const Admin = () => {
   }
 
   return (
-    <>
+    <div className={styles.adminMain}>
       <Nav />
-      <div className={`${styles.mainContainer}`}>
-        <main className={`${styles.main}}`}>
-          {/* <main className={`${styles.main} ${inter.className}`}> */}
+      <div className={styles.adminContainer}>
+        <main className={styles.adminContainerAlign}>
           <h3 style={{ textAlign: 'center' }}>Hello Admin</h3>
         </main>
       </div>
-    </>
+    </div>
   );
 };
 

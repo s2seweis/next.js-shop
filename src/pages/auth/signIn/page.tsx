@@ -35,7 +35,7 @@ const SignIn = () => {
     >
       <div style={{ margin: 'auto' }} className={styles.loginFormContainer}>
         <h3 className={styles.loginFormTitle}>Login</h3>
-        <form onSubmit={onSubmit}>
+        <form className={styles.SignInForm} onSubmit={onSubmit}>
           <div className={styles.formField}>
             <label htmlFor="username">User Name</label>
             <input
@@ -54,21 +54,30 @@ const SignIn = () => {
               className={styles.inputField}
             />
           </div>
-          <div className={styles.formField}>
-            <Link href="/register">
-              <span className={styles.goToRegister}>Go to Register</span>
-            </Link>
-          </div>
           <div className={styles.signInButtonContainer}>
-            <Button type="submit" className={styles.signInButton}>
+            <Button
+              type="submit"
+              className={`${styles.signInCredentials} ${styles.signInButton}`}
+            >
               SIGN IN with E-Mail
             </Button>
+
             <Button
+            
               onClick={handleGitHubSignIn}
-              className={styles.signInButton}
+              className={`${styles.signInButtonGithub} ${styles.signInButton}`}
             >
               SIGN IN with GitHub
             </Button>
+            {/* #without Button Component */}
+            {/* <button
+            
+              onClick={handleGitHubSignIn()}
+              className={`${styles.signInButtonGithub} ${styles.signInButton}`}
+            >
+              SIGN IN with GitHub
+            </button> */}
+
           </div>
           <div className={styles.signInButtonContainer}>
             <Button
@@ -85,6 +94,9 @@ const SignIn = () => {
             </Button>
           </div>
         </form>
+        <div className={styles.goToSignIn}>
+          <Link href="/register">Go to SignIn</Link>
+        </div>
       </div>
     </div>
   );

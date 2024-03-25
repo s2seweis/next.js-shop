@@ -1,6 +1,6 @@
 // src/components/ContactForm.tsx
 import React, { useState } from 'react';
-import styles from '@/src/styles/css/ContactForm.module.css';
+import styles from '@/src/styles/scss/pages/Contact.module.scss';
 
 interface FormData {
   name: string;
@@ -41,7 +41,6 @@ const Contact: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: '-100px',
         }}
       >
         <div className={styles.card}>

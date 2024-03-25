@@ -1,8 +1,7 @@
 // AuthButton.js
 import React from 'react';
 import { useAuth } from '../../context/AuthProviderMerged';
-// import { useAuth } from '../../context/AuthContext';
-import '../../styles/css/AuthButton.css';
+import styles from '../../styles/scss/components/AuthButton.module.scss';
 
 const AuthButton = () => {
   const { isLoggedIn, login, logout } = useAuth();
@@ -17,16 +16,15 @@ const AuthButton = () => {
 
   return (
     <div
-      className="loginButtonContainer"
+      className={styles.loginButtonContainer}
       style={{ display: 'flex', justifyContent: 'center' }}
     >
-      {/* <p>User is {isLoggedIn ? 'logged in' : 'logged out'}</p> */}
       {isLoggedIn ? (
-        <button className="buttonLogout" onClick={handleLogout}>
+        <button className={styles.buttonLogout} onClick={handleLogout}>
           Logout
         </button>
       ) : (
-        <button className="buttonLogin" onClick={handleLogin}>
+        <button className={styles.buttonLogin} onClick={handleLogin}>
           Login
         </button>
       )}

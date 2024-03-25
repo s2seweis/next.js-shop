@@ -10,7 +10,7 @@ import Register from '../pages/register.tsx';
 import Profile from '../pages/profile.tsx';
 import Download from '../pages/download.tsx';
 import Dashboard from '../pages/dashboard.tsx';
-import Example from '../pages/example.tsx';
+import GithubProfile from './github.tsx';
 import { useSession } from 'next-auth/react';
 
 const AppRouter = () => {
@@ -34,7 +34,7 @@ const AppRouter = () => {
     '/profile': { component: Profile, allowedRoles: ['user', 'admin'] },
     '/download': { component: Download },
     '/dashboard': { component: Dashboard },
-    '/example': { component: Example },
+    '/github': { component: GithubProfile, allowedRoles: ['admin'] }
   };
 
   useEffect(() => {

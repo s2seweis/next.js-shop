@@ -41,61 +41,63 @@ const Register: React.FC<RegisterFormProps> = ({ onRegisterSuccess }) => {
   };
 
   return (
-    <div className={styles.registerContainer}>
-      <form className={styles.registerForm} onSubmit={handleRegister}>
+    <div style={{display:"flex", margin:"auto", height:"100vh"}}>
+      <div className={styles.registerContainer}>
         <h3 className={styles.registerTitle}>Register</h3>
-        <div className={styles.registerInputWrapper}>
-          <label>
-            Name:
-            <input
-              className={styles.registerInput}
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
+        <form className={styles.registerForm} onSubmit={handleRegister}>
+          <div className={styles.registerInputWrapper}>
+            <label>
+              Name:
+              <input
+                className={styles.registerInput}
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className={styles.registerInputWrapper}>
+            <label>
+              Email:
+              <input
+                className={styles.registerInput}
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className={styles.registerInputWrapper}>
+            <label>
+              Username:
+              <input
+                className={styles.registerInput}
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className={styles.registerInputWrapper}>
+            <label>
+              Password:
+              <input
+                className={styles.registerInput}
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className={styles.registerButtonContainer}>
+            <button className={styles.registerButton} type="submit">
+              Register
+            </button>
+          </div>
+        </form>
+        <div className={styles.goToLogin}>
+          <Link href="/auth/signIn/page">Go to Login</Link>
         </div>
-        <div className={styles.registerInputWrapper}>
-          <label>
-            Email:
-            <input
-              className={styles.registerInput}
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-        </div>
-        <div className={styles.registerInputWrapper}>
-          <label>
-            Username:
-            <input
-              className={styles.registerInput}
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
-        </div>
-        <div className={styles.registerInputWrapper}>
-          <label>
-            Password:
-            <input
-              className={styles.registerInput}
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-        </div>
-        <div className={styles.registerButtonContainer}>
-          <button className={styles.registerButton} type="submit">
-            Register
-          </button>
-        </div>
-      </form>
-      <div className={styles.goToLogin}>
-        <Link href="/auth/signIn/page">Go to Login</Link>
       </div>
     </div>
   );

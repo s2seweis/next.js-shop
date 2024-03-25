@@ -1,8 +1,9 @@
-// pages/UserPage.js
+// pages/GithubProfile.js
 
 import { useEffect, useState } from 'react';
+import styles from '../styles/scss/pages/Github.module.scss'
 
-const UserPage = () => {
+const GithubProfile = () => {
   const userId = '58604870'; // Your GitHub user ID
   const [userData, setUserData] = useState(null);
   console.log('line:2', userData);
@@ -26,9 +27,9 @@ const UserPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.githubContainer}>
       {userData ? (
-        <div>
+        <div className={styles.githubContainerAlign}>
           <h1>{userData.login}</h1>
           <img
             src={userData.avatar_url}
@@ -48,4 +49,4 @@ const UserPage = () => {
   );
 };
 
-export default UserPage;
+export default GithubProfile;

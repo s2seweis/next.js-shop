@@ -1,5 +1,5 @@
 import Nav from '@/src/components/nav';
-import styles from '@/src/styles/CSS/Home.module.css';
+import styles from '@/src/styles/scss/pages/Server.module.scss';
 import Link from 'next/link'; // Import Link component from next/link
 
 interface HomeProps {
@@ -8,10 +8,10 @@ interface HomeProps {
 
 export default function Server({ isAuth }: HomeProps) {
   return (
-    <div>
+    <div className={styles.serverMain}>
       <Nav />
-      <div className={`${styles.mainContainer}`}>
-        <main className={`${styles.main}}`}>
+      <div className={styles.serverContainer}>
+        <main className={styles.serverContainerAlign}>
           <h3 style={{ textAlign: 'center' }}>Hello Server</h3>
         </main>
       </div>

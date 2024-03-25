@@ -1,8 +1,16 @@
 // SignIn.module.scss
 
 .loginFormContainer {
+  // width: 300px;
+  // padding: 20px;
+  // background-color: #fff;
+  // border-radius: 8px;
+  // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.SignInForm {
   width: 300px;
-  padding: 20px;
+  padding: 30px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -25,10 +33,14 @@
 
 .loginFormContainer .inputField {
   width: 100%;
-  padding: 10px;
+  padding: 10px 10px;
+  margin-left: 0px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+  border-radius: 10px;
+  margin-left: -10px;
+  background-color: #F7F7F7;
 }
 
 .signInButtonContainer {
@@ -46,12 +58,40 @@
   cursor: pointer;
 }
 
+.signInCredentials{
+  background-color: #0F9D58;
+  color: #fff;
+  width: 50%;
+}
+
 .signInButtonGoogle {
   background-color: #fbbc05;
   color: #fff;
+  width: 50%;
 }
 
 .signInButtonFacebook {
   background-color: #4285f4;
   color: #fff;
+  width: 50%;
+}
+
+.signInButtonGithub {
+  background-color: #2b3137;
+  color: #fff;
+  width: 50%;
+}
+
+.goToSignIn {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.goToSignIn a {
+  color: #333;
+  text-decoration: none;
+}
+
+.goToSignIn a:hover {
+  text-decoration: underline;
 }

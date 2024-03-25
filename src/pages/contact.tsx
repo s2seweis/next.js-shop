@@ -8,7 +8,7 @@ interface FormData {
   message: string;
 }
 
-const Extra: React.FC = () => {
+const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -33,7 +33,7 @@ const Extra: React.FC = () => {
 
   return (
     <div>
-      <h3 style={{ marginTop: '100px', textAlign: 'center' }}>Extra</h3>
+      <h3 style={{ marginTop: '100px', textAlign: 'center' }}>ContactForm</h3>
       <div
         className="main"
         style={{
@@ -85,4 +85,4 @@ const Extra: React.FC = () => {
   );
 };
 
-export default Extra;
+export default ContactForm;

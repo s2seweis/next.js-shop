@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import AuthProvider from '../context/AuthProviderMerged';
 import Layout from '../components/Layout/Layout';
 import Loader from '../components/Loader/Loader'; // Import the Loader component
-import '../styles/css/globals.css';
+import '../styles/scss/global.scss';
 import AppRouter from '../pages/AppRouter.js';
 
 const App = ({ Component, pageProps }) => {
