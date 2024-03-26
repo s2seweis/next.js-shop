@@ -1,12 +1,13 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Sidebar from './Sidebar';
-import Footer from './Footer';
-import { SidebarProvider } from '../../context/SidebarContext';
-import styles from '../../styles/scss/layout/main.module.scss';
+import Navbar from '../Navbar';
+import AdminNavbar from './AdminNavbar';
+import Sidebar from '../Sidebar';
+// import Footer from './Footer';
+import { SidebarProvider } from '../../../context/SidebarContext';
+import styles from '../../../styles/scss/layout/main.module.scss';
 // import AuthProvider from '../../context/AuthProvider'
 
-const Layout = ({ children, login, isAuth }) => {
+const AdminLayout = ({ children, login, isAuth }) => {
   // console.log("line:11", children);
   // console.log("line:12", login);
   // console.log("line:13", logout);
@@ -15,15 +16,16 @@ const Layout = ({ children, login, isAuth }) => {
   return (
     // <AuthProvider>
     <SidebarProvider>
-      <Navbar isAuth={isAuth} login={login} />
+      {/* <Navbar isAuth={isAuth} login={login} /> */}
+      <AdminNavbar/>
       <Sidebar />
       <main className={styles.content} style={{ minHeight: '100vh' }}>
         {children}
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </SidebarProvider>
     // </AuthProvider>
   );
 };
 
-export default Layout;
+export default AdminLayout;

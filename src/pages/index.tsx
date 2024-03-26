@@ -1,10 +1,7 @@
-// import { useState, useEffect } from 'react';
 import Nav from '@/src/components/nav';
-// import styles from '@/src/styles/CSS/Home.module.css';
 import styles from '@/src/styles/scss/pages/Home.module.scss';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-// import { options } from '../app/api/auth/[...nextauth]/options';
 import AuthButton from '../components/AuthButton/AuthButton.js';
 
 interface HomeProps {

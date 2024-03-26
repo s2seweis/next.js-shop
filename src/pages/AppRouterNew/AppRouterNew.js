@@ -16,7 +16,7 @@ import { useSession } from 'next-auth/react';
 import Layout from '../components/Layout/Layout.tsx';
 import AdminLayout from '../components/Layout/AdminLayout.jsx';
 
-const AppRouter = () => {
+const AppRouterNew = () => {
   const router = useRouter();
   const { data: session } = useSession();
   console.log('line:1', session);
@@ -131,4 +131,4 @@ const extractUserIdFromImageUrl = (imageUrl) => {
   return match ? match[1] : null;
 };
 
-export default AppRouter;
+export default AppRouterNew;

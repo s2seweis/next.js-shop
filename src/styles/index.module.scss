@@ -1,0 +1,36 @@
+// src/styles/index.module.scss
+
+// Import global styles
+@import './scss/global.scss';
+
+// Import component styles
+@import './scss/components/AuthButton.module.scss';
+@import './scss/components/Button.module.scss';
+@import './scss/components/DownloadButton.module.scss';
+
+// Import page styles
+@import './scss/pages/Home.module.scss';
+@import './scss/pages/Admin.module.scss';
+@import './scss/pages/Contact.module.scss';
+@import './scss/pages/Dashboard.module.scss';
+@import './scss/pages/DownloadPage.module.scss';
+@import './scss/pages/Github.module.scss';
+@import './scss/pages/Profile.module.scss';
+@import './scss/pages/Register.module.scss';
+@import './scss/pages/Server.module.scss';
+@import './scss/pages/SignIn.module.scss';
+
+// Import layout styles
+@import './scss/layout/drowDownMenu.module.scss';
+@import './scss/layout/footer.module.scss';
+@import './scss/layout/main.module.scss';
+@import './scss/layout/navbar.module.scss';
+@import './scss/layout/sidebar.module.scss';
+
+// Import utility styles - still not available 
+
+// Alternative import into the index.js file:
+// import 'styles/style.scss';
+// import WebFont from 'webfontloader' - still not available;
+
+

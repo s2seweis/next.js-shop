@@ -3,6 +3,7 @@
 import { useAuth } from '../../context/AuthProviderMerged';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Layout from '../Layout/Layout';
 
 const IsAuth = (WrappedComponent) => (props) => {
   const { isLoggedIn } = useAuth();
@@ -15,7 +16,11 @@ const IsAuth = (WrappedComponent) => (props) => {
     }
   }, [auth, router]);
 
-  return <WrappedComponent {...props} />;
+  return (
+    <Layout>
+      <WrappedComponent {...props} />
+    </Layout>
+  );
 };
 
 export default IsAuth; // Export IsAuth as a named export

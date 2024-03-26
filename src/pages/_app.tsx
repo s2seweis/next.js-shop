@@ -5,6 +5,8 @@ import Layout from '../components/Layout/Layout';
 import Loader from '../components/Loader/Loader'; // Import the Loader component
 import '../styles/scss/global.scss';
 import AppRouter from '../pages/AppRouter.js';
+// import AppRouterNew from '../pages/AppRouterNew/AppRouterNew.js';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const App = ({ Component, pageProps }) => {
   const [loading, setLoading] = useState(true);
@@ -33,14 +35,14 @@ const App = ({ Component, pageProps }) => {
       {loading ? (
         <Loader /> // Show the loader while loading
       ) : (
-        <Layout
-          login={login} // Pass login function as a prop
-          isAuth={isAuth} // Pass isAuth state as a prop
-        >
-          <AppRouter>
-            <Component {...pageProps} isAuth={isAuth} />
-          </AppRouter>
-        </Layout>
+        // <Layout
+        //   login={login} // Pass login function as a prop
+        //   isAuth={isAuth} // Pass isAuth state as a prop
+        // >
+        <Router>
+          <Component {...pageProps} isAuth={isAuth} />
+        </Router>
+        // </Layout>
       )}
     </AuthProvider>
   );
