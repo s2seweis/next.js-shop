@@ -3,7 +3,7 @@
 // import { useAuth } from '../../context/AuthProviderMerged';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Layout from '../Layout/Layout';
+// import Layout from '../Layout/Layout';
 import AdminLayout from '../Layout/Admin/AdminLayout';
 
 import { useSession } from 'next-auth/react';

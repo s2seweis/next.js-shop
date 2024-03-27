@@ -23,4 +23,36 @@
       }
     }
   }
+
+  .adminNavbarContainer{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .logo{
+    position: absolute;
+    right: 10px;
+  }
+
+  .BackHome {
+    color: white;
+  }
+
+  .link{
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .a{
+    text-decoration: none;
+  }
   

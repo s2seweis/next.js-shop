@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import DownloadButton from '../components/DownloadButton/BownloadButton';
 import styles from '../styles/scss/pages/DownloadPage.module.scss';
+import IsAuthUser from '../components/IsAuth/isAuthUser';
 
 const DownloadPage: React.FC = () => {
   return (
@@ -27,4 +28,4 @@ const DownloadPage: React.FC = () => {
   );
 };
 
-export default DownloadPage;
+export default IsAuthUser(DownloadPage);

@@ -5,6 +5,8 @@ import Layout from '../components/Layout/Layout';
 import Loader from '../components/Loader/Loader'; // Import the Loader component
 import '../styles/scss/global.scss';
 import AppRouter from '../pages/AppRouter.js';
+import { ProSidebarProvider } from 'react-pro-sidebar';
+
 // import AppRouterNew from '../pages/AppRouterNew/AppRouterNew.js';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -32,18 +34,20 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <AuthProvider>
-      {loading ? (
-        <Loader /> // Show the loader while loading
-      ) : (
-        // <Layout
-        //   login={login} // Pass login function as a prop
-        //   isAuth={isAuth} // Pass isAuth state as a prop
-        // >
-        <Router>
-          <Component {...pageProps} isAuth={isAuth} />
-        </Router>
-        // </Layout>
-      )}
+      <ProSidebarProvider>
+        {loading ? (
+          <Loader /> // Show the loader while loading
+        ) : (
+          // <Layout
+          //   login={login} // Pass login function as a prop
+          //   isAuth={isAuth} // Pass isAuth state as a prop
+          // >
+          <Router>
+            <Component {...pageProps} isAuth={isAuth} />
+          </Router>
+          // </Layout>
+        )}
+      </ProSidebarProvider>
     </AuthProvider>
   );
 };

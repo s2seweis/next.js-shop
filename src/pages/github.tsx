@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import styles from '../styles/scss/pages/Github.module.scss'
-import IsAuthNew from '@/src/components/IsAuth/isAuthNew'; // Note the capital "I" in IsAuth
+import IsAuthUser from '../components/IsAuth/isAuthUser';
 
 const GithubProfile = () => {
   const userId = '58604870'; // Your GitHub user ID
@@ -50,4 +50,4 @@ const GithubProfile = () => {
   );
 };
 
-export default IsAuthNew(GithubProfile);
+export default IsAuthUser(GithubProfile);

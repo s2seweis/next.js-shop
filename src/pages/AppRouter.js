@@ -1,134 +1,123 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import Home from './index.tsx'; // Assuming Home page is defined in index.js
-import Contact from '../pages/contact/page';
-import Admin from '../pages/admin.tsx';
-import NotFoundPage from '../pages/404.tsx';
-import LoginPage from '../pages/auth/signIn/page.tsx';
-import Server from '../pages/server.tsx';
-import Register from '../pages/register.tsx';
-import Profile from '../pages/profile.tsx';
-import Download from '../pages/download.tsx';
-import Dashboard from '../pages/dashboard.tsx';
-import GithubProfile from './github.tsx';
-import { useSession } from 'next-auth/react';
-// ###
-import Layout from '../components/Layout/Layout.tsx';
-import AdminLayout from '../components/Layout/AdminLayout.jsx';
+// // ## not needed at the moment
 
-const AppRouter = () => {
-  const router = useRouter();
-  const { data: session } = useSession();
-  console.log('line:1', session);
-  console.log('line:2', session?.user?.role);
+// import { useRouter } from 'next/router';
+// import { useEffect, useState } from 'react';
+// import Home from './index.tsx'; // Assuming Home page is defined in index.js
+// import Contact from '../pages/contact/page';
+// import Admin from '../pages/admin.tsx';
+// import NotFoundPage from '../pages/404.tsx';
+// import LoginPage from '../pages/auth/signIn/page.tsx';
+// import Server from '../pages/server.tsx';
+// import Register from '../pages/register.tsx';
+// import Profile from '../pages/profile.tsx';
+// import Download from '../pages/download.tsx';
+// import Dashboard from '../pages/dashboard.tsx';
+// import GithubProfile from './github.tsx';
+// import { useSession } from 'next-auth/react';
+// // ###
+// import Layout from '../components/Layout/Layout.tsx';
+// import AdminLayout from '../components/Layout/AdminLayout.jsx';
 
-  const isAdmin = session?.user?.role === 'admin';
-  console.log("line:3", isAdmin);
+// const AppRouter = () => {
+//   const router = useRouter();
+//   const { data: session } = useSession();
+//   console.log('line:1', session);
+//   console.log('line:2', session?.user?.role);
 
-  const [userData, setUserData] = useState(null);
-  console.log('line:4', userData);
-  const [userId, setUserId] = useState(null);
+//   const isAdmin = session?.user?.role === 'admin';
+//   console.log("line:3", isAdmin);
 
-  // Define the route mapping
-  const routes = {
-    '/': { component: Home },
-    '/contact/page': { component: Contact },
-    '/admin': { component: Admin, allowedRoles: ['admin'] },
-    '/auth/signIn/page': { component: LoginPage },
-    '/server': { component: Server, allowedRoles: ['user', 'admin'] },
-    '/register': { component: Register },
-    // '/login': { component: Register, allowedRoles: ['admin', 'user'] },
-    '/profile': { component: Profile, allowedRoles: ['user', 'admin'] },
-    '/download': { component: Download },
-    '/dashboard': { component: Dashboard },
-    '/github': { component: GithubProfile, allowedRoles: ['admin'] }
-  };
+//   const [userData, setUserData] = useState(null);
+//   console.log('line:4', userData);
+//   const [userId, setUserId] = useState(null);
 
-  useEffect(() => {
-    if (!session) return; // Return if session is not loaded yet
+//   // Define the route mapping
+//   const routes = {
+//     '/': { component: Home },
+//     '/contact/page': { component: Contact },
+//     '/admin': { component: Admin, allowedRoles: ['admin'] },
+//     '/auth/signIn/page': { component: LoginPage },
+//     '/server': { component: Server, allowedRoles: ['user', 'admin'] },
+//     '/register': { component: Register },
+//     // '/login': { component: Register, allowedRoles: ['admin', 'user'] },
+//     '/profile': { component: Profile, allowedRoles: ['user', 'admin'] },
+//     '/download': { component: Download },
+//     '/dashboard': { component: Dashboard },
+//     '/github': { component: GithubProfile, allowedRoles: ['admin'] }
+//   };
 
-    // Extract user ID from the image URL
-    const userId = extractUserIdFromImageUrl(session.user.image);
-    setUserId(userId); // Set userId state
+//   useEffect(() => {
+//     if (!session) return; // Return if session is not loaded yet
 
-    // Get the current route
-    const currentRoute = routes[router.pathname];
+//     // Extract user ID from the image URL
+//     const userId = extractUserIdFromImageUrl(session.user.image);
+//     setUserId(userId); // Set userId state
 
-    // Check if the route exists
-    if (!currentRoute) {
-      router.push('/404');
-      return;
-    }
+//     // Get the current route
+//     const currentRoute = routes[router.pathname];
 
-    // Check if the route requires authentication
-    if (currentRoute.allowedRoles) {
-      // Check if user's role allows access to the route
-      if (!userHasAccess(session.user.role, currentRoute.allowedRoles)) {
-        // Redirect to 404 page or another appropriate page
-        router.push('/404');
-      }
-    }
-  }, [router.pathname, session]); // Execute this effect when route changes or session changes
+//     // Check if the route exists
+//     if (!currentRoute) {
+//       router.push('/404');
+//       return;
+//     }
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(`https://api.github.com/user/${userId}`);
-        if (response.ok) {
-          const data = await response.json();
-          setUserData(data);
-        } else {
-          console.error(
-            'Failed to fetch user data from GitHub API:',
-            response.statusText,
-          );
-        }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
+//     // Check if the route requires authentication
+//     if (currentRoute.allowedRoles) {
+//       // Check if user's role allows access to the route
+//       if (!userHasAccess(session.user.role, currentRoute.allowedRoles)) {
+//         // Redirect to 404 page or another appropriate page
+//         router.push('/404');
+//       }
+//     }
+//   }, [router.pathname, session]); // Execute this effect when route changes or session changes
 
-    if (userId) {
-      fetchUserData();
-    }
-  }, [userId, session]); // Include userId and session as dependencies
+//   useEffect(() => {
+//     const fetchUserData = async () => {
+//       try {
+//         const response = await fetch(`https://api.github.com/user/${userId}`);
+//         if (response.ok) {
+//           const data = await response.json();
+//           setUserData(data);
+//         } else {
+//           console.error(
+//             'Failed to fetch user data from GitHub API:',
+//             response.statusText,
+//           );
+//         }
+//       } catch (error) {
+//         console.error('Error fetching user data:', error);
+//       }
+//     };
 
-  // Get the component corresponding to the current route
-  const Component = routes[router.pathname]?.component || NotFoundPage;
+//     if (userId) {
+//       fetchUserData();
+//     }
+//   }, [userId, session]); // Include userId and session as dependencies
 
-  return (
-    <div>
-      <Layout>
-        <Component />
-      </Layout>
-    </div>
+//   // Get the component corresponding to the current route
+//   const Component = routes[router.pathname]?.component || NotFoundPage;
 
-    // <div>
-    //   {isAdmin ? (
-    //     <AdminLayout>
-    //       <Component />
-    //     </AdminLayout>
-    //   ) : (
-    //     <Layout>
-    //       <Component />
-    //     </Layout>
-    //   )}
-    // </div>
+//   return (
+//     <div>
+//       <Layout>
+//         <Component />
+//       </Layout>
+//     </div>
+//   );
+// };
 
-  );
-};
+// // Function to check if user's role allows access
+// const userHasAccess = (userRole, allowedRoles) => {
+//   return allowedRoles.includes(userRole);
+// };
 
-// Function to check if user's role allows access
-const userHasAccess = (userRole, allowedRoles) => {
-  return allowedRoles.includes(userRole);
-};
+// // Function to extract user ID from the image URL
+// const extractUserIdFromImageUrl = (imageUrl) => {
+//   if (!imageUrl) return null;
+//   const regex = /\/u\/(\d+)\?v=/; // Modified regex to match the user ID from GitHub avatar URL
+//   const match = imageUrl.match(regex);
+//   return match ? match[1] : null;
+// };
 
-// Function to extract user ID from the image URL
-const extractUserIdFromImageUrl = (imageUrl) => {
-  if (!imageUrl) return null;
-  const regex = /\/u\/(\d+)\?v=/; // Modified regex to match the user ID from GitHub avatar URL
-  const match = imageUrl.match(regex);
-  return match ? match[1] : null;
-};
-
-export default AppRouter;
+// export default AppRouter;

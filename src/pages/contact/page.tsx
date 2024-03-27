@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import styles from '@/src/styles/scss/pages/Contact.module.scss';
 import { useSession } from 'next-auth/react';
+import IsAuthUser from '@/src/components/IsAuth/isAuthUser';
 
 interface FormData {
   name: string;
@@ -94,4 +95,4 @@ const Contact: React.FC = () => {
   );
 };
 
-export default Contact;
+export default IsAuthUser(Contact);

@@ -1,12 +1,13 @@
 import Nav from '@/src/components/nav';
 import styles from '@/src/styles/scss/pages/Server.module.scss';
 import Link from 'next/link'; // Import Link component from next/link
+import IsAuthUser from '../components/IsAuth/isAuthUser';
 
 interface HomeProps {
   isAuth: boolean; // Specify the type of 'isAuth' as boolean
 }
 
-export default function Server({ isAuth }: HomeProps) {
+const Server = () => {
   return (
     <div className={styles.serverMain}>
       <Nav />
@@ -18,3 +19,5 @@ export default function Server({ isAuth }: HomeProps) {
     </div>
   );
 }
+
+export default IsAuthUser(Server);

@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../Navbar';
 import AdminNavbar from './AdminNavbar';
 import Sidebar from '../Sidebar';
+import AdminSidebar from './AdminSidebar';
 // import Footer from './Footer';
 import { SidebarProvider } from '../../../context/SidebarContext';
 import styles from '../../../styles/scss/layout/main.module.scss';
@@ -18,10 +19,13 @@ const AdminLayout = ({ children, login, isAuth }) => {
     <SidebarProvider>
       {/* <Navbar isAuth={isAuth} login={login} /> */}
       <AdminNavbar/>
-      <Sidebar />
-      <main className={styles.content} style={{ minHeight: '100vh' }}>
+      <div style={{display:"flex"}}>
+      <AdminSidebar/>
+      {/* <Sidebar /> */}
+      <main className={styles.content} style={{ minHeight: '100vh',margin:"auto" }}>
         {children}
       </main>
+      </div>
       {/* <Footer /> */}
     </SidebarProvider>
     // </AuthProvider>

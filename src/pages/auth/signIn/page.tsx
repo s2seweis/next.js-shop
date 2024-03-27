@@ -5,6 +5,7 @@ import { signIn } from 'next-auth/react';
 import Link from 'next/link'; // Import Link from Next.js
 import styles from '@/src/styles/scss/pages/SignIn.module.scss'; // Import SCSS file
 import Button from './Button';
+import IsAuthUser from '@/src/components/IsAuth/isAuthUser'; 
 
 const SignIn = () => {
   const userNameRef = useRef<HTMLInputElement>(null);
@@ -102,4 +103,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default IsAuthUser(SignIn);

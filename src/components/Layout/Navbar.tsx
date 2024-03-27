@@ -22,8 +22,8 @@ const Navbar = ({ login, isAuth }) => {
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {

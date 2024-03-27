@@ -1,10 +1,11 @@
 import { signIn, signOut, useSession } from 'next-auth/react';
-// import { FiLogIn, FiLogOut } from "react-icons/fi"; // Importing icons from React Icons
+import { useRouter } from 'next/router'; // Import useRouter hook from Next.js
 import { GoSignIn, GoSignOut } from 'react-icons/go';
 import React from 'react';
 
 const SignInButton = () => {
   const { data: session, status } = useSession();
+  const router = useRouter(); // Initialize useRouter hook
 
   const getTruncatedName = (name: string) => {
     if (!name || name.length <= 0) {
@@ -14,6 +15,10 @@ const SignInButton = () => {
     } else {
       return name.substring(0, 10) + '.';
     }
+  };
+
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: '/auth/signIn/page' }); // Include callbackUrl for sign out
   };
 
   return (
@@ -51,7 +56,7 @@ const SignInButton = () => {
                 alignItems: 'center',
               }}
               className="text-red-500"
-              onClick={() => signOut()}
+              onClick={handleSignOut} // Use handleSignOut function for sign out
             >
               <GoSignOut className="inline-block align-text-bottom mr-1" />
             </button>
