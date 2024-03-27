@@ -6,32 +6,31 @@ import { useRouter } from 'next/router';
 import Layout from '../Layout/Layout';
 import { useSession } from 'next-auth/react';
 
-const IsAuth = (WrappedComponent) => (props) => {
+const IsAuthUser = (WrappedComponent) => (props) => {
   const { data: session } = useSession();
-
-//   const { isLoggedIn } = useAuth();
-//   const auth = isLoggedIn;
+  const key = session?.user?.role;
   const router = useRouter();
 
   useEffect(() => {
-    if (!session) {
+    if (!key) {
       router.push('/');
     }
-  }, [session, router]);
+  }, [key, router]);
 
   return (
     <div>
-      {session !== null ? (
+      {/* {session !== null ? ( */}
+      {key === 'user || admin' ? (
         <Layout>
           <WrappedComponent {...props} />
         </Layout>
       ) : (
         <div className="lockedContainer">
-          <h1 className="text-5xl">You Shall Not Pass!</h1>
+          <h1 className="text-5xl">You Shall Not Pass1!</h1>
         </div>
       )}
     </div>
   );
 };
 
-export default IsAuth; // Export IsAuth as a named export
+export default IsAuthUser; // Export IsAuth as a named export

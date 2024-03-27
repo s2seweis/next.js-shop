@@ -6,7 +6,7 @@ import Link from 'next/link';
 import styles from '../../styles/scss/layout/sidebar.module.scss'; // Import your CSS Modules styles
 import { menuItems } from './menuItems';
 // import AuthButton from '../AuthButton/AuthButton';
-import SignInButton from '../SignInButton/SignInButton';
+import SignInButton from '../Buttons/SignInButton/SignInButton';
 
 const Sidebar: React.FC = () => {
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();

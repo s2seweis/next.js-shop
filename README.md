@@ -7,6 +7,7 @@ You can check [demo](https://next-typescript-pwa-starter.vercel.app/)
 ### Frontend
 
 #### Libraries/Frameworks
+
 - [React.js 18](https://reactjs.org/blog/2022/03/29/react-v18.html): Introduced in the blog post to highlight the features of React v18.0.
 - [Next.js 13](https://nextjs.org/blog/next-13): Introduced in the blog post to highlight the features of Next.js 13.
 - [Typescript 5](https://www.typescriptlang.org/): Official documentation for TypeScript, providing type safety and other features.
@@ -15,17 +16,20 @@ You can check [demo](https://next-typescript-pwa-starter.vercel.app/)
 - [Next PWA 5](https://www.npmjs.com/package/next-pwa): Documentation for Next PWA, allowing for the creation of progressive web apps with Next.js.
 
 #### Tools
+
 - [Eslint 8](https://eslint.org/docs/user-guide/getting-started): Documentation for ESLint, a tool for identifying and reporting on patterns found in JavaScript code.
 - [Prettier 3](https://prettier.io/docs/en/index.html): Documentation for Prettier, an opinionated code formatter to ensure consistent code formatting.
 - [Husky 8](https://typicode.github.io/husky/#/): Documentation for Husky, a tool for Git hooks, used here for running ESLint before commits.
 - [Lint Staged 14](https://github.com/okonet/lint-staged): Documentation for lint-staged, a tool for running linters on staged files.
 
 #### Design Examples
+
 - UI Design Examples: [mobivention Referenzen](https://mobivention.com/referenzen/)
 
 ### Backend
 
 #### Technologies
+
 - Express Server: Web server framework for Node.js.
 - PostgreSQL: Open-source relational database management system.
 - OAuth: Authentication framework used for authentication with GitHub, Google, and Facebook.
@@ -34,11 +38,10 @@ You can check [demo](https://next-typescript-pwa-starter.vercel.app/)
 - Stripe: Payment processing platform with a customized payment experience.
 
 #### Other Tools
+
 - Docker: Documentation for Docker, a platform for developing, shipping, and running applications in containers.
 
 These technologies and tools are combined to create a modern, efficient, and feature-rich web application with both frontend and backend components.https://mobivention.com/referenzen/
-
-
 
 ## Usage
 

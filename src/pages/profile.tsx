@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Nav from '../components/nav';
 import styles from '@/src/styles/scss/pages/Profile.module.scss';
-import AuthButton from '../components/AuthButton/AuthButton.js';
+import AuthButton from '../components/Buttons/AuthButton/AuthButton.js';
 
 const Profile: React.FC = () => {
   const { isLoggedIn } = useAuth(); // Use the useAuth hook to access the AuthContext

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link'; // Import Link from Next.js
 import styles from '../styles/scss/pages/Register.module.scss'; // Import SCSS file
-import IsAuthUser from '@/src/components/IsAuth/isAuthUser'; 
+import IsAuthPublic from '@/src/routes/isAuthPublic';
 
 interface RegisterFormProps {
   onRegisterSuccess: () => void;
@@ -42,7 +42,7 @@ const Register: React.FC<RegisterFormProps> = ({ onRegisterSuccess }) => {
   };
 
   return (
-    <div style={{display:"flex", margin:"auto", height:"100vh"}}>
+    <div style={{ display: 'flex', margin: 'auto', height: '100vh' }}>
       <div className={styles.registerContainer}>
         <h3 className={styles.registerTitle}>Register</h3>
         <form className={styles.registerForm} onSubmit={handleRegister}>
@@ -104,4 +104,4 @@ const Register: React.FC<RegisterFormProps> = ({ onRegisterSuccess }) => {
   );
 };
 
-export default IsAuthUser(Register);
+export default IsAuthPublic(Register);

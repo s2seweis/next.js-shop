@@ -4,12 +4,9 @@ import styles from '../../../styles/scss/layout/AdminNavbar.module.scss';
 import { SiWolfram } from 'react-icons/si';
 
 const AdminNavbar: React.FC = () => {
-
   return (
     <nav className={styles.adminNavbar}>
       <div className={styles.adminNavbarContainer}>
-        
-
         <div className={styles.adminNavbarTitle}>
           <h3>Admin Area</h3>
         </div>

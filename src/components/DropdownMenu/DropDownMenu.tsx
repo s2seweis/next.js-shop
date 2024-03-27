@@ -9,7 +9,7 @@ import { IoPerson } from 'react-icons/io5';
 import Link from 'next/link'; // Import Link from next/link
 import styles from '../../styles/scss/layout/drowDownMenu.module.scss';
 // import AuthButton from '../AuthButton/AuthButton.js';
-import SignInButton from '../SignInButton/SignInButton';
+import SignInButton from '../Buttons/SignInButton/SignInButton';
 import { useSession } from 'next-auth/react';
 
 const DropdownMenu: React.FC = () => {

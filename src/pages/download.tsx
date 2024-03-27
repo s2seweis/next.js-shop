@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import DownloadButton from '../components/DownloadButton/BownloadButton';
+import DownloadButton from '../components/Buttons/DownloadButton/BownloadButton';
 import styles from '../styles/scss/pages/DownloadPage.module.scss';
-import IsAuthUser from '../components/IsAuth/isAuthUser';
+import IsAuthPublic from '@/src/routes/isAuthPublic';
 
 const DownloadPage: React.FC = () => {
   return (
@@ -9,7 +9,10 @@ const DownloadPage: React.FC = () => {
       <div className={styles.downloadContainerAlign}>
         <Head>
           <meta charSet="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" href="/favicon.ico" type="image/x-icon" />
           <title>Your PWA Download</title>
@@ -28,4 +31,4 @@ const DownloadPage: React.FC = () => {
   );
 };
 
-export default IsAuthUser(DownloadPage);
+export default IsAuthPublic(DownloadPage);

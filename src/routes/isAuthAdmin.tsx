@@ -4,22 +4,17 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 // import Layout from '../Layout/Layout';
-import AdminLayout from '../Layout/Admin/AdminLayout';
+import AdminLayout from '../components/Layout/Admin/AdminLayout';
 
 import { useSession } from 'next-auth/react';
 
-
 const IsAuthAdmin = (WrappedComponent) => (props) => {
   const { data: session } = useSession();
-  console.log("line:21", session);
 
   const key = session?.user?.role;
-  console.log("line:22", key);
-  
-  
 
-//   const { isLoggedIn } = useAuth();
-//   const auth = isLoggedIn;
+  //   const { isLoggedIn } = useAuth();
+  //   const auth = isLoggedIn;
   const router = useRouter();
 
   useEffect(() => {

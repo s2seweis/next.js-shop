@@ -2,7 +2,7 @@
 // import { useRouter } from 'next/router';
 import Nav from '@/src/components/nav';
 import styles from '@/src/styles/scss/pages/Admin.module.scss';
-import IsAuthAdmin from '@/src/components/IsAuth/isAuthAdmin'; 
+import IsAuthAdmin from '@/src/routes/isAuthAdmin';
 
 const Admin = () => {
   // const isAuth = isAuthenticated;

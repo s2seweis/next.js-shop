@@ -4,19 +4,19 @@ import Nav from '@/src/components/nav';
 import styles from '@/src/styles/scss/pages/Home.module.scss';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-import AuthButton from '../components/AuthButton/AuthButton.js';
-import IsAuthUser from '@/src/components/IsAuth/isAuthUser'; 
+import AuthButton from '../components/Buttons/AuthButton/AuthButton.js';
+import IsAuthPublic from '@/src/routes/isAuthPublic';
 
 const Home = () => {
   const { data: session } = useSession();
 
   return (
-    <div className='homeContainer'>
+    <div className="homeContainer">
       <div className={styles.homeContainerAlign}>
         <Nav />
         <div className={styles.mainContainer}>
           <main className={styles.main}>
-            <h3 >Hello Home</h3>
+            <h3>Hello Home</h3>
             <h5 style={{ textAlign: 'center', marginTop: '-15px' }}>
               Overview Links:
             </h5>
@@ -34,15 +34,12 @@ const Home = () => {
                 {/* <Link href="api/auth/signout">Sign Out (visible for all)</Link> */}
                 <Link href="github">Github API (visible for admin)</Link>
                 <Link href="download">
-                  App Download Button (currently a page needs to be a
-                  component)
+                  App Download Button (currently a page needs to be a component)
                 </Link>
               </h4>
               <h4>
                 Authentication with Button
-                <Link href="/dashboard">
-                  Dashboard (HOC) with SignInButton
-                </Link>
+                <Link href="/dashboard">Dashboard (HOC) with SignInButton</Link>
                 <Link href="/profile">
                   Profile (Auth Provider) with SignInButton
                 </Link>
@@ -54,6 +51,6 @@ const Home = () => {
       </div>
     </div>
   );
-}
+};
 
-export default IsAuthUser(Home);
+export default IsAuthPublic(Home);

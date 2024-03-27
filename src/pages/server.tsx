@@ -1,7 +1,7 @@
 import Nav from '@/src/components/nav';
 import styles from '@/src/styles/scss/pages/Server.module.scss';
 import Link from 'next/link'; // Import Link component from next/link
-import IsAuthUser from '../components/IsAuth/isAuthUser';
+import IsAuthPublic from '@/src/routes/isAuthPublic';
 
 interface HomeProps {
   isAuth: boolean; // Specify the type of 'isAuth' as boolean
@@ -18,6 +18,6 @@ const Server = () => {
       </div>
     </div>
   );
-}
+};
 
-export default IsAuthUser(Server);
+export default IsAuthPublic(Server);

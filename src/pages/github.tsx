@@ -1,13 +1,13 @@
 // pages/GithubProfile.js
 
 import { useEffect, useState } from 'react';
-import styles from '../styles/scss/pages/Github.module.scss'
-import IsAuthUser from '../components/IsAuth/isAuthUser';
+import styles from '../styles/scss/pages/Github.module.scss';
+import IsAuthPublic from '@/src/routes/isAuthPublic';
 
 const GithubProfile = () => {
   const userId = '58604870'; // Your GitHub user ID
   const [userData, setUserData] = useState(null);
-  console.log('line:2', userData);
+  console.log('line:100', userData);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -50,4 +50,4 @@ const GithubProfile = () => {
   );
 };
 
-export default IsAuthUser(GithubProfile);
+export default IsAuthPublic(GithubProfile);

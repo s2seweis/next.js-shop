@@ -4,8 +4,8 @@ import React, { useRef } from 'react';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link'; // Import Link from Next.js
 import styles from '@/src/styles/scss/pages/SignIn.module.scss'; // Import SCSS file
-import Button from './Button';
-import IsAuthUser from '@/src/components/IsAuth/isAuthUser'; 
+import Button from '../../../components/Buttons/Button/Button';
+import IsAuthPublic from '@/src/routes/isAuthPublic';
 
 const SignIn = () => {
   const userNameRef = useRef<HTMLInputElement>(null);
@@ -64,7 +64,6 @@ const SignIn = () => {
             </Button>
 
             <Button
-            
               onClick={handleGitHubSignIn}
               className={`${styles.signInButtonGithub} ${styles.signInButton}`}
             >
@@ -78,7 +77,6 @@ const SignIn = () => {
             >
               SIGN IN with GitHub
             </button> */}
-
           </div>
           <div className={styles.signInButtonContainer}>
             <Button
@@ -103,4 +101,4 @@ const SignIn = () => {
   );
 };
 
-export default IsAuthUser(SignIn);
+export default IsAuthPublic(SignIn);

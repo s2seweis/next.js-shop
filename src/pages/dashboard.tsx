@@ -1,9 +1,9 @@
 // dashboard/page.tsx
 
-import IsAuth from '@/src/components/IsAuth/isAuth'; // Note the capital "I" in IsAuth
+import IsAuthButton from '@/src/routes/isAuthButton'; // Note the capital "I" in IsAuthButton
 import Nav from '../components/nav';
 import styles from '@/src/styles/scss/pages/Dashboard.module.scss';
-import AuthButton from '../components/AuthButton/AuthButton.js';
+import AuthButton from '../components/Buttons/AuthButton/AuthButton.js';
 
 const Dashboard = () => {
   return (
@@ -20,4 +20,4 @@ const Dashboard = () => {
   );
 };
 
-export default IsAuth(Dashboard); // Use IsAuth as a higher-order component
+export default IsAuthButton(Dashboard); // Use IsAuthButton as a higher-order component

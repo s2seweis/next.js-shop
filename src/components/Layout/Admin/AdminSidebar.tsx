@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { Icon } from './Icon.jsx';
 import '../../../styles/scss/layout/admin/side.css';
-import { Sidebar, Menu, MenuItem, useProSidebar, collapseSidebar, SubMenu } from 'react-pro-sidebar';
+import {
+  Sidebar,
+  Menu,
+  MenuItem,
+  useProSidebar,
+  collapseSidebar,
+  SubMenu,
+} from 'react-pro-sidebar';
 import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -17,7 +24,11 @@ const AdminSidebar = () => {
   return (
     <nav className="content-admin-wrapper-sidebar">
       <div style={{ display: 'flex', height: '100vh' }}>
-        <Sidebar width={'140px'} collapsedWidth={'80px'} defaultCollapsed={true}>
+        <Sidebar
+          width={'140px'}
+          collapsedWidth={'80px'}
+          defaultCollapsed={true}
+        >
           <Menu>
             <MenuItem
               active={router.pathname === '/admin/dashboard'}
@@ -74,7 +85,7 @@ const AdminSidebar = () => {
               <button
                 onClick={() => {
                   toggleFavorite();
-                  collapseSidebar()
+                  collapseSidebar();
                 }}
                 className="top-rated-car-react-button"
               >

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import styles from '@/src/styles/scss/pages/Contact.module.scss';
 import { useSession } from 'next-auth/react';
-import IsAuthUser from '@/src/components/IsAuth/isAuthUser';
+import IsAuthPublic from '@/src/routes/isAuthPublic';
 
 interface FormData {
   name: string;
@@ -12,7 +12,6 @@ interface FormData {
 
 const Contact: React.FC = () => {
   const { data: session } = useSession();
-  console.log('line: 1', session);
 
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -87,7 +86,15 @@ const Contact: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div style={{height:"100vh", display:"flex", justifyContent:"center", alignItems:"center"}} className={styles.lockedContainer}>
+        <div
+          style={{
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          className={styles.lockedContainer}
+        >
           <h1 className="text-5xl">You Shall Not Pass!</h1>
         </div>
       )}
@@ -95,4 +102,4 @@ const Contact: React.FC = () => {
   );
 };
 
-export default IsAuthUser(Contact);
+export default IsAuthPublic(Contact);
