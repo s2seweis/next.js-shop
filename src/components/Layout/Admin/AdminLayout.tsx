@@ -5,7 +5,6 @@ import { SidebarProvider } from '../../../context/SidebarContext';
 import styles from '../../../styles/scss/layout/main.module.scss';
 
 const AdminLayout = ({ children, login, isAuth }) => {
- 
   return (
     <SidebarProvider>
       <AdminNavbar />

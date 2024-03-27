@@ -6,7 +6,6 @@ import { SidebarProvider } from '../../context/SidebarContext';
 import styles from '../../styles/scss/layout/main.module.scss';
 
 const Layout = ({ children, login, isAuth }) => {
-
   return (
     <SidebarProvider>
       <Navbar isAuth={isAuth} login={login} />
