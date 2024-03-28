@@ -1,11 +1,9 @@
-// Sidebar.tsx
 import React, { useState, useEffect, useRef } from 'react';
 import { FaRegWindowClose, FaAngleDown, FaAngleRight } from 'react-icons/fa';
 import { useSidebarContext } from '../../context/SidebarContext';
 import Link from 'next/link';
-import styles from '../../styles/scss/layout/sidebar.module.scss'; // Import your CSS Modules styles
+import styles from '../../styles/scss/layout/public/Sidebar.module.scss'; // Import your CSS Modules styles
 import { menuItems } from './menuItems';
-// import AuthButton from '../AuthButton/AuthButton';
 import SignInButton from '../Buttons/SignInButton/SignInButton';
 
 const Sidebar: React.FC = () => {
@@ -92,11 +90,6 @@ const Sidebar: React.FC = () => {
           <div style={{ width: '80px', marginTop: '40px' }}>
             <SignInButton />
           </div>
-          {/* <img
-            style={{ width: '80px', marginTop: '40px' }}
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg"
-            alt="Logo"
-          /> */}
         </div>
 
         <div className={styles.navLinks}>
@@ -121,7 +114,6 @@ const Sidebar: React.FC = () => {
           ))}
         </div>
         <div className="controllerContainer" style={{ marginTop: '60%' }}>
-          {/* <SignInButton /> */}
         </div>
       </nav>
     </div>

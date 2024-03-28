@@ -1,6 +1,6 @@
 // Home.jsx
 import React from 'react';
-import Nav from '@/src/components/nav';
+import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/Home.module.scss';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
@@ -31,7 +31,6 @@ const Home = () => {
                 </Link>
                 <Link href="register">Register (visible for all)</Link>
                 <Link href="auth/signIn/page">Sign In (visible for all)</Link>
-                {/* <Link href="api/auth/signout">Sign Out (visible for all)</Link> */}
                 <Link href="github">Github API (visible for admin)</Link>
                 <Link href="download">
                   App Download Button (currently a page needs to be a component)

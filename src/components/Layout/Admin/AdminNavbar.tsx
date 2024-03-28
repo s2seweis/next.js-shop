@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from '../../../styles/scss/layout/AdminNavbar.module.scss';
+import styles from '../../../styles/scss/layout/admin/AdminNavbar.module.scss';
 import { SiWolfram } from 'react-icons/si';
 
 const AdminNavbar: React.FC = () => {
@@ -10,15 +10,6 @@ const AdminNavbar: React.FC = () => {
         <div className={styles.adminNavbarTitle}>
           <h3>Admin Area</h3>
         </div>
-
-        {/* <div className={styles.BackHome}>
-          <Link style={{textDecoration:"none"}} href="/">
-            <div className={styles.link} style={{ cursor: 'pointer', textDecoration:"none" }}>
-              Leave
-            </div>
-          </Link>
-        </div> */}
-
         <div className={styles.logo}>
           <Link href="/">
             <div style={{ cursor: 'pointer' }}>

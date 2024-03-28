@@ -1,42 +1,44 @@
-/* *{
-    margin: 0;
-    padding: 0;
-  }
-  ul{
-    padding: 0;
-    margin: 0;
-  }
-  li{
-    list-style: none;
-  }
-  body{
-    background-color: #eee;
-    font-family: 'Open Sans', sans-serif;
-  }
+// * {
+//     margin: 0;
+//     padding: 0;
+//   }
   
-  ::-webkit-scrollbar {
-    width: 3px;
-  }
+//   ul {
+//     padding: 0;
+//     margin: 0;
+//   }
   
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 10px;
-    display: none;
-  }
-   
-  ::-webkit-scrollbar-thumb {
-    background: #333; 
-    border-radius: 10px;
-    display: none;
-  }
+//   li {
+//     list-style: none;
+//   }
   
-  ::-webkit-scrollbar-thumb:hover {
-    background: #333; 
-    display: block;
-  }
+//   body {
+//     background-color: #eee;
+//     font-family: 'Open Sans', sans-serif;
+//   }
   
+//   ::-webkit-scrollbar {
+//     width: 3px;
+//   }
   
-  .side-menu{
+//   ::-webkit-scrollbar-track {
+//     box-shadow: inset 0 0 5px grey;
+//     border-radius: 10px;
+//     display: none;
+//   }
+  
+//   ::-webkit-scrollbar-thumb {
+//     background: #333;
+//     border-radius: 10px;
+//     display: none;
+//   }
+  
+//   ::-webkit-scrollbar-thumb:hover {
+//     background: #333;
+//     display: block;
+//   }
+  
+  .side-menu {
     background: #000;
     width: 300px;
     height: 100%;
@@ -45,26 +47,27 @@
     transition: width .2s ease-in;
   }
   
-  .side-menu.inactive{
+  .side-menu.inactive {
     width: 60px;
   }
   
-  .side-menu .top-section{
+  .side-menu .top-section {
     position: relative;
   }
   
-  .side-menu .top-section .logo{
+  .side-menu .top-section .logo {
     width: 40px;
     height: 40px;
     overflow: hidden;
     display: inline-block;
   }
-  .side-menu .top-section .logo img{
+  
+  .side-menu .top-section .logo img {
     max-width: 100%;
     max-height: 100%;
   }
   
-  .side-menu .top-section .toggle-menu-btn{
+  .side-menu .top-section .toggle-menu-btn {
     color: #666;
     font-size: 20px;
     position: absolute;
@@ -74,16 +77,16 @@
     cursor: pointer;
   }
   
-  .side-menu.inactive .top-section .toggle-menu-btn{
+  .side-menu.inactive .top-section .toggle-menu-btn {
     right: -50px;
   }
   
-  .side-menu .search-controller{
+  .side-menu .search-controller {
     color: #fff;
     position: relative;
   }
   
-  .side-menu .search-controller .search-btn{
+  .side-menu .search-controller .search-btn {
     width: 40px;
     height: 35px;
     position: absolute;
@@ -93,7 +96,7 @@
     color: #666;
   }
   
-  .side-menu .search-controller input[type=text]{
+  .side-menu .search-controller input[type=text] {
     border: 0;
     outline: none;
     height: 35px;
@@ -107,7 +110,7 @@
     color: #666;
   }
   
-  .side-menu .main-menu .menu-item{
+  .side-menu .main-menu .menu-item {
     color: #333;
     text-decoration: none;
     font-size: 15px;
@@ -116,25 +119,24 @@
     cursor: pointer;
   }
   
-  .side-menu .main-menu .menu-item.active{
+  .side-menu .main-menu .menu-item.active {
     background: #333;
     border-radius: 5px;
     color: #fff;
   }
   
-  
-  .side-menu .main-menu{
+  .side-menu .main-menu {
     margin: 5px 0;
     position: relative;
     max-height: 150px;
     overflow-y: scroll;
     overflow-x: hidden;
   }
-  .side-menu.inactive .main-menu{
-   
+  
+  .side-menu.inactive .main-menu {
   }
   
-  .side-menu .main-menu .menu-item .menu-icon{
+  .side-menu .main-menu .menu-item .menu-icon {
     display: inline-block;
     width: 40px;
     height: 40px;
@@ -143,7 +145,7 @@
     text-align: center;
   }
   
-  .side-menu .main-menu .menu-item span{
+  .side-menu .main-menu .menu-item span {
     position: absolute;
     display: inline-block;
     line-height: 40px;
@@ -151,14 +153,14 @@
     transition: opacity .2s ease-in;
   }
   
-  .side-menu.inactive .main-menu .menu-item span{
+  .side-menu.inactive .main-menu .menu-item span {
     opacity: 0;
     width: 0;
     height: 0;
     overflow: hidden;
   }
   
-  .side-menu .main-menu .sub-menu{
+  .side-menu .main-menu .sub-menu {
     color: #333;
     margin-left: 20px;
     border-left: 1px solid #666;
@@ -169,13 +171,11 @@
     transition: max-height .2s ease-in;
   }
   
-  
-  
-  .side-menu .main-menu .sub-menu.active{
+  .side-menu .main-menu .sub-menu.active {
     max-height: 200px;
   }
   
-  .side-menu .main-menu .sub-menu a{
+  .side-menu .main-menu .sub-menu a {
     display: block;
     margin: 5px 0;
     font-size: 15px;
@@ -186,17 +186,14 @@
     padding: 5px;
   }
   
-  
-  .side-menu .main-menu .sub-menu a.active{
+  .side-menu .main-menu .sub-menu a.active {
     background: #222;
     display: block;
-    
     border-radius: 5px;
     color: #fff;
-  
   }
   
-  .side-menu-footer{
+  .side-menu-footer {
     width: 100%;
     background: #333;
     position: absolute;
@@ -206,18 +203,19 @@
     box-sizing: border-box;
   }
   
-  .side-menu-footer .avatar{
+  .side-menu-footer .avatar {
     width: 40px;
     height: 40px;
     overflow: hidden;
     border-radius: 50%;
     display: inline-block;
   }
-  .side-menu-footer .avatar img{
+  
+  .side-menu-footer .avatar img {
     max-width: 100%;
   }
   
-  .side-menu-footer .user-info{
+  .side-menu-footer .user-info {
     display: inline-block;
     margin: 0 10px;
     color: #fff;
@@ -226,47 +224,43 @@
     transition: opacity .2s ease-in;
   }
   
-  .side-menu.inactive .side-menu-footer .user-info{
+  .side-menu.inactive .side-menu-footer .user-info {
     opacity: 1;
     width: 0;
     height: 0;
     overflow: hidden;
   }
   
-  
-  .side-menu-footer .user-info h5{
+  .side-menu-footer .user-info h5 {
     font-size: 15px;
   }
   
-  
-  .side-menu-footer .user-info p{
+  .side-menu-footer .user-info p {
     font-size: 14px;
   }
   
-  .divider{
+  .divider {
     width: 100%;
     height: 1px;
     border-radius: 1px;
     background: #333;
   }
   
-  .container.inactive{
+  .container.inactive {
     margin-left: 80px;
   }
   
-  
-  .bigger{
+  .bigger {
     width: 24px;
     height: 24px;
   }
   
-  
-  .sc-gswNZR bOQEtf sidebar{
+  .sc-gswNZR bOQEtf sidebar {
     width: 24px;
     height: 24px;
   }
-
-  .content-admin-wrapper-sidebar {
+  
+  .contentAdminWrapperSidebar {
     animation: fadeIn .5s ease;
     position: relative;
     justify-content: center;
@@ -280,4 +274,37 @@
   
   .dropdown-btn-new {
     text-align: center;
-  } */
+  }
+
+//   .menuItem {
+//     border: 1px solid black;
+//   }
+  
+  .menuItem {
+  
+    a {
+      border: 1px solid #EFEFEF;
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+
+      span {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+
+    }
+  }
+
+  .menuItemButton {
+  
+    a {
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+
+      span {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+
+    }
+  }

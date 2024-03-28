@@ -49,15 +49,6 @@ export const options: NextAuthOptions = {
     }),
   ],
 
-  // callbacks: {
-  //   async jwt({ token, user }) {
-  //     if (user) {
-  //       token.role = user.role; // Add role to JWT token
-  //       token.userId = '58604870'; // Directly set the user ID to '58604870'
-  //     }
-  //     return token;
-  //   },
-
   callbacks: {
     async jwt({ token, user }) {
       if (user) {

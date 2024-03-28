@@ -7,8 +7,6 @@ export const menuItems = [
     submenus: [
       { title: 'Contact', path: '/contact/page' },
       { title: 'Home', path: '/' },
-      // { title: 'Login', path: '/login' },
-      // { title: 'Home', path: '/' },
     ],
   },
   {

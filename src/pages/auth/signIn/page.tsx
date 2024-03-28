@@ -1,15 +1,16 @@
-// SignIn.tsx
-
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link'; // Import Link from Next.js
+import { useRouter } from 'next/router';
 import styles from '@/src/styles/scss/pages/SignIn.module.scss'; // Import SCSS file
 import Button from '../../../components/Buttons/Button/Button';
 import IsAuthPublic from '@/src/routes/isAuthPublic';
 
 const SignIn = () => {
+  const router = useRouter();
   const userNameRef = useRef<HTMLInputElement>(null);
   const passRef = useRef<HTMLInputElement>(null);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,9 +21,17 @@ const SignIn = () => {
     const result = await signIn('credentials', {
       username,
       password,
-      redirect: true,
-      callbackUrl: '/',
+      redirect: false, // Set redirect to false to handle errors manually
     });
+
+    // Check if signIn function returns an error
+    if (result.error) {
+      setErrorMessage('Authentication failed. Please check your credentials.');
+    } else {
+      // Clear error message if sign-in successful
+      setErrorMessage('');
+      router.push('/'); // Redirect to the home route
+    }
   };
 
   const handleGitHubSignIn = async () => {
@@ -55,6 +64,7 @@ const SignIn = () => {
               className={styles.inputField}
             />
           </div>
+          {errorMessage && <p className={styles.errorMsg}>{errorMessage}</p>}
           <div className={styles.signInButtonContainer}>
             <Button
               type="submit"
@@ -69,14 +79,6 @@ const SignIn = () => {
             >
               SIGN IN with GitHub
             </Button>
-            {/* #without Button Component */}
-            {/* <button
-            
-              onClick={handleGitHubSignIn()}
-              className={`${styles.signInButtonGithub} ${styles.signInButton}`}
-            >
-              SIGN IN with GitHub
-            </button> */}
           </div>
           <div className={styles.signInButtonContainer}>
             <Button

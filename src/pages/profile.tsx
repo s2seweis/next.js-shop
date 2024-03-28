@@ -1,7 +1,7 @@
 import { useAuth } from '../context/AuthProviderMerged';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Nav from '../components/nav';
+import Nav from '../components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/Profile.module.scss';
 import AuthButton from '../components/Buttons/AuthButton/AuthButton.js';
 
@@ -24,7 +24,6 @@ const Profile: React.FC = () => {
       <Nav />
       <div className={styles.mainContainer}>
         <main className={styles.main}>
-          {/* <main className={`${styles.main} ${inter.className}`}> */}
           <h3 style={{ textAlign: 'center' }}>Hello Profile (Auth Provider)</h3>
           <AuthButton />
         </main>

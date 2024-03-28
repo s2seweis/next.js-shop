@@ -1,11 +1,9 @@
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { useRouter } from 'next/router'; // Import useRouter hook from Next.js
 import { GoSignIn, GoSignOut } from 'react-icons/go';
 import React from 'react';
 
 const SignInButton = () => {
   const { data: session, status } = useSession();
-  const router = useRouter(); // Initialize useRouter hook
 
   const getTruncatedName = (name: string) => {
     if (!name || name.length <= 0) {

@@ -7,8 +7,7 @@ import {
 } from 'react-icons/ai';
 import { IoPerson } from 'react-icons/io5';
 import Link from 'next/link'; // Import Link from next/link
-import styles from '../../styles/scss/layout/drowDownMenu.module.scss';
-// import AuthButton from '../AuthButton/AuthButton.js';
+import styles from '../../styles/scss/layout/public/DrowDownMenu.module.scss';
 import SignInButton from '../Buttons/SignInButton/SignInButton';
 import { useSession } from 'next-auth/react';
 
@@ -63,7 +62,6 @@ const DropdownMenu: React.FC = () => {
           <Link href="contact/page">
             <div
               className={styles.menuLink}
-              // onClick={() => handleMenuItemClick('Favorite')}
             >
               <AiFillHeart /> Contact
             </div>
@@ -71,7 +69,6 @@ const DropdownMenu: React.FC = () => {
           <Link href="/">
             <div
               className={styles.menuLink}
-              // onClick={() => handleMenuItemClick('List')}
             >
               <AiOutlineBars /> Home
             </div>
@@ -79,12 +76,10 @@ const DropdownMenu: React.FC = () => {
           <Link href="/profile">
             <div
               className={styles.menuLink}
-              // onClick={() => handleMenuItemClick('Settings')}
             >
               <IoPerson /> Profile
             </div>
           </Link>
-          {/* <AuthButton /> */}
           <SignInButton />
         </div>
       )}

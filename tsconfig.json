@@ -76,6 +76,6 @@
     "**/*.tsx",
     "src/app/context/AuthContext.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/components/Layout/Admin/routes.ts"  ],
   "exclude": ["node_modules", ".next"]
 }

@@ -1,26 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { SiWolfram } from 'react-icons/si';
-import styles from '../../styles/scss/layout/navbar.module.scss';
+import styles from '../../styles/scss/layout/public/Navbar.module.scss';
 import { useSidebarContext } from '../../context/SidebarContext';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import DropdownMenu from '../DropdownMenu/DropDownMenu';
-// import SignInButton from '../SignInButton/SignInButton';
 
 const options = [
   { value: '', label: 'Home' },
   { value: 'contact/page', label: 'Contact' },
-  // { value: 'admin', label: 'Admin' },
-  // { value: 'dashboard', label: 'Dashboard' },
-  // { value: 'profile', label: 'Profile' },
   { value: 'register', label: 'Register' },
   { value: 'auth/signIn/page', label: 'Sign In' },
 ];
 // # - Destructure it and take out direct the properties
 const Navbar = ({ login, isAuth }) => {
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
-  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -60,14 +54,6 @@ const Navbar = ({ login, isAuth }) => {
         <div className={styles.sidebarToggle} onClick={handleToggleClick}>
           {isSidebarOpen ? <FaTimes /> : <FaBars />}
         </div>
-        {/* <div className={styles.logoMobile}>
-          <img
-            style={{ width: '80px', marginRight: '15px' }}
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg"
-            alt="Logo"
-          />
-        </div> */}
-
         <div className={styles.logo}>
           <Link href="/">
             <div style={{ cursor: 'pointer' }}>
@@ -88,14 +74,6 @@ const Navbar = ({ login, isAuth }) => {
 
       <header className={styles.menu1}>
         <nav className={styles.navbar}>
-          {/* <div className={styles.logo}>
-            <img
-              style={{ width: '80px' }}
-              src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Deutsche_Angestellten-Akademie_Logo.svg"
-              alt="Logo"
-            />
-          </div> */}
-
           <div className={styles.logo}>
             <Link href="/">
               <div style={{ cursor: 'pointer' }}>
@@ -127,7 +105,6 @@ const Navbar = ({ login, isAuth }) => {
           </div>
           <div style={{ alignItems: 'center', display: 'flex' }}></div>
           <DropdownMenu />
-          {/* <SignInButton /> */}
         </nav>
       </header>
       <div
@@ -140,7 +117,6 @@ const Navbar = ({ login, isAuth }) => {
         }}
       >
         <DropdownMenu />
-        {/* <SignInButton /> */}
       </div>
     </nav>
   );

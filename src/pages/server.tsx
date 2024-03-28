@@ -1,4 +1,4 @@
-import Nav from '@/src/components/nav';
+import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/Server.module.scss';
 import Link from 'next/link'; // Import Link component from next/link
 import IsAuthPublic from '@/src/routes/isAuthPublic';

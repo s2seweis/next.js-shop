@@ -1,8 +1,8 @@
 import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'; // Import font awesome icons
-import styles from '../../styles/scss/layout/public/Footer.module.scss'; // Import CSS Modules styles
+import styles from '../../../styles/scss/layout/admin/FooterAdmin.module.scss'; // Import CSS Modules styles
 
-const Footer: React.FC = () => {
+const FooterAdmin: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
@@ -10,19 +10,15 @@ const Footer: React.FC = () => {
           <a href="https://www.facebook.com/" className={styles.socialIcon}>
             <FaFacebook />
           </a>
-          <a href="https://twitter.com/" className={styles.socialIcon}>
-            <FaTwitter />
-          </a>
-          <a href="https://www.instagram.com/" className={styles.socialIcon}>
-            <FaInstagram />
-          </a>
+          <h5>a product from ...</h5>
+         
         </div>
         <p className={styles.copyRight}>
-          &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+          &copy; {new Date().getFullYear()} Your need some instructions?
         </p>
       </div>
     </footer>
   );
 };
 
-export default Footer;
+export default FooterAdmin;
