@@ -43,6 +43,10 @@ const Home = () => {
                   Profile (Auth Provider) with SignInButton
                 </Link>
               </h4>
+              <h4>
+                Redux Test
+                <Link href="/redux">Redux</Link>
+              </h4>
               <AuthButton />
             </div>
           </main>

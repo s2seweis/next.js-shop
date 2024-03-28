@@ -5,6 +5,9 @@ import '../styles/scss/global.scss';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import store from '../redux/store.js'
+import { Provider } from 'react-redux'
+
 const App = ({ Component, pageProps }) => {
   const [loading, setLoading] = useState(true);
   const [isAuth, setIsAuth] = useState(true);
@@ -28,17 +31,19 @@ const App = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <AuthProvider>
-      <ProSidebarProvider>
-        {loading ? (
-          <Loader /> // Show the loader while loading
-        ) : (
-          <Router>
-            <Component {...pageProps} isAuth={isAuth} />
-          </Router>
-        )}
-      </ProSidebarProvider>
-    </AuthProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        <ProSidebarProvider>
+          {loading ? (
+            <Loader /> // Show the loader while loading
+          ) : (
+            <Router>
+              <Component {...pageProps} isAuth={isAuth} />
+            </Router>
+          )}
+        </ProSidebarProvider>
+      </AuthProvider>
+    </Provider>
   );
 };
 

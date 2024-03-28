@@ -42,6 +42,8 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.2",
+    "@types/redux-logger": "^3.0.13",
     "axios": "^1.6.7",
     "next": "^13.5.4",
     "next-auth": "^4.24.7",
@@ -55,6 +57,7 @@
     "react-router-dom": "^6.22.2",
     "react-select": "^5.8.0",
     "redux": "^5.0.1",
+    "redux-persist": "^6.0.0",
     "sass": "^1.71.1"
   },
   "devDependencies": {
