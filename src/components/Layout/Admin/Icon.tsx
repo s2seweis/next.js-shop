@@ -54,7 +54,12 @@ export const Icon: React.FC<IconProps> = ({ size = '30', name, ...rest }) => {
       xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >
-      <path fillRule="evenodd" clipRule="evenodd" d={getIconPath()} fill="currentColor" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d={getIconPath()}
+        fill="currentColor"
+      />
     </svg>
   );
 };

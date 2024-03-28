@@ -11,7 +11,6 @@ const FooterAdmin: React.FC = () => {
             <FaFacebook />
           </a>
           <h5>a product from ...</h5>
-         
         </div>
         <p className={styles.copyRight}>
           &copy; {new Date().getFullYear()} Your need some instructions?

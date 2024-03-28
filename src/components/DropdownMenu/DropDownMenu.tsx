@@ -60,23 +60,17 @@ const DropdownMenu: React.FC = () => {
       {isOpen && (
         <div className={styles.menu}>
           <Link href="contact/page">
-            <div
-              className={styles.menuLink}
-            >
+            <div className={styles.menuLink}>
               <AiFillHeart /> Contact
             </div>
           </Link>
           <Link href="/">
-            <div
-              className={styles.menuLink}
-            >
+            <div className={styles.menuLink}>
               <AiOutlineBars /> Home
             </div>
           </Link>
           <Link href="/profile">
-            <div
-              className={styles.menuLink}
-            >
+            <div className={styles.menuLink}>
               <IoPerson /> Profile
             </div>
           </Link>

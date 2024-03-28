@@ -113,8 +113,7 @@ const Sidebar: React.FC = () => {
             </span>
           ))}
         </div>
-        <div className="controllerContainer" style={{ marginTop: '60%' }}>
-        </div>
+        <div className="controllerContainer" style={{ marginTop: '60%' }}></div>
       </nav>
     </div>
   );

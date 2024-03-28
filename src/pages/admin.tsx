@@ -3,7 +3,6 @@ import styles from '@/src/styles/scss/pages/Admin.module.scss';
 import IsAuthAdmin from '@/src/routes/isAuthAdmin';
 
 const Admin = () => {
-
   return (
     <div className={styles.adminMain}>
       <Nav />

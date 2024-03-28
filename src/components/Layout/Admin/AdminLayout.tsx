@@ -9,7 +9,7 @@ const AdminLayout = ({ children, login, isAuth }) => {
   return (
     <SidebarProvider>
       <AdminNavbar />
-      <div style={{ display: 'flex', height:"90vh"}}>
+      <div style={{ display: 'flex', height: '90vh' }}>
         <AdminSidebar />
         <main
           className={styles.content}
@@ -18,7 +18,7 @@ const AdminLayout = ({ children, login, isAuth }) => {
           {children}
         </main>
       </div>
-      <Footer/>
+      <Footer />
     </SidebarProvider>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Icon } from './Icon.tsx';
-import styles from '@/src/styles/scss/layout/admin/Side.module.scss'
+import styles from '@/src/styles/scss/layout/admin/Side.module.scss';
 import {
   Sidebar,
   Menu,
@@ -35,7 +35,7 @@ const AdminSidebar = () => {
               active={router.pathname === '/admin/dashboard'}
               icon={<Icon name="dashboard" />}
               className={styles.menuItem}
-              style={{ marginTop: "50px" }}
+              style={{ marginTop: '50px' }}
             >
               <Link href={GITHUB}>Github</Link>
             </MenuItem>
@@ -92,25 +92,31 @@ const AdminSidebar = () => {
             >
               <Link href="/admin/docs">Docs</Link>
             </MenuItem>
-            <MenuItem
-              className={styles.menuItemButton}
-            >
-              <div style={{ display: "flex", justifyContent: "center" }}>
+            <MenuItem className={styles.menuItemButton}>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <button
-                  style={{ padding: "2px" }}
+                  style={{ padding: '2px' }}
                   onClick={() => {
                     toggleFavorite();
                     collapseSidebar();
                   }}
-                // className="top-rated-car-react-button"
+                  // className="top-rated-car-react-button"
                 >
                   {favorite ? (
                     <FiArrowLeftCircle
-                      style={{ color: '#F76631', width: '24px', height: '24px' }}
+                      style={{
+                        color: '#F76631',
+                        width: '24px',
+                        height: '24px',
+                      }}
                     />
                   ) : (
                     <FiArrowRightCircle
-                      style={{ color: '#F76631', width: '24px', height: '24px' }}
+                      style={{
+                        color: '#F76631',
+                        width: '24px',
+                        height: '24px',
+                      }}
                     />
                   )}
                 </button>
