@@ -35,7 +35,7 @@ const DropdownMenu: React.FC = () => {
     <div className={styles.dropdown}>
       <div className={styles.icon} onClick={toggleMenu}>
         <IoPerson />
-        <p
+        <div
           style={{
             position: 'absolute',
             marginTop: '-8px',
@@ -55,7 +55,7 @@ const DropdownMenu: React.FC = () => {
               session?.user?.userData?.login || session?.user.name,
             )}
           </div>
-        </p>
+        </div>
       </div>
       {isOpen && (
         <div className={styles.menu}>

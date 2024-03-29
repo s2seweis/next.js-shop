@@ -6,13 +6,15 @@ import {
   incrementByAmount,
   incrementAsync,
   selectCount,
-} from './counterSlice';
-import styles from './Counter.module.scss';
+} from '../../../redux/slices/counterSlice';
+import styles from '../../../styles/scss/components/Counter.module.scss';
 
 export function Counter() {
   const count = useSelector(selectCount);
+  console.log("line:100", count);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
+  console.log("line:200", incrementAmount);
 
   return (
     <div>
@@ -33,7 +35,8 @@ export function Counter() {
           -
         </button>
       </div>
-      <div className={styles.row}>
+      {/* ### - more complex in its logic */}
+      {/* <div className={styles.row}>
         <input
           className={styles.textbox}
           aria-label="Set increment amount"
@@ -54,7 +57,8 @@ export function Counter() {
         >
           Add Async
         </button>
-      </div>
+      </div> */}
+      {/* ### */}
     </div>
   );
 }

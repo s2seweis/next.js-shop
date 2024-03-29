@@ -1,8 +1,27 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './counterSlice';
+import counterReducer from './slices/counterSlice';
+// import productReducer from './slices/productSlice'; // in work 
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-export default configureStore({
+// Define persist config
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+
+// Wrap the counterReducer with persistReducer
+const persistedReducer = persistReducer(persistConfig, counterReducer);
+
+// Create the Redux store with persistedReducer
+const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    counter: persistedReducer,
+    // products: productReducer //in work
   },
 });
+
+// Create persistor
+const persistor = persistStore(store);
+
+export { store, persistor };

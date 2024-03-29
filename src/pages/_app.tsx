@@ -5,25 +5,18 @@ import '../styles/scss/global.scss';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import store from '../redux/store.js';
+import { store, persistor } from '../redux/store.js'; // Import store and persistor
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react'; // Import PersistGate
 
 const App = ({ Component, pageProps }) => {
+
   const [loading, setLoading] = useState(true);
-  const [isAuth, setIsAuth] = useState(true);
-
-  const login = () => {
-    // Toggle the value of isAuth
-    const updatedIsAuth = !isAuth;
-
-    // Set the updated value using setIsAuth
-    setIsAuth(updatedIsAuth);
-  };
 
   useEffect(() => {
     // Simulate some asynchronous operation
     const fetchData = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulating a delay of 2 seconds
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulating a delay of 2 seconds
       setLoading(false);
     };
 
@@ -32,17 +25,20 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <Provider store={store}>
-      <AuthProvider>
-        <ProSidebarProvider>
-          {loading ? (
-            <Loader /> // Show the loader while loading
-          ) : (
-            <Router>
-              <Component {...pageProps} isAuth={isAuth} />
-            </Router>
-          )}
-        </ProSidebarProvider>
-      </AuthProvider>
+      <PersistGate loading={<Loader />} persistor={persistor}> {/* Use PersistGate */}
+        <AuthProvider>
+          <ProSidebarProvider>
+            {loading ? (
+              <Loader /> // Show the loader while loading
+            ) : (
+              <Router>
+                <Component 
+                />
+              </Router>
+            )}
+          </ProSidebarProvider>
+        </AuthProvider>
+      </PersistGate>
     </Provider>
   );
 };

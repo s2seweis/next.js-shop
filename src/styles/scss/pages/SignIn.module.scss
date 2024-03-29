@@ -95,3 +95,20 @@
 .goToSignIn a:hover {
   text-decoration: underline;
 }
+
+.signInButton:hover {
+  background-color: #0c7d43; /* Change background color on hover */
+  color: #fff; /* Change text color on hover */
+}
+
+.signInButtonGoogle:hover {
+  background-color: #e68a00; /* Change background color on hover */
+}
+
+.signInButtonFacebook:hover {
+  background-color: #2962ff; /* Change background color on hover */
+}
+
+.signInButtonGithub:hover {
+  background-color: #1e2124; /* Change background color on hover */
+}

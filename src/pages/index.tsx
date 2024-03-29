@@ -33,7 +33,7 @@ const Home = () => {
                 <Link href="auth/signIn/page">Sign In (visible for all)</Link>
                 <Link href="github">Github API (visible for admin)</Link>
                 <Link href="download">
-                  App Download Button (currently a page needs to be a component)
+                  App Download Button 
                 </Link>
               </h4>
               <h4>
