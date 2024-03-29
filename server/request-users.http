@@ -1,0 +1,47 @@
+### = Seperates the requests
+
+### Get User by ID - works
+
+http://localhost:3005/users/2
+
+### - Get all Users - works
+
+http://localhost:3005/users
+
+### - Drop table with all Users
+
+http://localhost:3005/users/1;DROP TABLE users;
+
+### Add User - works
+
+POST http://localhost:3005/users HTTP/1.1 
+content-type: application/json
+
+{
+    "username": "ywain",
+    "email": "weissenborn.ywain@gmail.com",
+    "full_name": "ywain Weissenborn",
+    "profile_picture_url": "https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png"
+}
+
+# username, email, full_name, profile_picture_url
+
+### Update User - works
+
+PUT http://localhost:3005/users/3 HTTP/1.1 
+content-type: application/json
+
+{
+    "username": "ywain3333",
+    "email": "weissenborn.ywain@gmail.com",
+    "full_name": "Ywain Weissenborn",
+    "profile_picture_url": "https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png"
+}
+
+### Delete User - works
+
+DELETE http://localhost:3005/users/31 HTTP/1.1 
+content-type: application/json
+
+
+
