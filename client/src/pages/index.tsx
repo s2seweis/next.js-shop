@@ -46,7 +46,7 @@ const Home = () => {
               <h4>
                 Redux Test
                 <Link href="/redux">Redux</Link>
-                <Link href="/items">Products - Redux/ API Call</Link>
+                <Link href="/products">Products - Redux/ API Call</Link>
               </h4>
               <AuthButton />
             </div>

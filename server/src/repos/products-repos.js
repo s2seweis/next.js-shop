@@ -44,8 +44,8 @@ class ProductsRepo {
         return toCamelCase(rows)[0];
     }
 
-    static async delete(user_id) {
-        const { rows } = await pool.query('DELETE FROM Products WHERE user_id = $1 RETURNING *;', [user_id]);
+    static async delete(productid) {
+        const { rows } = await pool.query('DELETE FROM Products WHERE productid = $1 RETURNING *;', [productid]);
         return toCamelCase(rows)[0];
     }
 }

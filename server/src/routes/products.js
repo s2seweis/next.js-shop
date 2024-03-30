@@ -89,6 +89,7 @@ router.put('/product/:id', async (req, res) => {
 router.delete('/product/:id', async (req, res) => {
     try {
         const { id } = req.params;
+        console.log("line:100", id);
         const deletedProfile = await ProductRepo.delete(id);
 
         if (deletedProfile) {

@@ -4,14 +4,15 @@ import axios from 'axios'; // Import Axios
 
 // Dummy data to be used if no API is available
 const dummyData = [
-  { id: 1, name: 'Dummy Product 1' },
-  { id: 2, name: 'Dummy Product 2' },
-  { id: 3, name: 'Dummy Product 3' },
-  { id: 4, name: 'Dummy Product 4' },
-  { id: 5, name: 'Dummy Product 5' },
-  { id: 6, name: 'Dummy Product 6' },
+  { productid: 1, productname: 'Dummy Product 1', price: 10.99 },
+  { productid: 2, productname: 'Dummy Product 2', price: 19.99 },
+  { productid: 3, productname: 'Dummy Product 3', price: 5.49 },
+  { productid: 4, productname: 'Dummy Product 4', price: 7.99 },
+  { productid: 5, productname: 'Dummy Product 5', price: 14.99 },
+  { productid: 6, productname: 'Dummy Product 6', price: 12.49 },
   // Add more dummy data as needed
 ];
+
 
 // Define the initial state
 const initialState = {
@@ -62,13 +63,14 @@ export const updateProduct = createAsyncThunk('products/updateProduct', async (p
 
 // Define the asynchronous thunk for deleting a product
 export const deleteProduct = createAsyncThunk('products/deleteProduct', async (productId) => {
+  console.log("line:2", productId);
   try {
     // Simulate API delete (set to true for the example)
     const isApiAvailable = true;
 
     if (isApiAvailable) {
       // Delete product from the API
-      await axios.delete(`/api/products/${productId}`);
+      await axios.delete(`http://localhost:3005/product/${productId}`);
       return productId;
     } else {
       // Simulate local delete
@@ -108,7 +110,7 @@ const productSlice = createSlice({
       .addCase(deleteProduct.fulfilled, (state, action) => {
         // Remove deleted product from state
         state.products = state.products.filter(product =>
-          product.id !== action.payload
+          product.productid !== action.payload
         );
       });
   },

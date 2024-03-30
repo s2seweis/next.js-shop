@@ -6,7 +6,7 @@ import IsAuthPublic from '@/src/routes/isAuthPublic';
 import ProductComponent from '../components/Redux/Products/ProductComponent.js'
 // import { ProductComponent } from '../components/Redux/Products/Products.js';
 
-const Items = () => {
+const Products = () => {
   return (
     <div className={styles.adminMain}>
       <Nav />
@@ -21,7 +21,7 @@ const Items = () => {
           className={styles.adminContainerAlign}
         >
           <div>
-            <h3>Items</h3>
+            <h3>Products Overview:</h3>
            
             <ProductComponent />
           </div>
@@ -31,4 +31,4 @@ const Items = () => {
   );
 };
 
-export default IsAuthPublic(Items);
+export default IsAuthPublic(Products);
