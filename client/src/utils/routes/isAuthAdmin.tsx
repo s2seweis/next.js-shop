@@ -4,7 +4,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 // import Layout from '../Layout/Layout';
-import AdminLayout from '../components/Layout/Admin/AdminLayout';
+import AdminLayout from '../../components/Layout/Admin/AdminLayout';
 
 import { useSession } from 'next-auth/react';
 

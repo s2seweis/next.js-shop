@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AuthProvider from '../context/AuthProviderMerged';
+import AuthProvider from '../utils/context/AuthProviderMerged';
 import Loader from '../components/Loader/Loader'; // Import the Loader component
 import '../styles/scss/global.scss';
 import { ProSidebarProvider } from 'react-pro-sidebar';

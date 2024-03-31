@@ -1,18 +1,18 @@
 import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/Admin.module.scss';
-import IsAuthAdmin from '@/src/routes/isAuthAdmin';
+import IsAuthAdmin from '@/src/utils/routes/isAuthAdmin';
 
-const Admin = () => {
+const AdminDashboard = () => {
   return (
     <div className={styles.adminMain}>
       <Nav />
       <div className={styles.adminContainer}>
         <main className={styles.adminContainerAlign}>
-          <h3 style={{ textAlign: 'center' }}>Hello Admin</h3>
+          <h3 style={{ textAlign: 'center' }}>Hello AdminDashboard</h3>
         </main>
       </div>
     </div>
   );
 };
 
-export default IsAuthAdmin(Admin);
+export default IsAuthAdmin(AdminDashboard);

@@ -1,6 +1,6 @@
 // AuthButton.js
 import React from 'react';
-import { useAuth } from '../../../context/AuthProviderMerged';
+import { useAuth } from '../../../utils/context/AuthProviderMerged';
 import styles from '../../../styles/scss/components/AuthButton.module.scss';
 
 const AuthButton = () => {

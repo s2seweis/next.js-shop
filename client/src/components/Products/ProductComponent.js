@@ -1,21 +1,23 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts, deleteProduct } from '../../../redux/slices/productSlice';
-import styles from '../../../styles/scss/components/Products.module.scss'; // Importing SCSS module
+import { fetchProducts, deleteProduct } from '../../redux/slices/productSlice';
+import styles from '../../styles/scss/components/Products.module.scss';
 
 const ProductComponent = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
+  console.log("line:1", products);
   const status = useSelector((state) => state.products.status);
   const error = useSelector((state) => state.products.error);
 
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    if (status === 'idle') {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, status]); // Dispatch only when status changes
 
   const handleDeleteProduct = async (productId) => {
     try {
-      // Delete the product from the API
       dispatch(deleteProduct(productId));
     } catch (error) {
       console.error('Error deleting product:', error);

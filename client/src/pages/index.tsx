@@ -5,7 +5,7 @@ import styles from '@/src/styles/scss/pages/Home.module.scss';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import AuthButton from '../components/Buttons/AuthButton/AuthButton.js';
-import IsAuthPublic from '@/src/routes/isAuthPublic';
+import IsAuthPublic from '@/src/utils/routes/isAuthPublic.tsx';
 
 const Home = () => {
   const { data: session } = useSession();
@@ -24,29 +24,43 @@ const Home = () => {
               <h4>
                 Authentication with SignIn Form
                 <Link href="/">Home (visible for all)</Link>
-                <Link href="contact/page">Contact (visible for all)</Link>
-                <Link href="/admin">Admin (visible for admin)</Link>
-                <Link href="/server">
+                <Link href="contact/ContactForm">
+                  Contact (visible for all)
+                </Link>
+                <Link href="/admin/AdminDashboard">
+                  Admin (visible for admin)
+                </Link>
+                <Link href="/profile/Server">
                   Server (only visible for admin and user)
                 </Link>
-                <Link href="register">Register (visible for all)</Link>
-                <Link href="auth/signIn/page">Sign In (visible for all)</Link>
-                <Link href="github">Github API (visible for admin)</Link>
-                <Link href="download">
-                  App Download Button 
+                <Link href="auth/Register">Register (visible for all)</Link>
+                <Link href="auth/SignIn">
+                  Sign In (visible for all) - Other Route
                 </Link>
+                <Link href="test/Github">Github API (visible for admin)</Link>
+                <Link href="download/DownloadApp">App Download Button</Link>
               </h4>
               <h4>
                 Authentication with Button
-                <Link href="/dashboard">Dashboard (HOC) with SignInButton</Link>
-                <Link href="/profile">
+                <Link href="/profile/Dashboard">
+                  Dashboard (HOC) with SignInButton
+                </Link>
+                <Link href="/profile/UserProfile">
                   Profile (Auth Provider) with SignInButton
                 </Link>
               </h4>
               <h4>
                 Redux Test
-                <Link href="/redux">Redux</Link>
-                <Link href="/products">Products - Redux/ API Call</Link>
+                <Link href="test/Redux">Redux</Link>
+                <Link href="/product/Products">
+                  Get/Delete Products - Redux/ API Call
+                </Link>
+                <Link href="/product/AddProduct">
+                  Add Products - Redux/ API Call
+                </Link>
+                <Link href="/product/UpdateProducts">
+                  Update Products - Redux/ API Call
+                </Link>
               </h4>
               <AuthButton />
             </div>

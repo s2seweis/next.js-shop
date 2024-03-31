@@ -6,8 +6,8 @@ import {
   incrementByAmount,
   incrementAsync,
   selectCount,
-} from '../../../redux/slices/counterSlice';
-import styles from '../../../styles/scss/components/Counter.module.scss';
+} from '../../redux/slices/counterSlice';
+import styles from '../../styles/scss/components/Counter.module.scss';
 
 export function Counter() {
   const count = useSelector(selectCount);

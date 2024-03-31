@@ -1,10 +1,7 @@
 import Nav from '@/src/components/Nav/Nav';
-import styles from '@/src/styles/scss/components/Counter.module.scss';
-import IsAuthPublic from '@/src/routes/isAuthPublic';
-
-// import { ProductComponent } from '@/src/components/Redux/Products/Products.js';
-import ProductComponent from '../components/Redux/Products/ProductComponent.js'
-// import { ProductComponent } from '../components/Redux/Products/Products.js';
+import styles from '@/src/styles/scss/pages/product/Product.module.scss';
+import IsAuthPublic from '@/src/utils/routes/isAuthPublic.jsx';
+import ProductComponent from '../../components/Products/ProductComponent.js'
 
 const Products = () => {
   return (

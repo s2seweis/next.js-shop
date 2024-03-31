@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaRegWindowClose, FaAngleDown, FaAngleRight } from 'react-icons/fa';
-import { useSidebarContext } from '../../context/SidebarContext';
+import { useSidebarContext } from '../../utils/context/SidebarContext';
 import Link from 'next/link';
 import styles from '../../styles/scss/layout/public/Sidebar.module.scss'; // Import your CSS Modules styles
 import { menuItems } from './menuItems';

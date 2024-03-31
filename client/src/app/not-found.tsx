@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { NextPage } from 'next';
-import IsAuthPublic from '@/src/routes/isAuthPublic';
 
 const NotFoundPage: NextPage = () => {
   return (
@@ -23,4 +22,4 @@ const NotFoundPage: NextPage = () => {
   );
 };
 
-export default IsAuthPublic(NotFoundPage);
+export default NotFoundPage;

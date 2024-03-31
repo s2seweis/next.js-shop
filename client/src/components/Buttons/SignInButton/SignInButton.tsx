@@ -16,7 +16,7 @@ const SignInButton = () => {
   };
 
   const handleSignOut = async () => {
-    await signOut({ callbackUrl: '/auth/signIn/page' }); // Include callbackUrl for sign out
+    await signOut({ callbackUrl: '/auth/SignIn' }); // Include callbackUrl for sign out
   };
 
   return (

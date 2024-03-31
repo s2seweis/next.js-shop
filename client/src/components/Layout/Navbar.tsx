@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { SiWolfram } from 'react-icons/si';
 import styles from '../../styles/scss/layout/public/Navbar.module.scss';
-import { useSidebarContext } from '../../context/SidebarContext';
+import { useSidebarContext } from '../../utils/context/SidebarContext';
 import Link from 'next/link';
 import DropdownMenu from '../DropdownMenu/DropDownMenu';
 
 const options = [
   { value: '', label: 'Home' },
   { value: 'contact/page', label: 'Contact' },
-  { value: 'register', label: 'Register' },
-  { value: 'auth/signIn/page', label: 'Sign In' },
+  { value: 'auth/Register', label: 'Register' },
+  { value: 'auth/SignIn', label: 'Sign In' },
 ];
 // # - Destructure it and take out direct the properties
 const Navbar = ({ login, isAuth }) => {

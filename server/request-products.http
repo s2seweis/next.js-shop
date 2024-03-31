@@ -19,7 +19,7 @@ Content-Type: application/json
 
 {
   "ProductName": "Samba",
-  "Price": 99.99,
+  "Price": 109.99,
   "Category": "Adidas"
 }
 
@@ -41,7 +41,7 @@ content-type: application/json
 
 ### Delete product
 
-DELETE http://localhost:3005/product/35 HTTP/1.1 
+DELETE http://localhost:3005/product/13703 HTTP/1.1 
 content-type: application/json
 
 

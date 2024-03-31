@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import styles from '@/src/styles/scss/pages/Contact.module.scss';
 import { useSession } from 'next-auth/react';
-import IsAuthPublic from '@/src/routes/isAuthPublic';
+import IsAuthPublic from '@/src/utils/routes/isAuthPublic';
 
 interface FormData {
   name: string;
@@ -37,7 +37,7 @@ const Contact: React.FC = () => {
 
   return (
     <div>
-      {session !== null ? (
+      
         <div
           className="main"
           style={{
@@ -85,19 +85,7 @@ const Contact: React.FC = () => {
             </form>
           </div>
         </div>
-      ) : (
-        <div
-          style={{
-            height: '100vh',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-          className={styles.lockedContainer}
-        >
-          <h1 className="text-5xl">You Shall Not Pass!</h1>
-        </div>
-      )}
+      
     </div>
   );
 };

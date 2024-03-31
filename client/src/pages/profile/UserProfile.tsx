@@ -1,9 +1,9 @@
-import { useAuth } from '../context/AuthProviderMerged';
+import { useAuth } from '../../utils/context/AuthProviderMerged';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Nav from '../components/Nav/Nav';
+import Nav from '../../components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/Profile.module.scss';
-import AuthButton from '../components/Buttons/AuthButton/AuthButton.js';
+import AuthButton from '../../components/Buttons/AuthButton/AuthButton.js';
 
 const Profile: React.FC = () => {
   const { isLoggedIn } = useAuth(); // Use the useAuth hook to access the AuthContext

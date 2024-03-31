@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link'; // Import Link from Next.js
-import styles from '../styles/scss/pages/Register.module.scss'; // Import SCSS file
-import IsAuthPublic from '@/src/routes/isAuthPublic';
+import styles from '../../styles/scss/pages/Register.module.scss'; // Import SCSS file
+import IsAuthPublic from '@/src/utils/routes/isAuthPublic';
 
 interface RegisterFormProps {
   onRegisterSuccess: () => void;
@@ -97,7 +97,7 @@ const Register: React.FC<RegisterFormProps> = ({ onRegisterSuccess }) => {
           </div>
         </form>
         <div className={styles.goToLogin}>
-          <Link href="/auth/signIn/page">Go to Login</Link>
+          <Link href="/auth/SignIn">Go to Login</Link>
         </div>
       </div>
     </div>

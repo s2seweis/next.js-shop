@@ -1,7 +1,7 @@
 import React from 'react';
 import AdminNavbar from './AdminNavbar';
 import AdminSidebar from './AdminSidebar';
-import { SidebarProvider } from '../../../context/SidebarContext';
+import { SidebarProvider } from '../../../utils/context/SidebarContext';
 import styles from '../../../styles/scss/layout/admin/AdminLayout.module.scss';
 import Footer from '../Admin/FooterAdmin';
 

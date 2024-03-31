@@ -8,16 +8,17 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['counter'], // Add the names of reducers you want to persist
 };
 
 // Wrap the counterReducer with persistReducer
-const persistedReducer = persistReducer(persistConfig, counterReducer, productReducer);
+const persistedReducer = persistReducer(persistConfig, counterReducer);
 
 // Create the Redux store with persistedReducer
 const store = configureStore({
   reducer: {
     counter: persistedReducer,
-    products: productReducer //in work
+    products: productReducer // This reducer won't be persisted
   },
 });
 
