@@ -8,7 +8,7 @@ import DropdownMenu from '../DropdownMenu/DropDownMenu';
 
 const options = [
   { value: '', label: 'Home' },
-  { value: 'contact/page', label: 'Contact' },
+  { value: 'contact/ContactForm', label: 'Contact' },
   { value: 'auth/Register', label: 'Register' },
   { value: 'auth/SignIn', label: 'Sign In' },
 ];

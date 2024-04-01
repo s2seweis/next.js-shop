@@ -1,6 +1,6 @@
 import Nav from '@/src/components/Nav/Nav';
-import styles from '@/src/styles/scss/pages/Admin.module.scss';
-import IsAuthAdmin from '@/src/utils/routes/isAuthAdmin';
+import styles from '@/src/styles/scss/pages/admin/Admin.module.scss';
+import IsAuthAdmin from '@/src/utils/authHocs/isAuthAdmin';
 
 const AdminDashboard = () => {
   return (

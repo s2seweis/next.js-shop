@@ -1,7 +1,7 @@
 import Nav from '@/src/components/Nav/Nav';
-import styles from '@/src/styles/scss/pages/Server.module.scss';
+import styles from '@/src/styles/scss/pages/profile/Server.module.scss';
 import Link from 'next/link'; // Import Link component from next/link
-import IsAuthPublic from '@/src/utils/routes/isAuthPublic';
+import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 
 interface HomeProps {
   isAuth: boolean; // Specify the type of 'isAuth' as boolean

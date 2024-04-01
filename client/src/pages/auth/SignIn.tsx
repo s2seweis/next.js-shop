@@ -2,9 +2,9 @@ import React, { useRef, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link'; // Import Link from Next.js
 import { useRouter } from 'next/router';
-import styles from '@/src/styles/scss/pages/SignIn.module.scss'; // Import SCSS file
+import styles from '@/src/styles/scss/pages/auth/SignIn.module.scss'; // Import SCSS file
 import Button from '../../components/Buttons/Button/Button';
-import IsAuthPublic from '@/src/utils/routes/isAuthPublic';
+import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 
 const SignIn = () => {
   const router = useRouter();
@@ -96,7 +96,7 @@ const SignIn = () => {
           </div>
         </form>
         <div className={styles.goToSignIn}>
-          <Link href="/auth/Register">Go to SignIn</Link>
+          <Link href="/auth/Register">Go to Register</Link>
         </div>
       </div>
     </div>

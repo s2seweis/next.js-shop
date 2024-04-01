@@ -34,6 +34,15 @@ export const addProduct = createAsyncThunk('products/addProduct', async (data) =
   }
 });
 
+export const updateProduct = createAsyncThunk('products/updateProduct', async ({ productId, updatedData }) => {
+  try {
+    const response = await axios.put(`http://localhost:3005/product/${productId}`, updatedData);
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to update product');
+  }
+});
+
 const productSlice = createSlice({
   name: 'products',
   initialState,
@@ -44,7 +53,7 @@ const productSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = 'succeded';
         state.products = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
@@ -58,6 +67,12 @@ const productSlice = createSlice({
       })
       .addCase(addProduct.fulfilled, (state, action) => {
         state.products.push(action.payload);
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        // Find the index of the updated product
+        const index = state.products.findIndex(product => product.productid === action.payload.productid);
+        // Replace the old product with the updated one
+        state.products[index] = action.payload;
       });
   },
 });

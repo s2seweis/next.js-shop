@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts, deleteProduct } from '../../redux/slices/productSlice';
-import styles from '../../styles/scss/components/Products.module.scss';
+import styles from '../../styles/scss/components/products/Products.module.scss';
 
 const ProductComponent = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const ProductComponent = () => {
   };
 
   if (status === 'loading') {
-    return <div>Loading...</div>;
+    return <div>Loading...2</div>;
   }
 
   if (status === 'failed') {

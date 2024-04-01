@@ -1,8 +1,8 @@
 // src/components/ContactForm.tsx
 import React, { useState } from 'react';
-import styles from '@/src/styles/scss/pages/Contact.module.scss';
+import styles from '@/src/styles/scss/pages/contact/Contact.module.scss';
 import { useSession } from 'next-auth/react';
-import IsAuthPublic from '@/src/utils/routes/isAuthPublic';
+import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 
 interface FormData {
   name: string;

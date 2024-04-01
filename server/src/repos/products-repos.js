@@ -33,16 +33,17 @@ class ProductsRepo {
         return toCamelCase(rows)[0];
     }
 
-    static async update(user_id, bio, date_of_birth, location, website_url, profile_picture_url) {
+    static async update(productname, price, category, id) {
         const {
             rows,
         } = await pool.query(
-            'UPDATE Products SET bio = $2, date_of_birth = $3, location = $4, website_url = $5, profile_picture_url = $6 WHERE user_id = $1 RETURNING *;',
-            [user_id, bio, date_of_birth, location, website_url, profile_picture_url]
+            'UPDATE Products SET ProductName = $1, Price = $2, category = $3 WHERE Productid = $4 RETURNING *;',
+            [productname, price, category, id]
         );
-
+    
         return toCamelCase(rows)[0];
     }
+    
 
     static async delete(productid) {
         const { rows } = await pool.query('DELETE FROM Products WHERE productid = $1 RETURNING *;', [productid]);

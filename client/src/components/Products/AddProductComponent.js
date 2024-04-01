@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
-import styles from '../../styles/scss/components/AddProductComponent.module.scss'
+import styles from '../../styles/scss/components/products/AddProductComponent.module.scss'
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts, addProduct } from '../../redux/slices/productSlice';
 
@@ -118,7 +118,7 @@ const AddProductsComponent = () => {
       {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
 
       {isLoading ? (
-        <p>Loading...</p>
+        <p>Loading...4</p>
       ) : (
         <div className={styles.userDataContainer}>
           <h3>Product Data:</h3>

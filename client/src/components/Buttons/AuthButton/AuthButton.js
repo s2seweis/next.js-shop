@@ -1,7 +1,7 @@
 // AuthButton.js
 import React from 'react';
 import { useAuth } from '../../../utils/context/AuthProviderMerged';
-import styles from '../../../styles/scss/components/AuthButton.module.scss';
+import styles from '../../../styles/scss/components/buttons/AuthButton.module.scss';
 
 const AuthButton = () => {
   const { isLoggedIn, login, logout } = useAuth();

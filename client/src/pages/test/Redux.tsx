@@ -1,6 +1,6 @@
 import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/components/Counter.module.scss';
-import IsAuthPublic from '@/src/utils/routes/isAuthPublic.jsx';
+import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic.tsx';
 
 import { Counter } from '../../components/Counter/Counter.js';
 

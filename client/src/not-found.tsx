@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { NextPage } from 'next';
-import IsAuthPublic from '@/src/utils/routes/isAuthPublic';
+import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 
 const NotFoundPage: NextPage = () => {
   return (

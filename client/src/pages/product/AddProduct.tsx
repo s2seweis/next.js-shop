@@ -1,9 +1,7 @@
 import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/product/Product.module.scss';
-import IsAuthPublic from '@/src/utils/routes/isAuthPublic.jsx';
-
-// import AddProductComponent from '../components/Redux/Products/AddProductComponent.js'
-import AddProductComponent from '../../components/Products/AddProductComponent.js'
+import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic.tsx';
+import AddProductComponent from '../../components/Products/AddProductComponent.js';
 
 const AddProduct = () => {
   return (

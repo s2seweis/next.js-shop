@@ -1,17 +1,15 @@
 // Home.jsx
 import React from 'react';
 import Nav from '@/src/components/Nav/Nav';
-import styles from '@/src/styles/scss/pages/Home.module.scss';
+import styles from '@/src/styles/scss/pages/home/Home.module.scss';
 import Link from 'next/link';
-import { useSession } from 'next-auth/react';
 import AuthButton from '../components/Buttons/AuthButton/AuthButton.js';
-import IsAuthPublic from '@/src/utils/routes/isAuthPublic.tsx';
+import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 
 const Home = () => {
-  const { data: session } = useSession();
 
   return (
-    <div className="homeContainer">
+    <div className={styles.homeContainer}>
       <div className={styles.homeContainerAlign}>
         <Nav />
         <div className={styles.mainContainer}>

@@ -1,7 +1,7 @@
 import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/product/Product.module.scss';
-import IsAuthPublic from '@/src/utils/routes/isAuthPublic';
-// import ProductComponent from '../../components/Redux/Products/ProductComponent.js'
+import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
+import UpdateProductComponent from '../../components/Products/UpdateProductComponent.js'
 
 const UpdateProducts = () => {
   return (
@@ -10,17 +10,15 @@ const UpdateProducts = () => {
       <div className={styles.adminContainer}>
         <main
           style={{
-            height: '100vh',
+            // height: '100vh',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}
           className={styles.adminContainerAlign}
         >
-          <div>
-            <h3>UpdateProducts:</h3>
-           
-            {/* <ProductComponent /> */}
+          <div>          
+            <UpdateProductComponent />
           </div>
         </main>
       </div>

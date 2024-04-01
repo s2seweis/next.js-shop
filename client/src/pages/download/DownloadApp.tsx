@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import DownloadButton from '../../components/Buttons/DownloadButton/BownloadButton';
-import styles from '../../styles/scss/pages/DownloadPage.module.scss';
-import IsAuthPublic from '@/src/utils/routes/isAuthPublic';
+import styles from '../../styles/scss/pages/download/DownloadPage.module.scss';
+import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 
 const DownloadPage: React.FC = () => {
   return (

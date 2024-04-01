@@ -1,8 +1,8 @@
 // pages/GithubProfile.js
 
 import { useEffect, useState } from 'react';
-import styles from '../../styles/scss/pages/Github.module.scss';
-import IsAuthPublic from '@/src/utils/routes/isAuthPublic';
+import styles from '../../styles/scss/pages/test/Github.module.scss';
+import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 
 const GithubProfile = () => {
   const userId = '58604870'; // Your GitHub user ID
@@ -44,7 +44,7 @@ const GithubProfile = () => {
           <p>Public Repos: {userData.public_repos}</p>
         </div>
       ) : (
-        <p>Loading...</p>
+        <p>Loading...3</p>
       )}
     </div>
   );
