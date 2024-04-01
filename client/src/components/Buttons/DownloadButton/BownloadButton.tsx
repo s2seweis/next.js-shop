@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from '../../../styles/scss/components/DownloadButton.module.scss';
+import styles from '../../../styles/scss/components/buttons/DownloadButton.module.scss';
 
 const DownloadButton: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);

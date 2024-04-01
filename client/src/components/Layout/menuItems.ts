@@ -5,25 +5,34 @@ export const menuItems = [
     title: 'Home',
     path: '/',
     submenus: [
-      { title: 'Contact', path: '/contact/page' },
-      { title: 'Home', path: '/' },
+      { title: 'Contact', path: '/contact/ContactForm' },
+      { title: 'SignIn', path: '/auth/SignIn' },
+      { title: 'Register', path: '/auth/Register' },
     ],
   },
   {
-    title: 'Posts',
+    title: 'Admin',
     path: '/posts',
-    submenus: [{ title: 'Home', path: '/' }],
+    submenus: [
+      { title: 'Dashboard', path: '/admin/AdminDashboard' },
+      // { title: 'SignIn', path: '/auth/SignIn' },
+      // { title: 'Register', path: '/auth/Register' },
+    ],
   },
   {
-    title: 'Dashboard',
+    title: 'Profile',
     path: '/dashboard',
     submenus: [
-      { title: 'Home', path: '/' },
-      { title: '404 Page', path: '/404' },
+      { title: 'User Profile', path: '/profile/UserProfile' },
+      { title: 'Orders', path: '/profile/server' },
     ],
   },
-  // {
-  //   title: 'Login',
-  //   path: '/login',
-  // },
+  {
+    title: 'Download',
+    path: '/download',
+    submenus: [
+      { title: 'Download APP', path: '/download/DownloadApp' },
+    ],
+  },
+
 ];
