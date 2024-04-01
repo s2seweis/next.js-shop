@@ -49,7 +49,7 @@ class AuthRepo {
   async loginUser({ email, password }) {
     try {
       const user = await this.getUserByEmail(email);
-      console.log("line3", user.userId);
+      console.log("line:3", user.userId);
 
       if (!user) {
         throw new Error('Invalid email or password');
@@ -67,12 +67,14 @@ class AuthRepo {
       }
 
       const passwordMatch = await bcrypt.compare(password, authResult.rows[0].password_hash);
+      console.log("line:5", passwordMatch);
 
       if (!passwordMatch) {
         throw new Error('Invalid email or password');
       }
 
       const token = jwt.sign({ user_id: user.userId, email: user.email, auth: "true" }, '12345678', { expiresIn: '1h' });
+      console.log("line:6", token);
 
       return { message: 'Login successful', token };
     } catch (error) {

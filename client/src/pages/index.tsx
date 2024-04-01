@@ -1,12 +1,37 @@
 // Home.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/home/Home.module.scss';
 import Link from 'next/link';
 import AuthButton from '../components/Buttons/AuthButton/AuthButton.js';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
+import { jwtDecode } from "jwt-decode";
+import { useSession } from 'next-auth/react';
+
 
 const Home = () => {
+
+  const { data: session, status } = useSession(); // Retrieve session information
+  const [decodedToken, setDecodedToken] = useState(null);
+  console.log("line:300", session?.user.jwt);
+  console.log("line:999", decodedToken);
+  
+
+  useEffect(() => {
+    if (session?.user.jwt) {
+      const token = session?.user.jwt;
+      console.log("line:402", token); // Log token for debugging
+      try {
+        const decoded = jwtDecode(token);
+        console.log("line:403", decoded); // Log decoded token for debugging
+        setDecodedToken(decoded);
+      } catch (error) {
+        console.error('Error decoding token:', error);
+        setDecodedToken(null);
+      }
+    }
+  }, [session]);
+
 
   return (
     <div className={styles.homeContainer}>

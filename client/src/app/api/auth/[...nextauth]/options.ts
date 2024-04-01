@@ -2,6 +2,8 @@ import type { NextAuthOptions } from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import fetch from 'node-fetch';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 // Define array of users
 const users = [
@@ -19,13 +21,41 @@ export const options: NextAuthOptions = {
     }),
 
     // Credentials provider
+    // CredentialsProvider({
+    //   name: 'Credentials',
+    //   credentials: {
+    //     username: {
+    //       label: 'Username:',
+    //       type: 'text',
+    //       placeholder: 'your-cool-username',
+    //     },
+    //     password: {
+    //       label: 'Password:',
+    //       type: 'password',
+    //       placeholder: 'your-awesome-password',
+    //     },
+    //   },
+    //   async authorize(credentials) {
+    //     const { username, password } = credentials;
+    //     // Find the user in the array based on the provided credentials
+    //     const user = users.find(
+    //       (user) => user.name === username && user.password === password,
+    //     );
+    //     if (user) {
+    //       // Return the user object with the role included
+    //       return { ...user, role: user.role };
+    //     } else {
+    //       return null; // Return null if user not found
+    //     }
+    //   },
+    // }),
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        username: {
-          label: 'Username:',
+        email: {
+          label: 'Email:',
           type: 'text',
-          placeholder: 'your-cool-username',
+          placeholder: 'your-cool-email',
         },
         password: {
           label: 'Password:',
@@ -34,36 +64,45 @@ export const options: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        const { username, password } = credentials;
+        const { email, password } = credentials;
+        console.log("line:1", email);
+        
         // Find the user in the array based on the provided credentials
-        const user = users.find(
-          (user) => user.name === username && user.password === password,
-        );
-        if (user) {
-          // Return the user object with the role included
-          return { ...user, role: user.role };
-        } else {
-          return null; // Return null if user not found
+      
+        try {
+          // Make Axios request to login route
+          const response = await axios.post('http://localhost:3005/login', { email, password });
+          console.log("line:500", response);
+          
+          
+          // Check if the response is successful
+          if (response.data) {
+            const { user_id } = response.data;
+            return { ...response.data, role: 'admin', user: response.data, jwt: response.data.token, email: email };
+          } else {
+            return null; // Return null if user not found
+          }
+        } catch (error) {
+          console.error('Error logging in:', error);
+          return null; // Return null if an error occurs
         }
-      },
-    }),
+      }
+    })
   ],
 
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.role = user.role; // Add role to JWT token
-        token.userId = extractUserIdFromImageUrl(user.image); // Extract user ID from image URL and add to token
+        token.jwt = user.jwt;
+        token.email = user.email;
+        token.id = user.id;
       }
       return token;
     },
 
     async session({ session, token }) {
-      session.user.role = token.role; // Add role to session object
-      if (token.userId) {
-        const userData = await fetchUserData(token.userId); // Fetch user data
-        session.user.userData = userData; // Append fetched user data to session object
-      }
+      session.user.jwt = token.jwt; // Add username to session object     
+      session.user.email = token.email; // Add email to session object     
       return session;
     },
   },

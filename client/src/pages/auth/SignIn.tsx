@@ -15,14 +15,17 @@ const SignIn = () => {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const username = userNameRef.current?.value || '';
+    const email = userNameRef.current?.value || '';
     const password = passRef.current?.value || '';
 
     const result = await signIn('credentials', {
-      username,
+      email,
       password,
       redirect: false, // Set redirect to false to handle errors manually
     });
+
+  console.log("line:200", result);
+  
 
     // Check if signIn function returns an error
     if (result.error) {
@@ -30,7 +33,7 @@ const SignIn = () => {
     } else {
       // Clear error message if sign-in successful
       setErrorMessage('');
-      router.push('/'); // Redirect to the home route
+      // router.push('/'); 
     }
   };
 
@@ -47,10 +50,10 @@ const SignIn = () => {
         <h3 className={styles.loginFormTitle}>Login</h3>
         <form className={styles.SignInForm} onSubmit={onSubmit}>
           <div className={styles.formField}>
-            <label htmlFor="username">User Name</label>
+            <label htmlFor="email">E-Mail</label>
             <input
               type="text"
-              id="username"
+              id="email"
               ref={userNameRef}
               className={styles.inputField}
             />
