@@ -42,6 +42,7 @@ router.post('/login', upload.none(), async (req, res) => {
   
       // Login the user
       const loginResult = await AuthRepo.loginUser({ email, password });
+      console.log("555", loginResult);
   
       // Return the token on successful login
       return res.json(loginResult);

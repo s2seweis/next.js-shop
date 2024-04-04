@@ -13,7 +13,7 @@ import { useSession } from 'next-auth/react';
 
 const DropdownMenu: React.FC = () => {
   const { data: session, status } = useSession();
-  console.log("line:1", session);
+  // console.log("line:1", session);
   
   const [isOpen, setIsOpen] = useState(false);
 

@@ -12,25 +12,27 @@ import { useSession } from 'next-auth/react';
 const Home = () => {
 
   const { data: session, status } = useSession(); // Retrieve session information
+  console.log("line:1", session);
+  
   const [decodedToken, setDecodedToken] = useState(null);
-  console.log("line:300", session?.user.jwt);
-  console.log("line:999", decodedToken);
+  // console.log("line:2", session?.user.jwt);
+  // console.log("line:3", decodedToken);
   
 
-  useEffect(() => {
-    if (session?.user.jwt) {
-      const token = session?.user.jwt;
-      console.log("line:402", token); // Log token for debugging
-      try {
-        const decoded = jwtDecode(token);
-        console.log("line:403", decoded); // Log decoded token for debugging
-        setDecodedToken(decoded);
-      } catch (error) {
-        console.error('Error decoding token:', error);
-        setDecodedToken(null);
-      }
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   if (session?.user.jwt) {
+  //     const token = session?.user.jwt;
+  //     console.log("line:4", token); // Log token for debugging
+  //     try {
+  //       const decoded = jwtDecode(token);
+  //       console.log("line:5", decoded); // Log decoded token for debugging
+  //       setDecodedToken(decoded);
+  //     } catch (error) {
+  //       console.error('Error decoding token:', error);
+  //       setDecodedToken(null);
+  //     }
+  //   }
+  // }, [session]);
 
 
   return (

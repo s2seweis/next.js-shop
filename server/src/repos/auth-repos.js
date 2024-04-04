@@ -75,8 +75,10 @@ class AuthRepo {
 
       const token = jwt.sign({ user_id: user.userId, email: user.email, auth: "true" }, '12345678', { expiresIn: '1h' });
       console.log("line:6", token);
+      const userid= user.userId;
+      // const userid='123456';
 
-      return { message: 'Login successful', token };
+      return { message: 'Login successful', token, userid };
     } catch (error) {
       console.error('Error logging in user:', error);
       throw error;
