@@ -6,7 +6,7 @@ import styles from '../../styles/scss/components/products/Products.module.scss';
 const ProductComponent = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
-  console.log("line:1", products);
+  console.log("line:100", products);
   const status = useSelector((state) => state.products.status);
   const error = useSelector((state) => state.products.error);
 

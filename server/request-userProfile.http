@@ -2,7 +2,7 @@
 
 ### Get UserProfile by ID
 
-http://localhost:3005/userprofile/3
+http://localhost:3005/userprofile/32
 
 ### - Get all Assets
 

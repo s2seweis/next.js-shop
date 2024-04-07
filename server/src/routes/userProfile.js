@@ -22,7 +22,9 @@ router.get('/userprofile', async (req, res) => {
 router.get('/userprofile/:id', async (req, res) => {
   try {
     const { id } = req.params;
+    console.log("line:100", id);
     const userProfile = await UsersProfileRepo.findById(id);
+    console.log("line:200", userProfile);
 
     if (userProfile) {
       res.send(userProfile);

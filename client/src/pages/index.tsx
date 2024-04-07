@@ -5,36 +5,15 @@ import styles from '@/src/styles/scss/pages/home/Home.module.scss';
 import Link from 'next/link';
 import AuthButton from '../components/Buttons/AuthButton/AuthButton.js';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
-import { jwtDecode } from "jwt-decode";
 import { useSession } from 'next-auth/react';
-
 
 const Home = () => {
 
   const { data: session, status } = useSession(); // Retrieve session information
   console.log("line:1", session);
-  
-  const [decodedToken, setDecodedToken] = useState(null);
-  // console.log("line:2", session?.user.jwt);
-  // console.log("line:3", decodedToken);
-  
+  console.log("line:2", session?.user.id);
 
-  // useEffect(() => {
-  //   if (session?.user.jwt) {
-  //     const token = session?.user.jwt;
-  //     console.log("line:4", token); // Log token for debugging
-  //     try {
-  //       const decoded = jwtDecode(token);
-  //       console.log("line:5", decoded); // Log decoded token for debugging
-  //       setDecodedToken(decoded);
-  //     } catch (error) {
-  //       console.error('Error decoding token:', error);
-  //       setDecodedToken(null);
-  //     }
-  //   }
-  // }, [session]);
-
-
+    
   return (
     <div className={styles.homeContainer}>
       <div className={styles.homeContainerAlign}>
@@ -74,6 +53,7 @@ const Home = () => {
                   Profile (Auth Provider) with SignInButton
                 </Link>
               </h4>
+              <AuthButton />
               <h4>
                 Redux Test
                 <Link href="test/Redux">Redux</Link>
@@ -86,8 +66,10 @@ const Home = () => {
                 <Link href="/product/UpdateProducts">
                   Update Products - Redux/ API Call
                 </Link>
+                <Link href="/profile/Profile">
+                  Profile Page & Profile Component
+                </Link>
               </h4>
-              <AuthButton />
             </div>
           </main>
         </div>
