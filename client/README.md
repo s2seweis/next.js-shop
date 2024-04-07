@@ -19,7 +19,7 @@ You can check [demo](https://next-typescript-pwa-starter.vercel.app/)
 
 - [Eslint 8](https://eslint.org/docs/user-guide/getting-started): Documentation for ESLint, a tool for identifying and reporting on patterns found in JavaScript code.
 - [Prettier 3](https://prettier.io/docs/en/index.html): Documentation for Prettier, an opinionated code formatter to ensure consistent code formatting.
-- [Husky 8](https://typicode.github.io/husky/#/): Documentation for Husky, a tool for Git hooks, used here for running ESLint before commits.
+- [Husky 8](https://typicode.github.io/husky/#/): Documentation for Husky, a tool for Git hooks, used here for running ESLint before commits. (Currently removed, need to add new)
 - [Lint Staged 14](https://github.com/okonet/lint-staged): Documentation for lint-staged, a tool for running linters on staged files.
 
 #### Design Examples
