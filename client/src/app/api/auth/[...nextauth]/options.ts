@@ -65,22 +65,30 @@ export const options: NextAuthOptions = {
       },
       async authorize(credentials) {
         const { email, password } = credentials;
-        console.log("line:1", email);
-        
+        console.log('line:1', email);
+
         // Find the user in the array based on the provided credentials
-      
+
         try {
           // Make Axios request to login route
-          const response = await axios.post('http://localhost:3005/login', { email, password });
-          console.log("line:500", response);
-          console.log("line:600", response.data.userid);
-          console.log("line:700", response.data.role);
-          
-          
+          const response = await axios.post('http://localhost:3005/login', {
+            email,
+            password,
+          });
+          console.log('line:500', response);
+          console.log('line:600', response.data.userid);
+          console.log('line:700', response.data.role);
+
           // Check if the response is successful
           if (response.data) {
             const { user_id } = response.data;
-            return { ...response.data, jwt: response.data.token, email: email, id: response.data.userid, role: response.data.role };
+            return {
+              ...response.data,
+              jwt: response.data.token,
+              email: email,
+              id: response.data.userid,
+              role: response.data.role,
+            };
           } else {
             return null; // Return null if user not found
           }
@@ -88,8 +96,8 @@ export const options: NextAuthOptions = {
           console.error('Error logging in:', error);
           return null; // Return null if an error occurs
         }
-      }
-    })
+      },
+    }),
   ],
 
   callbacks: {
@@ -104,11 +112,11 @@ export const options: NextAuthOptions = {
     },
 
     async session({ session, token }) {
-      session.user.jwt = token.jwt; // Add username to session object     
-      session.user.email = token.email; // Add email to session object  
+      session.user.jwt = token.jwt; // Add username to session object
+      session.user.email = token.email; // Add email to session object
       session.user.id = token.id;
       session.user.role = token.role;
-   
+
       return session;
     },
   },

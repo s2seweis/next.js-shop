@@ -11,10 +11,10 @@ import styles from '../../styles/scss/components/Counter.module.scss';
 
 export function Counter() {
   const count = useSelector(selectCount);
-  console.log("line:100", count);
+  console.log('line:100', count);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
-  console.log("line:200", incrementAmount);
+  console.log('line:200', incrementAmount);
 
   return (
     <div>

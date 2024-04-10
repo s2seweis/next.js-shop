@@ -7,24 +7,35 @@ const initialState = {
   error: null,
 };
 
-export const fetchUserProfile = createAsyncThunk('userProfile/fetchUserProfile', async (userId) => {
-  try {
-    const response = await axios.get(`http://localhost:3005/userprofile/${userId}`);
-    console.log("line:500", response);
-    return response.data;
-  } catch (error) {
-    throw new Error('Failed to fetch user profile');
-  }
-});
+export const fetchUserProfile = createAsyncThunk(
+  'userProfile/fetchUserProfile',
+  async (userId) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3005/userprofile/${userId}`,
+      );
+      console.log('line:500', response);
+      return response.data;
+    } catch (error) {
+      throw new Error('Failed to fetch user profile');
+    }
+  },
+);
 
-export const updateUserProfile = createAsyncThunk('userProfile/updateUserProfile', async ({ userId, updatedData }) => {
-  try {
-    const response = await axios.put(`http://localhost:3005/userprofile/${userId}`, updatedData);
-    return response.data;
-  } catch (error) {
-    throw new Error('Failed to update user profile');
-  }
-});
+export const updateUserProfile = createAsyncThunk(
+  'userProfile/updateUserProfile',
+  async ({ userId, updatedData }) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:3005/userprofile/${userId}`,
+        updatedData,
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error('Failed to update user profile');
+    }
+  },
+);
 
 const userProfileSlice = createSlice({
   name: 'userProfile',

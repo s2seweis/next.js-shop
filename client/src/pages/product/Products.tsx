@@ -1,7 +1,7 @@
 import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/product/Product.module.scss';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic.tsx';
-import ProductComponent from '../../components/Products/ProductComponent.js'
+import ProductComponent from '../../components/Products/ProductComponent.js';
 
 const Products = () => {
   return (
@@ -19,7 +19,7 @@ const Products = () => {
         >
           <div>
             <h3>Products Overview:</h3>
-           
+
             <ProductComponent />
           </div>
         </main>

@@ -8,10 +8,9 @@ import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 import { useSession } from 'next-auth/react';
 
 const Home = () => {
-
   const { data: session, status } = useSession(); // Retrieve session information
-  console.log("line:1", session);
-    
+  console.log('line:1', session);
+
   return (
     <div className={styles.homeContainer}>
       <div className={styles.homeContainerAlign}>

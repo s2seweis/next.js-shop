@@ -7,7 +7,6 @@ Welcome to the React/Next.js shop project! This project is built using React and
 - **Client**
 - **Server**
 
-
 ## Features
 
 - **Redux**: State management library for managing application state.

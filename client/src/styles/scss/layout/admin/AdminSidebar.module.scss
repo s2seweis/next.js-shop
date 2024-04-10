@@ -5,10 +5,7 @@
   top: 0;
   height: 100%;
   background-color: #333;
-  transition:
-    width 0s ease 0s,
-    left 0s ease 0s,
-    right 0s ease 0s,
+  transition: width 0s ease 0s, left 0s ease 0s, right 0s ease 0s,
     all 1000ms ease 0s;
   z-index: 500 !important;
   border: 0.5px solid lightgray;

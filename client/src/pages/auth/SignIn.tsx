@@ -30,7 +30,7 @@ const SignIn = () => {
     } else {
       // Clear error message if sign-in successful
       setErrorMessage('');
-      router.push('/'); 
+      router.push('/');
     }
   };
 

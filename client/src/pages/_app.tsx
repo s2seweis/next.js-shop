@@ -10,7 +10,6 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'; // Import PersistGate
 
 const App = ({ Component, pageProps }) => {
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,15 +24,16 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <Provider store={store}>
-      <PersistGate loading={<Loader />} persistor={persistor}> {/* Use PersistGate */}
+      <PersistGate loading={<Loader />} persistor={persistor}>
+        {' '}
+        {/* Use PersistGate */}
         <AuthProvider>
           <ProSidebarProvider>
             {loading ? (
               <Loader /> // Show the loader while loading
             ) : (
               <Router>
-                <Component 
-                />
+                <Component />
               </Router>
             )}
           </ProSidebarProvider>

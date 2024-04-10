@@ -30,9 +30,6 @@ export const menuItems = [
   {
     title: 'Download',
     path: '/download',
-    submenus: [
-      { title: 'Download APP', path: '/download/DownloadApp' },
-    ],
+    submenus: [{ title: 'Download APP', path: '/download/DownloadApp' }],
   },
-
 ];

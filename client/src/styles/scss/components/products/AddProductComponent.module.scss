@@ -1,45 +1,43 @@
+.productCard {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
 
-  
-  .productCard {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #ffffff;
-    border-radius: 5px;
-  }
-  
-  .productCard p {
-    margin: 0;
-  }
-  
-  .productName {
-    font-weight: bold;
-  }
-  
-  .productPrice {
-    color: green;
-  }
-  
-  .productCategory {
-    color: blue;
-  }
-  
-  .formGroup {
-    display: grid;
-  }
+.productCard p {
+  margin: 0;
+}
 
-  .postRequestContainer {
-    min-width: 300px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    margin-top: 80px;
-    margin-bottom: 40px;
-  }
+.productName {
+  font-weight: bold;
+}
 
-  .inputField {
+.productPrice {
+  color: green;
+}
+
+.productCategory {
+  color: blue;
+}
+
+.formGroup {
+  display: grid;
+}
+
+.postRequestContainer {
+  min-width: 300px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.inputField {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -59,4 +57,3 @@
   margin-top: 20px;
   right: 0;
 }
-  

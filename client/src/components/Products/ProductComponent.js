@@ -6,7 +6,7 @@ import styles from '../../styles/scss/components/products/Products.module.scss';
 const ProductComponent = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
-  console.log("line:100", products);
+  console.log('line:100', products);
   const status = useSelector((state) => state.products.status);
   const error = useSelector((state) => state.products.error);
 
@@ -40,11 +40,18 @@ const ProductComponent = () => {
           <div key={product.productid} className={styles.productCard}>
             <div className={styles.productInfo}>
               <p className={styles.productName}>{product.productname}</p>
-              <p className={styles.productCategory}>Category: {product.category}</p>
+              <p className={styles.productCategory}>
+                Category: {product.category}
+              </p>
               <p className={styles.productPrice}>Price: ${product.price}</p>
             </div>
             <div className={styles.productActions}>
-              <button onClick={() => handleDeleteProduct(product.productid)} className={styles.deleteButton}>Delete</button>
+              <button
+                onClick={() => handleDeleteProduct(product.productid)}
+                className={styles.deleteButton}
+              >
+                Delete
+              </button>
             </div>
           </div>
         ))}

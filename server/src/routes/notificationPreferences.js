@@ -1,23 +1,23 @@
-const express = require('express');
-const NotificationPreferencesRepo = require('../repos/notificationPreferences-repos');
+const express = require("express");
+const NotificationPreferencesRepo = require("../repos/notificationPreferences-repos");
 
 const router = express.Router();
 
 // Get all NotificationPreferences - works
-router.get('/notification-preference', async (req, res) => {
+router.get("/notification-preference", async (req, res) => {
   try {
     const accountStatus = await NotificationPreferencesRepo.find();
     console.log("line:500", accountStatus);
 
     res.send(accountStatus);
   } catch (error) {
-    console.error('Error getting accountStatus:', error.message);
-    res.status(500).send({ error: 'Internal Server Error' });
+    console.error("Error getting accountStatus:", error.message);
+    res.status(500).send({ error: "Internal Server Error" });
   }
 });
 
 // Get NotificationPreferences by ID -works
-router.get('/notification-preference/:id', async (req, res) => {
+router.get("/notification-preference/:id", async (req, res) => {
   try {
     const { id } = req.params;
     console.log("line:1", id);
@@ -29,13 +29,13 @@ router.get('/notification-preference/:id', async (req, res) => {
       res.sendStatus(404);
     }
   } catch (error) {
-    console.error('Error getting accountStatus by ID:', error.message);
-    res.status(500).send({ error: 'Internal Server Error' });
+    console.error("Error getting accountStatus by ID:", error.message);
+    res.status(500).send({ error: "Internal Server Error" });
   }
 });
 
-// Add NotificationPreferences 
-router.post('/notification-preference', async (req, res) => {
+// Add NotificationPreferences
+router.post("/notification-preference", async (req, res) => {
   try {
     const {
       user_id,
@@ -56,14 +56,14 @@ router.post('/notification-preference', async (req, res) => {
       email_notifications,
       push_notifications,
       sms_notifications,
-      in_app_notifications,
+      in_app_notifications
     );
 
     // Handle the response based on the result of the insertion
     res.status(201).json({ success: true, data: userPreferences });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, error: 'Internal Server Error' });
+    res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 });
 
@@ -108,7 +108,7 @@ router.post('/notification-preference', async (req, res) => {
 //   }
 // });
 
-router.put('/notification-preference/:id', async (req, res) => {
+router.put("/notification-preference/:id", async (req, res) => {
   try {
     const { id } = req.params;
     console.log("line:0", id);
@@ -143,13 +143,13 @@ router.put('/notification-preference/:id', async (req, res) => {
       res.sendStatus(404);
     }
   } catch (error) {
-    console.error('Error updating NotificationPreferences:', error.message);
-    res.status(500).send({ error: 'Internal Server Error' });
+    console.error("Error updating NotificationPreferences:", error.message);
+    res.status(500).send({ error: "Internal Server Error" });
   }
 });
 
 // Delete NotificationPreferences
-router.delete('/notification-preference/:id', async (req, res) => {
+router.delete("/notification-preference/:id", async (req, res) => {
   try {
     const { id } = req.params;
     console.log("line:1", id);
@@ -162,8 +162,8 @@ router.delete('/notification-preference/:id', async (req, res) => {
       res.sendStatus(404);
     }
   } catch (error) {
-    console.error('Error deleting accountStatus:', error.message);
-    res.status(500).send({ error: 'Internal Server Error' });
+    console.error("Error deleting accountStatus:", error.message);
+    res.status(500).send({ error: "Internal Server Error" });
   }
 });
 

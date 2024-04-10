@@ -16,7 +16,8 @@ const ProfileComponent = ({ userId }) => {
     }
   }, [dispatch, status, userId]); // Dispatch only when status or userId changes
 
-  if (status === 'loading' || !userProfile) { // Render Loader while loading or userProfile is empty
+  if (status === 'loading' || !userProfile) {
+    // Render Loader while loading or userProfile is empty
     return <Loader />;
   }
 
@@ -28,9 +29,15 @@ const ProfileComponent = ({ userId }) => {
     <div className={styles.profileContainer}>
       <h1>User Profile</h1>
       <div className={styles.profileInfo}>
-        <p><strong>Id:</strong> {userProfile.userId}</p>
-        <p><strong>Email:</strong> {userProfile.bio}</p>
-        <p><strong>Address:</strong> {userProfile.location}</p>
+        <p>
+          <strong>Id:</strong> {userProfile.userId}
+        </p>
+        <p>
+          <strong>Email:</strong> {userProfile.bio}
+        </p>
+        <p>
+          <strong>Address:</strong> {userProfile.location}
+        </p>
       </div>
     </div>
   );

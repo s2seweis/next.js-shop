@@ -17,9 +17,7 @@ const Profile: React.FC = () => {
           <h3 style={{ textAlign: 'center' }}>
             Hello Profile (IsAuthPublic Version)
           </h3>
-          <ProfileComponent
-          userId={session?.user.id}
-          />
+          <ProfileComponent userId={session?.user.id} />
         </main>
       </div>
     </>

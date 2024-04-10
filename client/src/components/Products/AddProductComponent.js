@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
-import styles from '../../styles/scss/components/products/AddProductComponent.module.scss'
+import styles from '../../styles/scss/components/products/AddProductComponent.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts, addProduct } from '../../redux/slices/productSlice';
 
@@ -12,10 +12,9 @@ const categoryOptions = [
 ];
 
 const AddProductsComponent = () => {
-
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
-  console.log("line:1", products);
+  console.log('line:1', products);
   // const status = useSelector((state) => state.products.status);
   // const error = useSelector((state) => state.products.error);
 
@@ -36,7 +35,7 @@ const AddProductsComponent = () => {
     // Category: formData.Category,
     Category: formData.Category?.value,
   };
-  console.log("line:2", data);
+  console.log('line:2', data);
 
   const handleAddProduct = async (e, data) => {
     e.preventDefault(); // Prevent form submission
@@ -51,7 +50,8 @@ const AddProductsComponent = () => {
     const { name, value } = event.target;
 
     // Use a regular expression to allow any characters for ProductName
-    const newValue = name === 'ProductName' ? value : value.replace(/[^0-9.]/g, '');
+    const newValue =
+      name === 'ProductName' ? value : value.replace(/[^0-9.]/g, '');
 
     setFormData((prevFormData) => ({ ...prevFormData, [name]: newValue }));
   };
@@ -68,8 +68,9 @@ const AddProductsComponent = () => {
   return (
     <div className={styles.postRequestContainer}>
       <h2 className={styles.productsHeading}>Add AddProducts</h2>
-      <form className={styles.formPost} 
-      onSubmit={(e) => handleAddProduct(e, data)}
+      <form
+        className={styles.formPost}
+        onSubmit={(e) => handleAddProduct(e, data)}
       >
         <div className={styles.formGroup}>
           <label htmlFor="ProductName">Product Name:</label>
@@ -96,7 +97,6 @@ const AddProductsComponent = () => {
             pattern="^\d+(\.\d{1,2})?$"
             placeholder="Enter price"
             className={styles.inputField}
-
           />
         </div>
         <div className={styles.formGroup}>
@@ -111,10 +111,14 @@ const AddProductsComponent = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <button className={styles.submitButton} type="submit">Add Product</button>
+          <button className={styles.submitButton} type="submit">
+            Add Product
+          </button>
         </div>
       </form>
-      {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
+      {successMessage && (
+        <p className={styles.successMessage}>{successMessage}</p>
+      )}
       {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
 
       {isLoading ? (

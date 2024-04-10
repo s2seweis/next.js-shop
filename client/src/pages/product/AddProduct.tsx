@@ -19,7 +19,7 @@ const AddProduct = () => {
         >
           <div>
             <h3>Add Products:</h3>
-           
+
             <AddProductComponent />
           </div>
         </main>

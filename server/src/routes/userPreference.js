@@ -1,23 +1,23 @@
-const express = require('express');
-const UserPreferenceRepo = require('../repos/userPreferences-repos');
+const express = require("express");
+const UserPreferenceRepo = require("../repos/userPreferences-repos");
 
 const router = express.Router();
 
 // Get all UserPreferences - works
-router.get('/user-preference', async (req, res) => {
+router.get("/user-preference", async (req, res) => {
   try {
     const accountStatus = await UserPreferenceRepo.find();
     console.log("line:500", accountStatus);
 
     res.send(accountStatus);
   } catch (error) {
-    console.error('Error getting accountStatus:', error.message);
-    res.status(500).send({ error: 'Internal Server Error' });
+    console.error("Error getting accountStatus:", error.message);
+    res.status(500).send({ error: "Internal Server Error" });
   }
 });
 
 // Get UserPreferences by ID -works
-router.get('/user-preference/:id', async (req, res) => {
+router.get("/user-preference/:id", async (req, res) => {
   try {
     const { id } = req.params;
     console.log("line:1", id);
@@ -29,14 +29,14 @@ router.get('/user-preference/:id', async (req, res) => {
       res.sendStatus(404);
     }
   } catch (error) {
-    console.error('Error getting accountStatus by ID:', error.message);
-    res.status(500).send({ error: 'Internal Server Error' });
+    console.error("Error getting accountStatus by ID:", error.message);
+    res.status(500).send({ error: "Internal Server Error" });
   }
 });
 
 // ### here at the moment
 // Add UserPreferences
-router.post('/user-preference', async (req, res) => {
+router.post("/user-preference", async (req, res) => {
   try {
     const {
       user_id,
@@ -57,14 +57,14 @@ router.post('/user-preference', async (req, res) => {
       theme,
       language,
       receive_email_notifications,
-      show_online_status,
+      show_online_status
     );
 
     // Handle the response based on the result of the insertion
     res.status(201).json({ success: true, data: userPreferences });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, error: 'Internal Server Error' });
+    res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 });
 
@@ -88,7 +88,6 @@ router.post('/user-preference', async (req, res) => {
 //     console.log("line:4", is_deactivated);
 //     console.log("line:5", last_login);
 
-
 //     // Use the UserPreferenceRepo.update method to update the record
 //     const updatedProfile = await UserPreferenceRepo.update(user_id, is_active, is_suspended, is_deactivated, last_login /* Add other parameter values here */);
 //     console.log("line:11", updatedProfile);
@@ -105,7 +104,7 @@ router.post('/user-preference', async (req, res) => {
 // });
 
 // Update UserPreferences
-router.put('/user-preference/:id', async (req, res) => {
+router.put("/user-preference/:id", async (req, res) => {
   try {
     const { id } = req.params;
     console.log("line:0", id);
@@ -140,13 +139,13 @@ router.put('/user-preference/:id', async (req, res) => {
       res.sendStatus(404);
     }
   } catch (error) {
-    console.error('Error updating UserPreferences:', error.message);
-    res.status(500).send({ error: 'Internal Server Error' });
+    console.error("Error updating UserPreferences:", error.message);
+    res.status(500).send({ error: "Internal Server Error" });
   }
 });
 
 // Delete UserPreferences
-router.delete('/user-preference/:id', async (req, res) => {
+router.delete("/user-preference/:id", async (req, res) => {
   try {
     const { id } = req.params;
     console.log("line:1", id);
@@ -159,8 +158,8 @@ router.delete('/user-preference/:id', async (req, res) => {
       res.sendStatus(404);
     }
   } catch (error) {
-    console.error('Error deleting accountStatus:', error.message);
-    res.status(500).send({ error: 'Internal Server Error' });
+    console.error("Error deleting accountStatus:", error.message);
+    res.status(500).send({ error: "Internal Server Error" });
   }
 });
 

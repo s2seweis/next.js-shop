@@ -37,55 +37,53 @@ const Contact: React.FC = () => {
 
   return (
     <div>
-      
-        <div
-          className="main"
-          style={{
-            height: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <div className={styles.card}>
-            <h3 style={{ marginTop: '100px', textAlign: '' }}>Contact</h3>
-            <form className={styles.contactForm} onSubmit={handleSubmit}>
-              <label className={styles.formLabel}>
-                Name:
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={styles.inputField}
-                />
-              </label>
-              <label className={styles.formLabel}>
-                Email:
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={styles.inputField}
-                />
-              </label>
-              <label className={styles.formLabel}>
-                Message:
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  className={styles.textareaField}
-                />
-              </label>
-              <button type="submit" className={styles.submitButton}>
-                Submit
-              </button>
-            </form>
-          </div>
+      <div
+        className="main"
+        style={{
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <div className={styles.card}>
+          <h3 style={{ marginTop: '100px', textAlign: '' }}>Contact</h3>
+          <form className={styles.contactForm} onSubmit={handleSubmit}>
+            <label className={styles.formLabel}>
+              Name:
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className={styles.inputField}
+              />
+            </label>
+            <label className={styles.formLabel}>
+              Email:
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={styles.inputField}
+              />
+            </label>
+            <label className={styles.formLabel}>
+              Message:
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                className={styles.textareaField}
+              />
+            </label>
+            <button type="submit" className={styles.submitButton}>
+              Submit
+            </button>
+          </form>
         </div>
-      
+      </div>
     </div>
   );
 };

@@ -1,10 +1,9 @@
-const bcrypt = require('bcrypt');
-const pool = require('../pool/pool'); // Import the shared pool
-const toCamelCase = require('./utils/to-camel-case');
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcrypt");
+const pool = require("../pool/pool"); // Import the shared pool
+const toCamelCase = require("./utils/to-camel-case");
+const jwt = require("jsonwebtoken");
 
 class AuthRepo {
-
   // works
   async getUserByEmail(email) {
     const { rows } = await pool.query(
@@ -17,7 +16,13 @@ class AuthRepo {
     return toCamelCase(rows)[0] || null;
   }
   //  works
-  async registerUser({ username, email, full_name, profile_picture_url, password }) {
+  async registerUser({
+    username,
+    email,
+    full_name,
+    profile_picture_url,
+    password,
+  }) {
     try {
       const passwordHash = await bcrypt.hash(password, 10);
 
@@ -27,7 +32,12 @@ class AuthRepo {
         RETURNING *;
       `;
 
-      const userResult = await pool.query(userInsertQuery, [username, email, full_name, profile_picture_url]);
+      const userResult = await pool.query(userInsertQuery, [
+        username,
+        email,
+        full_name,
+        profile_picture_url,
+      ]);
 
       const authInsertQuery = `
         INSERT INTO "authentication" (user_id, password_hash)
@@ -35,12 +45,15 @@ class AuthRepo {
         RETURNING *;
       `;
 
-      const authResult = await pool.query(authInsertQuery, [userResult.rows[0].user_id, passwordHash]);
+      const authResult = await pool.query(authInsertQuery, [
+        userResult.rows[0].user_id,
+        passwordHash,
+      ]);
 
       return toCamelCase(userResult.rows)[0];
     } catch (error) {
       // Handle errors here
-      console.error('Error registering user:', error);
+      console.error("Error registering user:", error);
       throw error; // Rethrow the error for the calling code to handle
     }
   }
@@ -52,7 +65,7 @@ class AuthRepo {
       console.log("line:3", user.userId);
 
       if (!user) {
-        throw new Error('Invalid email or password');
+        throw new Error("Invalid email or password");
       }
 
       const authQuery = `
@@ -63,32 +76,42 @@ class AuthRepo {
       const authResult = await pool.query(authQuery, [user.userId]);
 
       if (authResult.rows.length === 0) {
-        throw new Error('Invalid email or password');
+        throw new Error("Invalid email or password");
       }
 
-      const passwordMatch = await bcrypt.compare(password, authResult.rows[0].password_hash);
+      const passwordMatch = await bcrypt.compare(
+        password,
+        authResult.rows[0].password_hash
+      );
       console.log("line:5", passwordMatch);
 
       if (!passwordMatch) {
-        throw new Error('Invalid email or password');
+        throw new Error("Invalid email or password");
       }
 
-      const token = jwt.sign({ user_id: user.userId, email: user.email, auth: "true" }, '12345678', { expiresIn: '1h' });
+      const token = jwt.sign(
+        { user_id: user.userId, email: user.email, auth: "true" },
+        "12345678",
+        { expiresIn: "1h" }
+      );
       console.log("line:6", token);
-      const userid= user.userId;
-      const role= user.role
+      const userid = user.userId;
+      const role = user.role;
       // const userid='123456';
 
-      return { message: 'Login successful', token, userid, role };
+      return { message: "Login successful", token, userid, role };
     } catch (error) {
-      console.error('Error logging in user:', error);
+      console.error("Error logging in user:", error);
       throw error;
     }
   }
 
-    // ### Delete
+  // ### Delete
   async delete(user_id) {
-    const { rows } = await pool.query('DELETE FROM authentication WHERE user_id = $1 RETURNING *;', [user_id]);
+    const { rows } = await pool.query(
+      "DELETE FROM authentication WHERE user_id = $1 RETURNING *;",
+      [user_id]
+    );
     return toCamelCase(rows)[0];
   }
 
@@ -119,7 +142,6 @@ class AuthRepo {
   // }
 
   // ### - Test End
-
 }
 
 module.exports = new AuthRepo();
