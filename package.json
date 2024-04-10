@@ -1,24 +1,25 @@
 {
-    "name": "your-project",
-    "version": "1.0.0",
-    "description": "Your project description",
-    "main": "index.js",
-    "scripts": {
-      "start": "node index.js",
-      "lint": "eslint .",
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "prepare": "husky install"
-    },
-    "author": "Your Name",
-    "license": "MIT",
-    "devDependencies": {
-      "eslint": "^8.0.0",
-      "husky": "^8.0.3"
-    },
-    "husky": {
-      "hooks": {
-        "pre-commit": "npm run lint"
-      }
+  "name": "your-project",
+  "version": "1.0.0",
+  "description": "Your project description",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "format": "prettier --write ."
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "husky": "^8.0.3",
+    "prettier": "^2.5.1" 
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run format" 
     }
   }
-  
+}

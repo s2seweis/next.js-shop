@@ -10,6 +10,8 @@ import { useSession } from 'next-auth/react';
 
 const IsAuthAdmin = (WrappedComponent) => (props) => {
   const { data: session } = useSession();
+  console.log("line:100", session);
+  
 
   const key = session?.user?.role;
 

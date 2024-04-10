@@ -2,7 +2,7 @@
 
 ### Get User by ID - works
 
-http://localhost:3005/users/2
+http://localhost:3005/users/1
 
 ### - Get all Users - works
 
@@ -28,19 +28,21 @@ content-type: application/json
 
 ### Update User - works
 
-PUT http://localhost:3005/users/3 HTTP/1.1 
+PUT http://localhost:3005/users/1 HTTP/1.1 
 content-type: application/json
 
 {
-    "username": "ywain3333",
-    "email": "weissenborn.ywain@gmail.com",
-    "full_name": "Ywain Weissenborn",
-    "profile_picture_url": "https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png"
+    "username": "s2seweis1",
+    "email": "weissenborn.sebastian@gmail.com",
+    "full_name": "Sebastian Weissenborn",
+    "profile_picture_url": "https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png",
+    "role": "admin"
+    
 }
 
 ### Delete User - works
 
-DELETE http://localhost:3005/users/31 HTTP/1.1 
+DELETE http://localhost:3005/users/3 HTTP/1.1 
 content-type: application/json
 
 

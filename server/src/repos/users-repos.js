@@ -38,26 +38,27 @@ class UserRepo {
 
   // ### works
 
-  static async update (user_id, username, email, full_name, profile_picture_url) {
-    const {
-      rows,
-    } = await pool.query (
-      'UPDATE Users SET username = $1, email = $2, full_name = $3, profile_picture_url = $4 WHERE user_id = $5 RETURNING *;',
-      [username, email, full_name, profile_picture_url, user_id]
-    );
+  // static async update (username, email, full_name, profile_picture_url, user_id) {
+  //   const {
+  //     rows,
+  //   } = await pool.query (
+  //     'UPDATE Users SET username = $1, email = $2, full_name = $3, profile_picture_url = $4 WHERE user_id = $5 RETURNING *;',
+  //     [username, email, full_name, profile_picture_url, user_id]
+  //   );
 
-    return toCamelCase (rows)[0];
-  }
-
-  // ### works
-
-  // static async delete (user_id) {
-  //   const {rows} = await pool.query ('DELETE FROM Users WHERE user_id = $1 RETURNING *;', [user_id]);
   //   return toCamelCase (rows)[0];
   // }
 
+  static async update(user_id, username, email, full_name, profile_picture_url, role) {
+    const {
+        rows,
+    } = await pool.query(
+        'UPDATE Users SET username = $2, email = $3, full_name = $4, profile_picture_url = $5, role = $6 WHERE user_id = $1 RETURNING *;',
+        [user_id, username, email, full_name, profile_picture_url, role]
+    );
 
-
+    return toCamelCase(rows)[0];
+}
 
   // ### - Test
 

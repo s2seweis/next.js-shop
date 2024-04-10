@@ -50,9 +50,18 @@ router.post('/users', upload.none(), async (req, res) => {
 router.put('/users/:user_id', async (req, res) => {
   try {
     const { user_id } = req.params;
-    const { username, email, fullName, profilePictureUrl } = req.body;
+    console.log("line:99", user_id);
+    const { username, email, full_name, profile_picture_url, role } = req.body;
+    console.log("line:100", username);
+    console.log("line:101", email);
+    console.log("line:102", full_name);
+    console.log("line:103", username);
+    console.log("line:104", profile_picture_url);
+    console.log("line:105", role);
+    // console.log("line:105", role);
 
-    const user = await UserRepo.update(user_id, username, email, fullName, profilePictureUrl);
+    const user = await UserRepo.update(user_id, username, email, full_name, profile_picture_url, role);
+    console.log("line:200", user);
 
     if (user) {
       res.send(user);

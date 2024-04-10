@@ -74,12 +74,13 @@ export const options: NextAuthOptions = {
           const response = await axios.post('http://localhost:3005/login', { email, password });
           console.log("line:500", response);
           console.log("line:600", response.data.userid);
+          console.log("line:700", response.data.role);
           
           
           // Check if the response is successful
           if (response.data) {
             const { user_id } = response.data;
-            return { ...response.data, jwt: response.data.token, email: email, id: response.data.userid };
+            return { ...response.data, jwt: response.data.token, email: email, id: response.data.userid, role: response.data.role };
           } else {
             return null; // Return null if user not found
           }
@@ -97,6 +98,7 @@ export const options: NextAuthOptions = {
         token.jwt = user.jwt;
         token.email = user.email;
         token.id = user.id;
+        token.role = user.role;
       }
       return token;
     },
@@ -105,6 +107,7 @@ export const options: NextAuthOptions = {
       session.user.jwt = token.jwt; // Add username to session object     
       session.user.email = token.email; // Add email to session object  
       session.user.id = token.id;
+      session.user.role = token.role;
    
       return session;
     },

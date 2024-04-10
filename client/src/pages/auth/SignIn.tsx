@@ -24,9 +24,6 @@ const SignIn = () => {
       redirect: false, // Set redirect to false to handle errors manually
     });
 
-  console.log("line:200", result);
-  
-
     // Check if signIn function returns an error
     if (result.error) {
       setErrorMessage('Authentication failed. Please check your credentials.');
@@ -85,13 +82,13 @@ const SignIn = () => {
           </div>
           <div className={styles.signInButtonContainer}>
             <Button
-              onClick={onSubmit}
+              // onClick={onSubmit}
               className={`${styles.signInButtonGoogle} ${styles.signInButton}`}
             >
               SIGN IN with Google
             </Button>
             <Button
-              onClick={handleGitHubSignIn}
+              // onClick={handleGitHubSignIn}
               className={`${styles.signInButtonFacebook} ${styles.signInButton}`}
             >
               SIGN IN with Facebook

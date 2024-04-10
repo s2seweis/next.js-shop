@@ -11,8 +11,6 @@ const Home = () => {
 
   const { data: session, status } = useSession(); // Retrieve session information
   console.log("line:1", session);
-  console.log("line:2", session?.user.id);
-
     
   return (
     <div className={styles.homeContainer}>
