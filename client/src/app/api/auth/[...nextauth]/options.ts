@@ -3,15 +3,13 @@ import GitHubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import fetch from 'node-fetch';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 // Define array of users
-const users = [
-  { id: '1', name: 'Dave', password: 'nextauth', role: 'admin' },
-  { id: '2', name: 'Alice', password: 'password123', role: 'user' },
-  { id: '3', name: 'Bob', password: 'securepassword', role: 'user' },
-  // Add more users as needed
-];
+// const users = [
+//   { id: '1', name: 'Dave', password: 'nextauth', role: 'admin' },
+//   { id: '2', name: 'Alice', password: 'password123', role: 'user' },
+//   { id: '3', name: 'Bob', password: 'securepassword', role: 'user' },
+// ];
 
 export const options: NextAuthOptions = {
   providers: [
@@ -65,7 +63,6 @@ export const options: NextAuthOptions = {
       },
       async authorize(credentials) {
         const { email, password } = credentials;
-        console.log('line:1', email);
 
         // Find the user in the array based on the provided credentials
 
@@ -75,14 +72,10 @@ export const options: NextAuthOptions = {
             email,
             password,
           });
-          console.log('line:500', response);
-          console.log('line:600', response.data.userid);
-          console.log('line:700', response.data.role);
-          console.log('line:701', response.data.name);
-
+        
           // Check if the response is successful
           if (response.data) {
-            const { user_id } = response.data;
+            // const { user_id } = response.data;
             return {
               ...response.data,
               jwt: response.data.token,
