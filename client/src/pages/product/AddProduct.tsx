@@ -1,4 +1,4 @@
-import Nav from '@/src/components/Nav/Nav';
+// import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/product/Product.module.scss';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic.tsx';
 import AddProductComponent from '../../components/Products/AddProductComponent.js';
@@ -6,7 +6,7 @@ import AddProductComponent from '../../components/Products/AddProductComponent.j
 const AddProduct = () => {
   return (
     <div className={styles.adminMain}>
-      <Nav />
+      {/* <Nav /> */}
       <div className={styles.adminContainer}>
         <main
           style={{

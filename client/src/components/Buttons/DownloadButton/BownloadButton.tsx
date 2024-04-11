@@ -30,7 +30,7 @@ const DownloadButton: React.FC = () => {
     }
 
     return () => clearTimeout(timeout);
-  }, []);
+  });
 
   const handleInstallClick = () => {
     if (deferredPrompt) {
