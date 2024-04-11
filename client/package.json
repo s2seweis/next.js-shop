@@ -36,8 +36,7 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
     "test": "echo \"Write tests!\" && exit 0",
-    "lint-fix": "eslint --fix .",
-    "precommit": "lint-staged"
+    "lint-fix": "eslint --fix ."
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.2",
