@@ -18,15 +18,8 @@
     "typescript",
     "eslint",
     "prettier",
-    "lint-staged",
     "pwa"
   ],
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -66,8 +59,6 @@
     "eslint": "^8.51.0",
     "eslint-config-next": "^13.5.4",
     "eslint-config-prettier": "^9.0.0",
-    "lint-staged": "^14.0.1",
-    "pinst": "^3.0.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },
