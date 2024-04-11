@@ -70,7 +70,7 @@ const DropdownMenu: React.FC = () => {
               <AiOutlineBars /> Home
             </div>
           </Link>
-          <Link href="/profile">
+          <Link href="/profile/Profile">
             <div className={styles.menuLink}>
               <IoPerson /> Profile
             </div>

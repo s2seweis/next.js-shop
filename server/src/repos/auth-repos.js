@@ -62,7 +62,8 @@ class AuthRepo {
   async loginUser({ email, password }) {
     try {
       const user = await this.getUserByEmail(email);
-      console.log("line:3", user.userId);
+      console.log("line:200", user);
+      console.log("line:201", user.username);
 
       if (!user) {
         throw new Error("Invalid email or password");
@@ -94,12 +95,15 @@ class AuthRepo {
         "12345678",
         { expiresIn: "1h" }
       );
+
       console.log("line:6", token);
+
       const userid = user.userId;
       const role = user.role;
+      const name = user.username;
       // const userid='123456';
 
-      return { message: "Login successful", token, userid, role };
+      return { message: "Login successful", token, userid, role, name };
     } catch (error) {
       console.error("Error logging in user:", error);
       throw error;

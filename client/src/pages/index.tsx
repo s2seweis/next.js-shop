@@ -64,7 +64,15 @@ const Home = () => {
                   Update Products - Redux/ API Call
                 </Link>
                 <Link href="/profile/Profile">
-                  Profile Page & Profile Component
+                  User Profile & Profile Component
+                </Link>
+                <Link href="/profile/UpdateProfile">
+                  User Profile & Update Profile
+                </Link>
+              </h4>
+              <h4>Test Component
+                <Link href="/test/Register">
+                  Register
                 </Link>
               </h4>
             </div>

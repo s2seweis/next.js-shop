@@ -1,10 +1,10 @@
 import Nav from '../../components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/profile/Profile.module.scss';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
-import ProfileComponent from '@/src/components/Profile/ProfileComponent.js';
+import UpdateProfileComponent from '@/src/components/Profile/UpdateProfileComponent.js';
 import { useSession } from 'next-auth/react';
 
-const Profile: React.FC = () => {
+const UpdateProfile: React.FC = () => {
   const { data: session, status } = useSession(); // Retrieve session information
   console.log('line:20', session);
 
@@ -14,13 +14,13 @@ const Profile: React.FC = () => {
       <div className={styles.mainContainer}>
         <main className={styles.main}>
           <h3 style={{ textAlign: 'center' }}>
-            Hello Profile (IsAuthPublic Version)
+            Hello UpdateProfile (IsAuthPublic Version)
           </h3>
-          <ProfileComponent userId={session?.user.id} />
+          <UpdateProfileComponent userId={session?.user.id} />
         </main>
       </div>
     </>
   );
 };
 
-export default IsAuthPublic(Profile);
+export default IsAuthPublic(UpdateProfile);

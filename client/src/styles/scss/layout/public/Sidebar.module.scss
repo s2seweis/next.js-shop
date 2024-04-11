@@ -10,7 +10,7 @@
   z-index: 500 !important;
   border: 0.5px solid lightgray;
   width: 45%;
-  overflow: scroll;
+  // overflow: scroll;
 }
 
 .open {
@@ -56,6 +56,8 @@
   min-width: 126px;
   margin-bottom: 5px;
   min-height: 30px;
+  padding: 5px;
+  border-radius: 5px;
 
   &.active {
     color: #333a73; /* Menu item color */
@@ -95,13 +97,17 @@
     // color: #387ADF;
     font-weight: bold;
     text-decoration: none !important;
-    background-color: #e3e1d9;
+    background-color: #d7d2d2;
     // background-color: rgb(233, 221, 221);
     // border: 1px solid rgb(211, 204, 204);
-    border: 1px solid #6e7070;
+    border: 1px solid #cfc4c4;
     display: flex;
-    height: 30px;
+    height: 32px;
     align-items: center;
+    // border-radius: 5px;
+    justify-content: center;
+    width: 108%;
+    margin-left: -6px;
   }
 }
 
@@ -109,6 +115,7 @@
   color: black !important;
   text-decoration: none;
   height: 30px;
+  margin-top: 5px;
 }
 
 .overlay {
@@ -116,7 +123,7 @@
   top: 0;
   // right: -55%; /* Initially positioned off-screen to the right */
   right: 55%; /* Initially positioned off-screen to the right */
-  width: 55%;
+  width: 54.5%;
   height: 100%;
   background: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
   z-index: 499; /* Below the sidebar */

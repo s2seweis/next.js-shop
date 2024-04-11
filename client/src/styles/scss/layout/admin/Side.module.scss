@@ -282,16 +282,19 @@
 
 .menuItem {
   a {
-    border: 1px solid #efefef;
-    padding-left: 10px !important;
+    // border: 1px solid #efefef;
+    padding-left: 15px !important;
     padding-right: 10px !important;
+    color: black !important;
+
 
     span {
       padding-left: 0px;
       padding-right: 0px;
     }
   }
-}
+    border: 1px solid #efefef;
+  }
 
 .menuItemButton {
   a {
@@ -304,3 +307,4 @@
     }
   }
 }
+

@@ -12,7 +12,7 @@ export const fetchUserProfile = createAsyncThunk(
   async (userId) => {
     try {
       const response = await axios.get(
-        `http://localhost:3005/userprofile/${userId}`,
+        `http://localhost:3005/users/${userId}`,
       );
       console.log('line:500', response);
       return response.data;
@@ -27,7 +27,7 @@ export const updateUserProfile = createAsyncThunk(
   async ({ userId, updatedData }) => {
     try {
       const response = await axios.put(
-        `http://localhost:3005/userprofile/${userId}`,
+        `http://localhost:3005/users/${userId}`,
         updatedData,
       );
       return response.data;

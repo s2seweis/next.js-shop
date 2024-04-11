@@ -2,9 +2,10 @@
 
 export const menuItems = [
   {
-    title: 'Home',
+    title: 'Menu',
     path: '/',
     submenus: [
+      { title: 'Home', path: '/' },
       { title: 'Contact', path: '/contact/ContactForm' },
       { title: 'SignIn', path: '/auth/SignIn' },
       { title: 'Register', path: '/auth/Register' },
@@ -30,6 +31,6 @@ export const menuItems = [
   {
     title: 'Download',
     path: '/download',
-    submenus: [{ title: 'Download APP', path: '/download/DownloadApp' }],
+    submenus: [{ title: 'Download', path: '/download/DownloadApp' }],
   },
 ];

@@ -29,10 +29,14 @@
 }
 
 .toggle-button {
+  // background-color: #2962ff;
   background-color: #4caf50;
   color: white;
   padding: 8px;
   cursor: pointer;
+  border: 0px;
+  padding: 10px 10px;
+  // border-radius: 5px;
 }
 
 .toggle-button.close-button {
@@ -61,6 +65,9 @@
   padding: 8px;
   cursor: pointer;
   width: 100px;
+  border: 0px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .loading {

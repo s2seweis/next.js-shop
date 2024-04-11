@@ -1,5 +1,5 @@
 import Nav from '@/src/components/Nav/Nav';
-import styles from '@/src/styles/scss/components/Counter.module.scss';
+import styles from '@/src/styles/scss/components/test/Counter.module.scss';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic.tsx';
 
 import { Counter } from '../../components/Counter/Counter.js';
@@ -14,7 +14,7 @@ const Redux = () => {
       <div className={styles.adminContainer}>
         <main
           style={{
-            height: '100vh',
+            minHeight: '100vh',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',

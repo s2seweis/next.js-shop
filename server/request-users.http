@@ -32,7 +32,7 @@ PUT http://localhost:3005/users/1 HTTP/1.1
 content-type: application/json
 
 {
-    "username": "s2seweis1",
+    "username": "s2seweis",
     "email": "weissenborn.sebastian@gmail.com",
     "full_name": "Sebastian Weissenborn",
     "profile_picture_url": "https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png",

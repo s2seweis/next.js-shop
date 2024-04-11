@@ -53,9 +53,8 @@ const Sidebar: React.FC = () => {
       {submenus.map((submenu) => (
         <Link key={submenu.path} href={submenu.path}>
           <span
-            className={`${styles.submenuLink} ${
-              isLinkActive(submenu.path) ? styles.active : ''
-            }`}
+            className={`${styles.submenuLink} ${isLinkActive(submenu.path) ? styles.active : ''
+              }`}
           >
             {submenu.title}
           </span>
@@ -96,17 +95,21 @@ const Sidebar: React.FC = () => {
           {menuItems.map((menuItem) => (
             <span
               key={menuItem.path || menuItem.title}
-              className={`${styles.navLink} ${
-                isSubMenuActive(menuItem.title) ? styles.active : ''
-              }`}
+              className={`${styles.navLink} ${isSubMenuActive(menuItem.title) ? styles.active : ''
+                }`}
               onClick={() => handleMenuClick(menuItem.title)}
             >
-              {menuItem.title}{' '}
-              {menuItem.submenus && isSubMenuActive(menuItem.title) ? (
-                <FaAngleDown style={{ right: '28px', position: 'absolute' }} />
-              ) : (
-                <FaAngleRight style={{ right: '28px', position: 'absolute' }} />
-              )}
+              <div className="test1">
+                {menuItem.title}{' '}
+              </div>
+              <div className="test2" style={{ }}>
+                {menuItem.submenus && isSubMenuActive(menuItem.title) ? (
+
+                  <FaAngleDown style={{ right: '28px', position: 'absolute', marginTop:"-20px" }} />
+                ) : (
+                  <FaAngleRight style={{ right: '28px', position: 'absolute', marginTop:"-20px" }} />
+                )}
+              </div>
               {menuItem.submenus &&
                 isSubMenuActive(menuItem.title) &&
                 renderSubMenu(menuItem.submenus)}

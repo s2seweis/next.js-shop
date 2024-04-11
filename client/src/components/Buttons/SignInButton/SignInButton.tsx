@@ -1,6 +1,9 @@
+// SignInButton.jsx
+
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { GoSignIn, GoSignOut } from 'react-icons/go';
 import React from 'react';
+import styles from '../../../styles/scss/components/buttons/SignInButton.module.scss'; // import the SCSS file
 
 const SignInButton = () => {
   const { data: session, status } = useSession();
@@ -16,61 +19,22 @@ const SignInButton = () => {
   };
 
   const handleSignOut = async () => {
-    await signOut({ callbackUrl: '/auth/SignIn' }); // Include callbackUrl for sign out
+    await signOut({ callbackUrl: '/auth/SignIn' });
   };
 
   return (
-    <div
-      className="ml-auto flex gap-2"
-      style={{ justifyContent: 'center', display: 'flex' }}
-    >
+    <div className="ml-auto flex gap-2" style={{ justifyContent: 'center', display: 'flex' }}>
       {session?.user ? (
         <>
-          <div
-            className="containerSignIn"
-            style={{
-              display: 'flex',
-              gap: '10px',
-              justifyContent: 'center',
-              marginTop: '-10px',
-            }}
-          >
-            <p
-              style={{
-                position: 'absolute',
-                marginTop: '36px',
-                marginLeft: '4px',
-                color: 'black',
-              }}
-              className="text-sky-600"
-            >
-              {getTruncatedName(session?.user.name)}
-            </p>
-            <button
-              style={{
-                background: '#EA4335',
-                fontSize: '1.3rem',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-              className="text-red-500"
-              onClick={handleSignOut} // Use handleSignOut function for sign out
-            >
+          <div className={styles.containerSignIn}>
+            <p className="text-sky-600">{getTruncatedName(session?.user.name)}</p>
+            <button className="text-red-500" onClick={handleSignOut}>
               <GoSignOut className="inline-block align-text-bottom mr-1" />
             </button>
           </div>
         </>
       ) : (
-        <button
-          style={{
-            fontSize: '1.3rem',
-            display: 'flex',
-            alignItems: 'center',
-            background: '#34A853',
-          }}
-          className="text-green-600"
-          onClick={() => signIn()}
-        >
+        <button className={styles.buttonSignOut} onClick={() => signIn()}>
           <GoSignIn className="inline-block align-text-bottom mr-1" />
         </button>
       )}

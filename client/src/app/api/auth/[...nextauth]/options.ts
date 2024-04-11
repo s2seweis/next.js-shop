@@ -78,6 +78,7 @@ export const options: NextAuthOptions = {
           console.log('line:500', response);
           console.log('line:600', response.data.userid);
           console.log('line:700', response.data.role);
+          console.log('line:701', response.data.name);
 
           // Check if the response is successful
           if (response.data) {
@@ -88,6 +89,7 @@ export const options: NextAuthOptions = {
               email: email,
               id: response.data.userid,
               role: response.data.role,
+              // name:response.data.name
             };
           } else {
             return null; // Return null if user not found
