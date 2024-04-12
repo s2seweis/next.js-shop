@@ -1,21 +1,11 @@
-// src/components/IsAuth/isAuth.tsx
-
-// import { useAuth } from '../../context/AuthProviderMerged';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-// import Layout from '../Layout/Layout';
 import AdminLayout from '../../components/Layout/Admin/AdminLayout';
-
 import { useSession } from 'next-auth/react';
 
-const IsAuthAdmin = (WrappedComponent) => (props) => {
+const useAuthAdmin = () => {
   const { data: session } = useSession();
-  console.log('line:100', session);
-
   const key = session?.user?.role;
-
-  //   const { isLoggedIn } = useAuth();
-  //   const auth = isLoggedIn;
   const router = useRouter();
 
   useEffect(() => {
@@ -24,9 +14,14 @@ const IsAuthAdmin = (WrappedComponent) => (props) => {
     }
   }, [key, router]);
 
+  return key;
+};
+
+const IsAuthAdmin = (WrappedComponent) => (props) => {
+  const key = useAuthAdmin();
+
   return (
     <div>
-      {/* {session !== null ? ( */}
       {key === 'admin' ? (
         <AdminLayout>
           <WrappedComponent {...props} />
@@ -40,4 +35,4 @@ const IsAuthAdmin = (WrappedComponent) => (props) => {
   );
 };
 
-export default IsAuthAdmin; // Export IsAuth as a named export
+export default IsAuthAdmin;
