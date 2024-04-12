@@ -8,12 +8,14 @@ const NotFoundPage: NextPage = () => {
       className="container"
     >
       <div style={{ display: 'grid' }}>
-        <h1 className="text-4xl font-bold mb-4">404 - Page Not Found</h1>
-        <p className="text-lg mb-4">
-          Oops! The page you are looking for does not exist.
-        </p>
+        <h1 className="title">404 - Page Not Found</h1>
+        <h4 className="subTitle">
+          Oops The page you are looking for does not exist.
+        </h4>
         <Link href="/">
-          <a className="text-blue-600 underline cursor-pointer">Go back to Home Page</a>
+          <div className="goBack">
+            Go back to Home Page
+          </div>
         </Link>
       </div>
     </div>
