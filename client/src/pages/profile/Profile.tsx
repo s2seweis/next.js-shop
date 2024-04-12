@@ -1,26 +1,46 @@
 import Nav from '../../components/Nav/Nav';
-import styles from '@/src/styles/scss/pages/profile/Profile.module.scss';
-import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 import ProfileComponent from '@/src/components/Profile/ProfileComponent.js';
 import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Layout from '../../components/Layout/Layout';
+import Link from 'next/link';
+import styles from '../../styles/scss/pages/profile/Profile.module.scss';
 
-const Profile: React.FC = () => {
-  const { data: session, status } = useSession(); // Retrieve session information
-  console.log('line:20', session);
+const UpdateProfile: React.FC = () => {
+  const { data: session } = useSession(); // Retrieve session information
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!session) {
+      router.push('/');
+    }
+  }, [session, router]);
 
   return (
-    <>
-      <Nav />
-      <div className={styles.mainContainer}>
-        <main className={styles.main}>
-          <h3 style={{ textAlign: 'center' }}>
-            Hello Profile (IsAuthPublic Version)
-          </h3>
-          <ProfileComponent userId={session?.user.id} />
-        </main>
-      </div>
-    </>
+    <div>
+      <Layout>
+        <Nav />
+        {session ? (
+          <div className={styles.mainContainer}>
+            <h2>Test</h2>
+            <ProfileComponent userId={session.user.id} />
+          </div>
+        ) : (
+          <div className={styles.mainContainer}>
+            <div>
+              <h1 className="text-5xl">You should log in first to see a profile!</h1>
+              <Link href="/">
+                <div style={{ textAlign: "center" }} className="goBack">
+                  Go back to Home Page
+                </div>
+              </Link>
+            </div>
+          </div>
+        )}
+      </Layout>
+    </div>
   );
 };
 
-export default IsAuthPublic(Profile);
+export default UpdateProfile;

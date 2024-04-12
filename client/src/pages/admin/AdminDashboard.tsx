@@ -1,5 +1,4 @@
 import Nav from '@/src/components/Nav/Nav';
-// import styles from '@/src/styles/scss/pages/admin/Admin.module.scss';
 import AdminLayout from '../../components/Layout/Admin/AdminLayout';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';

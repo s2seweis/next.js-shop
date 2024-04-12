@@ -1,22 +1,38 @@
-// dashboard/page.tsx
-
-import IsAuthButton from '@/src/utils/authHocs/isAuthButton'; // Note the capital "I" in IsAuthButton
+import { useAuth } from '../../utils/context/AuthProviderMerged';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Nav from '../../components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/profile/Dashboard.module.scss';
 import AuthButton from '../../components/Buttons/AuthButton/AuthButton.js';
+import Layout from '@/src/components/Layout/Layout';
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
+  const { isLoggedIn } = useAuth(); // Use the useAuth hook to access the AuthContext
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      router.push('/');
+    }
+  }, [isLoggedIn, router]);
+
+  if (!isLoggedIn) {
+    return null;
+  }
+
   return (
-    <>
-      <Nav />
-      <div className={styles.mainContainer}>
-        <main className={styles.main}>
-          <h3 style={{ textAlign: 'center' }}>Hello Dashboard (HOC)</h3>
-          <AuthButton />
-        </main>
-      </div>
-    </>
+    <div>
+      <Layout>
+        <Nav />
+        <div className={styles.mainContainer}>
+          <main className={styles.main}>
+            <h3 style={{ textAlign: 'center' }}>Hello Dashboard1 (Auth Provider)</h3>
+            <AuthButton />
+          </main>
+        </div>
+      </Layout>
+    </div>
   );
 };
 
-export default IsAuthButton(Dashboard); // Use IsAuthButton as a higher-order component
+export default Dashboard;

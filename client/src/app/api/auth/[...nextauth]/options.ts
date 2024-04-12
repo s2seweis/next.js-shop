@@ -1,15 +1,7 @@
 import type { NextAuthOptions } from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import fetch from 'node-fetch';
 import axios from 'axios';
-
-// Define array of users
-// const users = [
-//   { id: '1', name: 'Dave', password: 'nextauth', role: 'admin' },
-//   { id: '2', name: 'Alice', password: 'password123', role: 'user' },
-//   { id: '3', name: 'Bob', password: 'securepassword', role: 'user' },
-// ];
 
 export const options: NextAuthOptions = {
   providers: [
@@ -18,35 +10,6 @@ export const options: NextAuthOptions = {
       clientSecret: process.env.GITHUB_SECRET as string,
     }),
 
-    // Credentials provider
-    // CredentialsProvider({
-    //   name: 'Credentials',
-    //   credentials: {
-    //     username: {
-    //       label: 'Username:',
-    //       type: 'text',
-    //       placeholder: 'your-cool-username',
-    //     },
-    //     password: {
-    //       label: 'Password:',
-    //       type: 'password',
-    //       placeholder: 'your-awesome-password',
-    //     },
-    //   },
-    //   async authorize(credentials) {
-    //     const { username, password } = credentials;
-    //     // Find the user in the array based on the provided credentials
-    //     const user = users.find(
-    //       (user) => user.name === username && user.password === password,
-    //     );
-    //     if (user) {
-    //       // Return the user object with the role included
-    //       return { ...user, role: user.role };
-    //     } else {
-    //       return null; // Return null if user not found
-    //     }
-    //   },
-    // }),
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
@@ -64,15 +27,13 @@ export const options: NextAuthOptions = {
       async authorize(credentials) {
         const { email, password } = credentials;
 
-        // Find the user in the array based on the provided credentials
-
         try {
           // Make Axios request to login route
           const response = await axios.post('http://localhost:3005/login', {
             email,
             password,
           });
-        
+
           // Check if the response is successful
           if (response.data) {
             // const { user_id } = response.data;
@@ -96,6 +57,9 @@ export const options: NextAuthOptions = {
   ],
 
   callbacks: {
+
+    // ###
+
     async jwt({ token, user, account }) {
       if (account) {
         token.jwt = user.jwt;
@@ -106,6 +70,8 @@ export const options: NextAuthOptions = {
       return token;
     },
 
+    // ###
+
     async session({ session, token }) {
       session.user.jwt = token.jwt; // Add username to session object
       session.user.email = token.email; // Add email to session object
@@ -114,6 +80,61 @@ export const options: NextAuthOptions = {
 
       return session;
     },
+
+    // ### - right approach
+
+
+    // async signIn(user, account, profile) {
+    //   try {
+    //     if (account.provider === 'github') {
+    //       // Retrieve user id from your database using GitHub's user login name
+    //       const response = await axios.get(`http://localhost:3005/user/${profile.login}`);
+    //       const { id } = response.data;
+
+    //       // Attach the retrieved user id to the user object
+    //       return {
+    //         ...user,
+    //         id,
+    //       };
+    //     }
+    //   } catch (error) {
+    //     console.error('Error retrieving user id:', error);
+    //     return null;
+    //   }
+    // },
+
+    // async signIn(credentials, req) {
+    //   const { email, password } = credentials;
+
+    //   try {
+    //     // Make Axios request to login route
+    //     const response = await axios.post('http://localhost:3005/login', {
+    //       email,
+    //       password,
+    //     });
+
+    //     // Check if the response is successful
+    //     if (response.data) {
+    //       // const { user_id } = response.data;
+    //       return {
+    //         ...response.data,
+    //         jwt: response.data.token,
+    //         email: email,
+    //         id: response.data.userid,
+    //         role: response.data.role,
+    //         // name:response.data.name
+    //       };
+    //     } else {
+    //       return null; // Return null if user not found
+    //     }
+    //   } catch (error) {
+    //     console.error('Error logging in:', error);
+    //     return null; // Return null if an error occurs
+    //   }
+    // },
+
+
+
   },
 
   pages: {
@@ -121,28 +142,3 @@ export const options: NextAuthOptions = {
   },
 };
 
-const extractUserIdFromImageUrl = (imageUrl: string): string => {
-  if (!imageUrl) return '';
-  const match = imageUrl.match(/\/u\/(\d+)\?/); // Adjusted regex pattern to match the ID after '/u/'
-  return match ? match[1] : '';
-};
-
-// Function to fetch user data from GitHub API by user ID
-const fetchUserData = async (userId: string) => {
-  try {
-    const response = await fetch(`https://api.github.com/user/${userId}`);
-    if (response.ok) {
-      const data = await response.json();
-      return data;
-    } else {
-      console.error(
-        'Failed to fetch user data from GitHub API:',
-        response.statusText,
-      );
-      return null;
-    }
-  } catch (error) {
-    console.error('Error fetching user data:', error);
-    return null;
-  }
-};

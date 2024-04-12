@@ -44,7 +44,7 @@ const Home = () => {
               <h4>
                 Authentication with Button
                 <Link href="/profile/Dashboard">
-                  Dashboard (HOC) with SignInButton
+                  Dashboard (Auth Provider) with SignInButton
                 </Link>
                 <Link href="/profile/UserProfile">
                   Profile (Auth Provider) with SignInButton
