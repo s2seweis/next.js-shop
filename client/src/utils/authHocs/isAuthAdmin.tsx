@@ -3,8 +3,10 @@ import { useRouter } from 'next/router';
 import AdminLayout from '../../components/Layout/Admin/AdminLayout';
 import { useSession } from 'next-auth/react';
 
-const useAuthAdmin = () => {
+const IsAuthAdmin = (WrappedComponent) => (props) => {
   const { data: session } = useSession();
+  console.log('line:100', session);
+
   const key = session?.user?.role;
   const router = useRouter();
 
@@ -14,20 +16,9 @@ const useAuthAdmin = () => {
     }
   }, [key, router]);
 
-  return key;
-};
-
-const useIsAuthAdmin = () => {
-  const key = useAuthAdmin();
-  return key === 'admin';
-};
-
-const IsAuthAdmin = (WrappedComponent) => (props) => {
-  const isAdmin = useIsAuthAdmin();
-
   return (
     <div>
-      {isAdmin ? (
+      {key === 'admin' ? (
         <AdminLayout>
           <WrappedComponent {...props} />
         </AdminLayout>
@@ -40,4 +31,4 @@ const IsAuthAdmin = (WrappedComponent) => (props) => {
   );
 };
 
-export default IsAuthAdmin;
+export default IsAuthAdmin; // Export IsAuth as a named export
