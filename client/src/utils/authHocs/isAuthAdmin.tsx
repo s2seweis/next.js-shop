@@ -17,12 +17,17 @@ const useAuthAdmin = () => {
   return key;
 };
 
-const IsAuthAdmin = (WrappedComponent) => (props) => {
+const useIsAuthAdmin = () => {
   const key = useAuthAdmin();
+  return key === 'admin';
+};
+
+const IsAuthAdmin = (WrappedComponent) => (props) => {
+  const isAdmin = useIsAuthAdmin();
 
   return (
     <div>
-      {key === 'admin' ? (
+      {isAdmin ? (
         <AdminLayout>
           <WrappedComponent {...props} />
         </AdminLayout>
