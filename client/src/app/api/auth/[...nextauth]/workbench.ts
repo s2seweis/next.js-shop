@@ -59,20 +59,12 @@ export const options: NextAuthOptions = {
   callbacks: {
     // ###
 
-    async jwt({ token, user, account, profile }) {
-      console.log("line:10", user);
-      
+    async jwt({ token, user, account }) {
       if (account) {
         token.jwt = user.jwt;
         token.email = user.email;
         token.id = user.id;
         token.role = user.role;
-
-        // Modify the user object to include additional data from dummyData
-        if (profile && profile.dummyData) {
-          token.userId = profile.dummyData.userId;
-          // Add other data from dummyData if needed
-        }
       }
       return token;
     },
@@ -85,32 +77,29 @@ export const options: NextAuthOptions = {
         session.user.email = token.email; // Add email to session object
         session.user.id = token.id;
         session.user.role = token.role;
-
-        // Add additional data from dummyData to the session object if available
-        if (token.userId) {
-          session.user.userId = token.userId;
-        }
       }
 
       return session;
     },
 
+    // ### - right approach
+
     async signIn({ profile }) {
       console.log('line:100', profile);
 
       try {
-        // Dummy data for testing purposes
-        const dummyData = {
-          userId: 'dummyUserId',
-          // Add other dummy data if needed
-        };
-        console.log("line:101", dummyData);
-        
-        // Add dummyData directly to the profile object
-        profile.dummyData = dummyData;
+        // Make a POST request to your API route
+        const response = await axios.post('/api/signIn', {
+          email: profile.email,
+          name: profile.name,
+        });
 
-        // Return the modified profile object
-        return profile;
+        if (response.status === 200) {
+          return response.data.user; // Return user data
+        } else {
+          console.error('Error processing sign-in:', response.data.error);
+          return true; // Fallback to default OAuth flow
+        }
       } catch (error) {
         console.error('Error processing sign-in:', error);
         return true; // Fallback to default OAuth flow
