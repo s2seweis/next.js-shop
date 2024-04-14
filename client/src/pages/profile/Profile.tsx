@@ -9,6 +9,8 @@ import styles from '../../styles/scss/pages/profile/Profile.module.scss';
 
 const UpdateProfile: React.FC = () => {
   const { data: session } = useSession(); // Retrieve session information
+  console.log("line:1",session );
+  
   const router = useRouter();
 
   useEffect(() => {
@@ -23,8 +25,8 @@ const UpdateProfile: React.FC = () => {
         <Nav />
         {session ? (
           <div className={styles.mainContainer}>
-            <h2>Test</h2>
-            <ProfileComponent userId={session.user.id} />
+            {/* <h2>Test</h2> */}
+            <ProfileComponent userId={session.user.userId}  />
           </div>
         ) : (
           <div className={styles.mainContainer}>

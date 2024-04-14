@@ -41,7 +41,7 @@ export const options: NextAuthOptions = {
               ...response.data,
               jwt: response.data.token,
               email: email,
-              id: response.data.userid,
+              userId: response.data.userid,
               role: response.data.role,
               // name:response.data.name
             };
@@ -57,18 +57,14 @@ export const options: NextAuthOptions = {
   ],
 
   callbacks: {
-    // ###
-
     async jwt({ token, user, account, profile }) {
-      console.log("line:10", user);
-      
       if (account) {
         token.jwt = user.jwt;
         token.email = user.email;
-        token.id = user.id;
+        token.userId = user.userId;
         token.role = user.role;
 
-        // Modify the user object to include additional data from dummyData
+        // Modify the token object to include additional data from dummyData
         if (profile && profile.dummyData) {
           token.userId = profile.dummyData.userId;
           // Add other data from dummyData if needed
@@ -77,13 +73,11 @@ export const options: NextAuthOptions = {
       return token;
     },
 
-    // ###
-
     async session({ session, token }) {
       if (token) {
         session.user.jwt = token.jwt; // Add username to session object
         session.user.email = token.email; // Add email to session object
-        session.user.id = token.id;
+        session.user.userId = token.userId;
         session.user.role = token.role;
 
         // Add additional data from dummyData to the session object if available
@@ -96,21 +90,18 @@ export const options: NextAuthOptions = {
     },
 
     async signIn({ profile }) {
-      console.log('line:100', profile);
-
       try {
-        // Dummy data for testing purposes
-        const dummyData = {
-          userId: 'dummyUserId',
-          // Add other dummy data if needed
-        };
-        console.log("line:101", dummyData);
-        
-        // Add dummyData directly to the profile object
-        profile.dummyData = dummyData;
+        // Make a POST request to your API route
+        const response = await axios.post('http://localhost:3005/register-oauth', {
+          email: profile.email,
+          full_name: profile.name
+        });
 
+        // Store the userId in profile.dummyData
+        profile.dummyData = { userId: response.data.user.userId };
+        
         // Return the modified profile object
-        return profile;
+        return true;
       } catch (error) {
         console.error('Error processing sign-in:', error);
         return true; // Fallback to default OAuth flow

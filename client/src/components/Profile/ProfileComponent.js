@@ -38,10 +38,10 @@ const ProfileComponent = ({ userId }) => {
           <strong>Id:</strong> {userProfile.userId}
         </p>
         <p>
-          <strong>Name:</strong> {userProfile.username}
+          <strong>User Name:</strong> {userProfile.username}
         </p>
         <p>
-          <strong>Full Name:</strong> {userProfile.email}
+          <strong>Full Name:</strong> {userProfile.fullName}
         </p>
         <p>
           <strong>E-Mail:</strong> {userProfile.email}

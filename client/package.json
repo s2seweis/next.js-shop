@@ -34,6 +34,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.2",
     "@types/redux-logger": "^3.0.13",
+    "antd": "^5.16.1",
     "axios": "^1.6.7",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",

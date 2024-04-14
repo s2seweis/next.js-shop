@@ -74,6 +74,9 @@ const Home = () => {
                 <Link href="/test/Register">
                   Register
                 </Link>
+                <Link href="/user/Account">
+                  User Account
+                </Link>
               </h4>
             </div>
           </main>

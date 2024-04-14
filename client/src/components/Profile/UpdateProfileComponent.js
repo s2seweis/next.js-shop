@@ -17,6 +17,7 @@ const UpdateProfileComponent = ({ userId }) => {
   // State to manage form data
   const [formData, setFormData] = useState({
     username: '',
+    fullname: '',
     email: '',
     role: '',
     imageUrl: '',
@@ -35,6 +36,7 @@ const UpdateProfileComponent = ({ userId }) => {
     if (userProfile) {
       setFormData({
         username: userProfile.username,
+        fullname: userProfile.fullName,
         email: userProfile.email,
         role: userProfile.role,
         imageUrl: userProfile.profilePictureUrl || '',
@@ -83,12 +85,22 @@ const UpdateProfileComponent = ({ userId }) => {
         </div>
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
-            <label htmlFor="username">Name:</label>
+            <label htmlFor="username">Username:</label>
             <input
               type="text"
               id="username"
               name="username"
               value={formData.username}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="username">Full Name:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={formData.fullname}
               onChange={handleInputChange}
             />
           </div>
