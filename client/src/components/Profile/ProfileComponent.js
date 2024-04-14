@@ -10,7 +10,7 @@ import Link from 'next/link';
 const ProfileComponent = ({ userId }) => {
   const dispatch = useDispatch();
   const userProfile = useSelector((state) => state.profile.userProfile);
-  console.log("line:10", userProfile);
+  // console.log("line:10", userProfile);
 
   const status = useSelector((state) => state.profile.status);
   const error = useSelector((state) => state.profile.error);
@@ -61,9 +61,9 @@ const ProfileComponent = ({ userId }) => {
       </div>
 
       <div className={styles.buttonContainer}>
-      <Link href="/profile/UpdateProfile">
+      {/* <Link href="/profile/UpdateProfile">
         <button className={styles.button}>Go to Update</button>
-      </Link>
+      </Link> */}
     </div>
 
     </div>

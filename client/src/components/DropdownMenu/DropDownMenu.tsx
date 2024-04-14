@@ -10,6 +10,8 @@ import Link from 'next/link'; // Import Link from next/link
 import styles from '../../styles/scss/layout/public/DrowDownMenu.module.scss';
 import SignInButton from '../Buttons/SignInButton/SignInButton';
 import { useSession } from 'next-auth/react';
+import { useSelector } from 'react-redux';
+
 
 const DropdownMenu: React.FC = () => {
   const { data: session, status } = useSession();
@@ -32,6 +34,9 @@ const DropdownMenu: React.FC = () => {
     }
   };
 
+  const userProfile = useSelector((state) => state.profile.userProfile);
+  console.log("line:400", userProfile);
+
   return (
     <div className={styles.dropdown}>
       <div className={styles.icon} onClick={toggleMenu}>
@@ -52,9 +57,10 @@ const DropdownMenu: React.FC = () => {
               justifyContent: 'center',
             }}
           >
-            {getTruncatedName(
+            {/* {getTruncatedName(
               session?.user?.userData?.login || session?.user.name,
-            )}
+            )} */}
+            {userProfile?.username || 'Guest'}
           </div>
         </div>
       </div>

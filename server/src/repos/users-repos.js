@@ -1,5 +1,6 @@
 const pool = require("../pool/pool");
 const toCamelCase = require("./utils/to-camel-case");
+const bcrypt = require("bcrypt");
 
 // represents a repository for interacting with a PostgreSQL database table named "Users."
 
@@ -14,6 +15,19 @@ class UserRepo {
     const { rows } = await pool.query(
       `
       SELECT * FROM Users WHERE user_id = $1;
+      `,
+      [user_id]
+    );
+
+    return toCamelCase(rows)[0];
+  }
+
+  // ###
+
+  static async findByIdPassword(user_id) {
+    const { rows } = await pool.query(
+      `
+      SELECT * FROM Authentication WHERE user_id = $1;
       `,
       [user_id]
     );
@@ -59,6 +73,24 @@ class UserRepo {
     );
 
     return toCamelCase(rows)[0];
+  }
+
+  static async updatePassword(user_id, newPassword) {
+    try {
+      const password_hash = await bcrypt.hash(newPassword, 10);
+      console.log("line:88", password_hash);
+  
+      const { rows } = await pool.query(
+        "UPDATE Authentication SET password_hash = $2 WHERE user_id = $1 RETURNING *;",
+        [user_id, password_hash]
+      );
+  
+      return toCamelCase(rows)[0];
+    } catch (error) {
+      // Handle errors here
+      console.error("Error changing the password:", error);
+      throw error; // Rethrow the error for the calling code to handle
+    }
   }
 
   // ### - Test

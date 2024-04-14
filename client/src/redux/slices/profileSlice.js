@@ -14,7 +14,7 @@ export const fetchUserProfile = createAsyncThunk(
       const response = await axios.get(
         `http://localhost:3005/users/${userId}`,
       );
-      console.log('line:500', response);
+      // console.log('line:500', response);
       return response.data;
     } catch (error) {
       throw new Error('Failed to fetch user profile');
@@ -24,11 +24,13 @@ export const fetchUserProfile = createAsyncThunk(
 
 export const updateUserProfile = createAsyncThunk(
   'userProfile/updateUserProfile',
-  async ({ userId, updatedData }) => {
+  async ({ userId, formData }) => {
+    console.log("line:1", userId);
+    console.log("line:2", formData);
     try {
       const response = await axios.put(
         `http://localhost:3005/users/${userId}`,
-        updatedData,
+        formData,
       );
       return response.data;
     } catch (error) {

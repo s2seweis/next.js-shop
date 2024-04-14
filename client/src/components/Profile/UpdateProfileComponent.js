@@ -1,10 +1,10 @@
-// UpdateProfileComponent.jsx
-
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserProfile, updateUserProfile } from '../../redux/slices/profileSlice';
 import styles from '../../styles/scss/components/profile/UpdateProfile.module.scss';
 import Loader from '../Loader/Loader'; // Import the Loader component
+import Select from 'react-select';
+import { notification } from 'antd'; // Import notification component from Ant Design
 
 const UpdateProfileComponent = ({ userId }) => {
   const dispatch = useDispatch();
@@ -36,10 +36,10 @@ const UpdateProfileComponent = ({ userId }) => {
     if (userProfile) {
       setFormData({
         username: userProfile.username,
-        fullname: userProfile.fullName,
+        full_name: userProfile.fullName,
         email: userProfile.email,
         role: userProfile.role,
-        imageUrl: userProfile.profilePictureUrl || '',
+        profile_picture_url: userProfile.profilePictureUrl || '',
         // Add more fields as needed
       });
     }
@@ -54,11 +54,25 @@ const UpdateProfileComponent = ({ userId }) => {
     });
   };
 
+  // Function to handle role selection change
+  const handleRoleChange = (selectedOption) => {
+    setFormData({
+      ...formData,
+      role: selectedOption.value,
+    });
+  };
+
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Dispatch action to update user profile
-    dispatch(updateUserProfile({ userId, formData }));
+    await dispatch(updateUserProfile({ userId, formData }));
+    // Display notification if update was successful
+    notification.success({
+      message: 'Update Successful',
+      description: 'Your profile has been updated successfully.',
+      duration: 3, // Notification duration in seconds
+    });
   };
 
   if (status === 'loading' || !userProfile) {
@@ -70,11 +84,17 @@ const UpdateProfileComponent = ({ userId }) => {
     return <div>Error: {error}</div>;
   }
 
+  // Define options for role select
+  const roleOptions = [
+    { value: 'admin', label: 'Admin' },
+    { value: 'user', label: 'User' }
+  ];
+
   return (
     <div className={styles.profileContainer}>
       <h1>Update Profile</h1>
       <div className={styles.profileInfo}>
-      <div className={styles.imgContainer}>
+        <div className={styles.imgContainer}>
           <div className={styles.imgTitle}>
             <strong>Profile Image:</strong>
           </div>
@@ -95,12 +115,12 @@ const UpdateProfileComponent = ({ userId }) => {
             />
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="username">Full Name:</label>
+            <label htmlFor="full_name">Full Name:</label>
             <input
               type="text"
-              id="username"
-              name="username"
-              value={formData.fullname}
+              id="full_name"
+              name="full_name"
+              value={formData.full_name}
               onChange={handleInputChange}
             />
           </div>
@@ -116,34 +136,30 @@ const UpdateProfileComponent = ({ userId }) => {
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="role">Role:</label>
-            <select
+            <Select
               id="role"
               name="role"
-              value={formData.role}
-              onChange={handleInputChange}
-            >
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
-            </select>
+              options={roleOptions}
+              value={roleOptions.find(option => option.value === formData.role)}
+              onChange={handleRoleChange}
+            />
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="imageUrl">Image URL:</label>
+            <label htmlFor="profile_picture_url">Image URL:</label>
             <input
               type="text"
-              id="imageUrl"
-              name="imageUrl"
-              value={formData.imageUrl}
+              id="profile_picture_url"
+              name="profile_picture_url"
+              value={formData.profile_picture_url}
               onChange={handleInputChange}
             />
           </div>
           {/* Add more input fields for other profile attributes */}
+          <div className={styles.buttonContainer}>
+            <button className={styles.button} type="submit">Update</button>
+          </div>
         </form>
       </div>
-
-      <div className={styles.buttonContainer}>
-      <button className={styles.button} type="submit">Update</button>
-      </div>
-    
     </div>
   );
 };

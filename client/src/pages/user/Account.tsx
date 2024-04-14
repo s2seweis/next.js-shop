@@ -8,8 +8,8 @@ import Layout from '@/src/components/Layout/Layout';
 const UserAccountTab = lazy(
   () => import('../../components/User/UserAccountTab'),
 );
-// const ProductForm = lazy(() => import('../../admin/components/ProductForm'));
-// const UserWishListTab = lazy(() => import('../components/UserWishListTab'));
+const UpdateUserAccountTab = lazy(() => import('../../components/User/UpdateUserAccountTab'));
+const ChangePasswordComponent = lazy(() => import('../../components/User/ChangePasswordAccountTab'));
 // const UserOrdersTab = lazy(() => import('../components/UserOrdersTab'));
 
 const Loader = () => (
@@ -24,20 +24,26 @@ const UserAccount = () => {
   // useDocumentTitle('My Account | Dign');
 
   return (
-    <div>
+    <div className='tab-test'>
       <Layout>
         <UserTab>
-          <div index={0} label="Account1">
+          <div className='tab' index={0} label="User">
             <Suspense fallback={<Loader />}>
               <UserAccountTab />
             </Suspense>
           </div>
-          <div index={1} label="My Wish List">
+          <div index={1} label="Update User">
             <Suspense fallback={<Loader />}>
-              {/* <UserWishListTab /> */}
+              <UpdateUserAccountTab />
             </Suspense>
           </div>
-          <div index={2} label="My Orders">
+          <div index={2} label="Change Password">
+            <Suspense fallback={<Loader />}>{ <ChangePasswordComponent />}</Suspense>
+          </div>
+          <div index={3} label="Orders">
+            <Suspense fallback={<Loader />}>{/* <UserOrdersTab /> */}</Suspense>
+          </div>
+          <div index={4} label="User Preferences">
             <Suspense fallback={<Loader />}>{/* <UserOrdersTab /> */}</Suspense>
           </div>
         </UserTab>

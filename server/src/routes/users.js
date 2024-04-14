@@ -18,10 +18,26 @@ router.get("/users", async (req, res) => {
 
 router.get("/users/:user_id", async (req, res) => {
   const { user_id } = req.params;
+  console.log("line:1000 - #####", user_id);
   const user = await UserRepo.findById(user_id);
 
   if (user) {
     res.send(user);
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+// ### Get Password by Id 
+
+router.get("/password/:user_id", async (req, res) => {
+  const { user_id } = req.params;
+  console.log("line:99 - #####", user_id);
+  const password = await UserRepo.findByIdPassword(user_id);
+  console.log("line:100", password);
+
+  if (password) {
+    res.send(password);
   } else {
     res.sendStatus(404);
   }
@@ -77,6 +93,34 @@ router.put("/users/:user_id", async (req, res) => {
 
     if (user) {
       res.send(user);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// ### Update Password
+
+router.put("/password/:user_id", async (req, res) => {
+  try {
+    const { user_id } = req.params;
+    console.log("line:99", user_id);
+    const { userId, newPassword } = req.body;
+    console.log("line:100", userId);
+    console.log("line:101", newPassword);
+    
+    const password = await UserRepo.updatePassword(
+     user_id,
+     newPassword
+  
+    );
+    console.log("line:200", password);
+
+    if (password) {
+      res.send(password);
     } else {
       res.sendStatus(404);
     }

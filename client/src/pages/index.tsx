@@ -6,10 +6,28 @@ import Link from 'next/link';
 import AuthButton from '../components/Buttons/AuthButton/AuthButton.js';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 import { useSession } from 'next-auth/react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchUserProfile } from '../../src/redux/slices/profileSlice';
 
 const Home = () => {
-  const { data: session, status } = useSession(); // Retrieve session information
+  const { data: session } = useSession(); // Retrieve session information
   console.log('line:1', session);
+  console.log('line:2', session?.user.userId);
+
+  const dispatch = useDispatch();
+
+  const status = useSelector((state) => state.profile.status);
+  console.log('line:3', status);
+
+  const userProfile = useSelector((state) => state.profile.userProfile);
+  console.log("line:4", userProfile);
+
+  useEffect(() => {
+    // if (status === 'idle') {
+      if (status === 'idle' && session?.user.userId) {
+      dispatch(fetchUserProfile(session?.user.userId));
+    }
+  }, [dispatch, status, session?.user.userId]); // Dispatch only when status or userId changes
 
   return (
     <div className={styles.homeContainer}>
@@ -70,13 +88,10 @@ const Home = () => {
                   User Profile & Update Profile
                 </Link>
               </h4>
-              <h4>Test Component
-                <Link href="/test/Register">
-                  Register
-                </Link>
-                <Link href="/user/Account">
-                  User Account
-                </Link>
+              <h4>
+                Test Component
+                <Link href="/test/Register">Register</Link>
+                <Link href="/user/Account">User Account</Link>
               </h4>
             </div>
           </main>
