@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'; // Import font awesome icons
+import { FaFacebook } from 'react-icons/fa'; // Import font awesome icons
 import styles from '../../../styles/scss/layout/admin/FooterAdmin.module.scss'; // Import CSS Modules styles
 
 const FooterAdmin: React.FC = () => {

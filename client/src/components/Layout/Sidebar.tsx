@@ -84,7 +84,7 @@ const Sidebar: React.FC = () => {
               return null;
             }
 
-            if (menuItem.title === 'Admin' && (!userProfile || userProfile.role !== 'admin')) {
+             if (menuItem.title === 'Admin' && (!userProfile || userProfile.role !== 'admin')) {
               return null;
             }
 

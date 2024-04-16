@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import {
-  AiFillCrown,
   AiFillHeart,
   AiOutlineBars,
-  AiFillSetting,
 } from 'react-icons/ai';
 import { IoPerson } from 'react-icons/io5';
 import Link from 'next/link';

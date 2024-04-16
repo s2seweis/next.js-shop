@@ -5,12 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserProfile } from '../../../redux/slices/profileSlice';
 import styles from '../../../styles/scss/components/account/Profile.module.scss';
 import Loader from '../../Loader/Loader'; // Import the Loader component
-import Link from 'next/link';
 
 const ProfileComponent = ({ userId }) => {
   const dispatch = useDispatch();
   const userProfile = useSelector((state) => state.profile.userProfile);
-  // console.log("line:10", userProfile);
 
   const status = useSelector((state) => state.profile.status);
   const error = useSelector((state) => state.profile.error);
@@ -61,9 +59,6 @@ const ProfileComponent = ({ userId }) => {
       </div>
 
       <div className={styles.buttonContainer}>
-      {/* <Link href="/profile/UpdateProfile">
-        <button className={styles.button}>Go to Update</button>
-      </Link> */}
     </div>
 
     </div>

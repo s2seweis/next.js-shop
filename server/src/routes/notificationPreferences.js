@@ -67,47 +67,6 @@ router.post("/notification-preference", async (req, res) => {
   }
 });
 
-// Update NotificationPreferences
-// router.put('/notification-preference/:id', async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     console.log("line:0", id);
-
-//     const {
-//       theme,
-//       language,
-//       receive_email_notifications,
-//       show_online_status,
-//       // Add other properties from the NotificationPreferences table as needed
-//     } = req.body;
-//     console.log("line:1", theme);
-//     console.log("line:2", language);
-//     console.log("line:3", receive_email_notifications);
-//     console.log("line:4", show_online_status);
-//     // Add other console.log statements for additional properties
-
-//     // Use the NotificationPreferencesRepo.update method to update the record
-//     const updatedProfile = await NotificationPreferencesRepo.update(
-//       id,
-//       theme,
-//       language,
-//       receive_email_notifications,
-//       show_online_status
-//       // Add other parameter values here
-//     );
-//     console.log("line:11", updatedProfile);
-
-//     if (updatedProfile !== undefined) {
-//       res.send(updatedProfile);
-//     } else {
-//       res.sendStatus(404);
-//     }
-//   } catch (error) {
-//     console.error('Error updating NotificationPreferences:', error.message);
-//     res.status(500).send({ error: 'Internal Server Error' });
-//   }
-// });
-
 router.put("/notification-preference/:id", async (req, res) => {
   try {
     const { id } = req.params;

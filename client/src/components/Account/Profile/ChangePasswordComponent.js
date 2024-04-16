@@ -20,7 +20,6 @@ const ChangePasswordComponent = ({ userId }) => {
     userId: '',
     newPassword: '' // Adjusted field name
   });
-  console.log("line:2", formData);
 
   useEffect(() => {
     if (status === 'idle') {

@@ -33,20 +33,6 @@ router.get("/contact-information/:id", async (req, res) => {
   }
 });
 
-// // Add ContactInformation
-// router.post('/contact-information', async (req, res) => {
-//   try {
-//     const { user_id, bio, date_of_birth, location, website_url, profile_picture_url } = req.body;
-//     const userProfile = await ContactInformationRepo.insert(user_id, bio, date_of_birth, location, website_url, profile_picture_url);
-//     res.send(userProfile);
-//   } catch (error) {
-//     console.error('Error adding userProfile:', error.message);
-//     res.status(500).send({ error: 'Internal Server Error' });
-//   }
-// });
-
-// // Add ContactInformation
-
 router.post("/contact-information", async (req, res) => {
   try {
     const {
@@ -90,28 +76,6 @@ router.post("/contact-information", async (req, res) => {
     res.status(500).send({ error: "Internal Server Error" });
   }
 });
-
-// ###
-
-// Update ContactInformation old
-// router.put('/contact-information/:id', async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     console.log("line:1", id);
-//     const { user_id, bio, date_of_birth, location, website_url, profile_picture_url } = req.body;
-
-//     const updatedProfile = await ContactInformationRepo.update(user_id, bio, date_of_birth, location, website_url, profile_picture_url);
-
-//     if (updatedProfile) {
-//       res.send(updatedProfile);
-//     } else {
-//       res.sendStatus(404);
-//     }
-//   } catch (error) {
-//     console.error('Error updating userProfile:', error.message);
-//     res.status(500).send({ error: 'Internal Server Error' });
-//   }
-// });
 
 router.put("/contact-information/:id", async (req, res) => {
   try {

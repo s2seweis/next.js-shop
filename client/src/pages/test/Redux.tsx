@@ -1,7 +1,6 @@
 import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/components/test/Counter.module.scss';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic.tsx';
-
 import { Counter } from '../../components/Test/Counter/Counter.js';
 
 const imageUrl =

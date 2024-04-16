@@ -6,7 +6,6 @@ import {
   Menu,
   MenuItem,
   useProSidebar,
-  // collapseSidebar,
   SubMenu,
 } from 'react-pro-sidebar';
 import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
@@ -21,7 +20,6 @@ const AdminSidebar = () => {
   const toggleFavorite = () => setFavorite((prev) => !prev);
 
   return (
-    // <nav className="content-admin-wrapper-sidebar">
     <nav className={styles.contentAdminWrapperSidebar}>
       <div style={{ display: 'flex', height: '90vh' }}>
         <Sidebar
@@ -30,7 +28,6 @@ const AdminSidebar = () => {
           defaultCollapsed={true}
         >
           <Menu>
-            {/* ### */}
             <MenuItem
               active={router.pathname === '/admin/dashboard'}
               icon={<Icon name="dashboard" />}
@@ -100,7 +97,6 @@ const AdminSidebar = () => {
                     toggleFavorite();
                     collapseSidebar();
                   }}
-                  // className="top-rated-car-react-button"
                 >
                   {favorite ? (
                     <FiArrowLeftCircle

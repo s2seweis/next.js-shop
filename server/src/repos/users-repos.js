@@ -46,19 +46,6 @@ class UserRepo {
     return toCamelCase(rows)[0];
   }
 
-  // ### works
-
-  // static async update (username, email, full_name, profile_picture_url, user_id) {
-  //   const {
-  //     rows,
-  //   } = await pool.query (
-  //     'UPDATE Users SET username = $1, email = $2, full_name = $3, profile_picture_url = $4 WHERE user_id = $5 RETURNING *;',
-  //     [username, email, full_name, profile_picture_url, user_id]
-  //   );
-
-  //   return toCamelCase (rows)[0];
-  // }
-
   static async update(
     user_id,
     username,

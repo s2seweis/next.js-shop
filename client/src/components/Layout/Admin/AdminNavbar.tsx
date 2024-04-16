@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from '../../../styles/scss/layout/admin/AdminNavbar.module.scss';
 import { SiWolfram } from 'react-icons/si';

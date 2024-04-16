@@ -165,39 +165,7 @@ class AuthRepo {
         throw new Error("Invalid email or password");
       }
 
-      // const authQuery = `
-      //   SELECT * FROM "authentication" WHERE user_id = $1;
-      // `;
-      // console.log("line:4", authQuery);
-
-      // const authResult = await pool.query(authQuery, [user.userId]);
-
-      // if (authResult.rows.length === 0) {
-      //   throw new Error("Invalid email or password");
-      // }
-
-      // const passwordMatch = await bcrypt.compare(
-      //   password,
-      //   authResult.rows[0].password_hash
-      // );
-      // console.log("line:5", passwordMatch);
-
-      // if (!passwordMatch) {
-      //   throw new Error("Invalid email or password");
-      // }
-
-      // const token = jwt.sign(
-      //   { user_id: user.userId, email: user.email, auth: "true" },
-      //   "12345678",
-      //   { expiresIn: "1h" }
-      // );
-
-      // console.log("line:6", token);
-
       const userid = user.userId;
-      // const role = user.role;
-      // const name = user.username;
-      // const userid='123456';
 
       return { message: "Login successful", userid };
     } catch (error) {
@@ -205,8 +173,6 @@ class AuthRepo {
       throw error;
     }
   }
-
-  // ### Test 
 
   // ### Delete
   async delete(user_id) {
@@ -216,34 +182,6 @@ class AuthRepo {
     );
     return toCamelCase(rows)[0];
   }
-
-  // ### - Test
-
-  // async delete(user_id) {
-  //   // Delete references from the "authentication" table
-  //   const authDeleteQuery = 'DELETE FROM authentication WHERE user_id = $1 RETURNING *;';
-  //   const authResult = await pool.query(authDeleteQuery, [user_id]);
-  //   const deletedAuthUser = toCamelCase(authResult.rows)[0];
-
-  //   // Delete references from the "accountstatus" table
-  //   const accountStatusDeleteQuery = 'DELETE FROM accountstatus WHERE user_id = $1 RETURNING *;';
-  //   const accountStatusResult = await pool.query(accountStatusDeleteQuery, [user_id]);
-  //   const deletedAccountStatusUser = toCamelCase(accountStatusResult.rows)[0];
-
-  //   // Delete references from the "contactinformation" table
-  //   const contactInfoDeleteQuery = 'DELETE FROM contactinformation WHERE user_id = $1 RETURNING *;';
-  //   const contactInfoResult = await pool.query(contactInfoDeleteQuery, [user_id]);
-  //   const deletedContactInfoUser = toCamelCase(contactInfoResult.rows)[0];
-
-  //   // You can return the deleted user from the relevant table, or decide on a structure for the response
-  //   return {
-  //     deletedAuthUser,
-  //     deletedAccountStatusUser,
-  //     deletedContactInfoUser,
-  //   };
-  // }
-
-  // ### - Test End
 }
 
 module.exports = new AuthRepo();

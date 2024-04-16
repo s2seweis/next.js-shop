@@ -60,40 +60,6 @@ router.post("/account-status", async (req, res) => {
   }
 });
 
-// Update Account Status
-// router.put('/account-status/:id', async (req, res) => {
-//   try {
-//     const { id } = req.params;
-
-//     const {
-//       user_id,
-//       email,
-//       phone_number,
-//       address_line1,
-//       address_line2,
-//       city,
-//       state,
-//       postal_code,
-//       country
-//     } = req.body;
-
-//     console.log("line:10", id);
-
-//     // Use the AccountStatusRepo.update method to update the record
-//     const updatedProfile = await AccountStatusRepo.update(user_id, email, phone_number, address_line1, address_line2, city, state, postal_code, country);
-//     console.log("line:11", updatedProfile);
-
-//     if (updatedProfile !== undefined) {
-//       res.send(updatedProfile);
-//     } else {
-//       res.sendStatus(404);
-//     }
-//   } catch (error) {
-//     console.error('Error updating accountStatus:', error.message);
-//     res.status(500).send({ error: 'Internal Server Error' });
-//   }
-// });
-
 router.put("/account-status/:id", async (req, res) => {
   try {
     const { id } = req.params;

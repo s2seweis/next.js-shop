@@ -1,6 +1,5 @@
 import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/checkout/Checkout.module.scss';
-import Link from 'next/link'; // Import Link component from next/link
 import IsAuthUser from '@/src/utils/authHocs/isAuthUser';
 
 interface HomeProps {

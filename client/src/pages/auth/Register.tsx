@@ -1,5 +1,3 @@
-// Register.tsx
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link'; // Import Link from Next.js

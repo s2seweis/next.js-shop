@@ -1,5 +1,3 @@
-// components/layout/menuItems.ts
-
 export const menuItems = [
   {
     title: 'Menu',
@@ -7,8 +5,6 @@ export const menuItems = [
     submenus: [
       { title: 'Home', path: '/' },
       { title: 'Contact', path: '/contact/ContactForm' },
-      // { title: 'SignIn', path: '/auth/SignIn' },
-      // { title: 'Register', path: '/auth/Register' },
     ],
   },
   {
@@ -16,8 +12,6 @@ export const menuItems = [
     path: '/admin',
     submenus: [
       { title: 'Dashboard', path: '/admin/AdminDashboard' },
-      // { title: 'SignIn', path: '/auth/SignIn' },
-      // { title: 'Register', path: '/auth/Register' },
     ],
   },
   {

@@ -10,17 +10,6 @@ class BasketRepo {
     return toCamelCase(rows);
   }
 
-  // static async findById (user_id) {
-  //   const {rows} = await pool.query (
-  //     `
-  //     SELECT * FROM Basket WHERE user_id = $1;
-  //     `,
-  //     [user_id]
-  //   );
-
-  //   return toCamelCase (rows)[0];
-  // }
-
   static async findById(user_id) {
     const { rows } = await pool.query(
       "SELECT * FROM Basket WHERE user_id = $1;",
@@ -29,8 +18,6 @@ class BasketRepo {
 
     return toCamelCase(rows);
   }
-
-  // ###
 
   static async insert({
     user_id,
@@ -63,13 +50,6 @@ class BasketRepo {
 
     return toCamelCase(rows)[0];
   }
-
-  // ###
-
-  // static async delete(user_id) {
-  //   const { rows } = await pool.query('DELETE FROM Basket WHERE user_id = $1 RETURNING *;', [user_id]);
-  //   return toCamelCase(rows)[0];
-  // }
 
   static async delete(basketItemId) {
     const { rows } = await pool.query(
@@ -110,10 +90,6 @@ class BasketRepo {
     return toCamelCase(rows)[0];
   }
 
-  // static async updateQuantity(basketItemId, newQuantity) {
-  //   const { rows } = await pool.query('UPDATE Basket SET quantity = $1 WHERE id = $2 RETURNING *;', [newQuantity, basketItemId]);
-  //   return toCamelCase(rows)[0];
-  // }
 }
 
 module.exports = BasketRepo;

@@ -13,7 +13,6 @@ const UserTab = (props) => {
           <ul className={styles.userTabMenu}>
             {children.map((child) => (
               <li
-                // className={`user-tab-item ${child.props.index === activeTab ? 'user-tab-active' : ''}`}
                 className={`${styles.userTabItem} ${
                   child.props.index === activeTab ? styles.userTabActive : ''
                 }`}

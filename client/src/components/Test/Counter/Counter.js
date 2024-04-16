@@ -36,7 +36,7 @@ export function Counter() {
         </button>
       </div>
       {/* ### - more complex in its logic */}
-      {/* <div className={styles.row}>
+      <div className={styles.row}>
         <input
           className={styles.textbox}
           aria-label="Set increment amount"
@@ -57,7 +57,7 @@ export function Counter() {
         >
           Add Async
         </button>
-      </div> */}
+      </div>
       {/* ### */}
     </div>
   );

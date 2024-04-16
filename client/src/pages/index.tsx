@@ -1,9 +1,7 @@
-// Home.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/home/Home.module.scss';
 import Link from 'next/link';
-import AuthButton from '../components/Buttons/AuthButton/AuthButton.js';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 import { useSession } from 'next-auth/react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -23,7 +21,6 @@ const Home = () => {
   console.log("line:4", userProfile);
 
   useEffect(() => {
-    // if (status === 'idle') {
       if (status === 'idle' && session?.user.userId) {
       dispatch(fetchUserProfile(session?.user.userId));
     }
@@ -58,7 +55,6 @@ const Home = () => {
                 </Link>
                 <Link href="download/DownloadApp">App Download Button (visible for all)</Link>
               </h4>
-        
               <h4>
                 Products Redux Test: Post, Get, Delete & Update
                 <Link href="/product/Products">

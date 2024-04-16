@@ -10,7 +10,6 @@ const Products = () => {
       <div className={styles.adminContainer}>
         <main
           style={{
-            // height: '100vh',
             minHeight: '100vh',
             display: 'flex',
             alignItems: 'center',
@@ -20,7 +19,6 @@ const Products = () => {
         >
           <div>
             <h3>Products Overview:</h3>
-
             <ProductComponent />
           </div>
         </main>

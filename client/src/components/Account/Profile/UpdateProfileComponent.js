@@ -23,7 +23,6 @@ const UpdateProfileComponent = ({ userId }) => {
     imageUrl: '',
     // Add more fields as needed
   });
-  console.log("line:2", formData);
 
   useEffect(() => {
     if (status === 'idle') {

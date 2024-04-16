@@ -68,41 +68,6 @@ router.post("/user-preference", async (req, res) => {
   }
 });
 
-// // Update UserPreferences
-// router.put('/user-preference/:id', async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     console.log("line:0", id);
-
-//     const {
-//       user_id,
-//       is_active,
-//       is_suspended,
-//       is_deactivated,
-//       last_login,
-//       // Other status-related fields can be added here
-//     } = req.body;
-//     console.log("line:1", user_id);
-//     console.log("line:2", is_active);
-//     console.log("line:3", is_suspended);
-//     console.log("line:4", is_deactivated);
-//     console.log("line:5", last_login);
-
-//     // Use the UserPreferenceRepo.update method to update the record
-//     const updatedProfile = await UserPreferenceRepo.update(user_id, is_active, is_suspended, is_deactivated, last_login /* Add other parameter values here */);
-//     console.log("line:11", updatedProfile);
-
-//     if (updatedProfile !== undefined) {
-//       res.send(updatedProfile);
-//     } else {
-//       res.sendStatus(404);
-//     }
-//   } catch (error) {
-//     console.error('Error updating accountStatus:', error.message);
-//     res.status(500).send({ error: 'Internal Server Error' });
-//   }
-// });
-
 // Update UserPreferences
 router.put("/user-preference/:id", async (req, res) => {
   try {
