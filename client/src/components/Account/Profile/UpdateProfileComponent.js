@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchUserProfile, updateUserProfile } from '../../redux/slices/profileSlice';
-import styles from '../../styles/scss/components/profile/UpdateProfile.module.scss';
-import Loader from '../Loader/Loader'; // Import the Loader component
+import { fetchUserProfile, updateUserProfile } from '../../../redux/slices/profileSlice';
+import styles from '../../../styles/scss/components/account/UpdateProfile.module.scss';
+import Loader from '../../Loader/Loader'; // Import the Loader component
 import Select from 'react-select';
 import { notification } from 'antd'; // Import notification component from Ant Design
 

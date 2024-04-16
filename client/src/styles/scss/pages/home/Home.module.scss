@@ -1,3 +1,5 @@
+@use '../../global/padding.scss' as *;
+
 // styles/Home.module.scss
 
 // Import stylesheets or variables as needed
@@ -20,7 +22,7 @@
   // height: 100vh;
   display: flex;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 20px;
   min-height: 100vh;
 }
 
@@ -35,6 +37,7 @@
 
   h3 {
     text-align: center;
+    // @include margin('xl');
   }
 
   h5 {

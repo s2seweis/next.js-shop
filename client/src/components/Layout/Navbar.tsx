@@ -9,8 +9,8 @@ import DropdownMenu from '../DropdownMenu/DropDownMenu';
 const options = [
   { value: '', label: 'Home' },
   { value: 'contact/ContactForm', label: 'Contact' },
-  { value: 'auth/Register', label: 'Register' },
-  { value: 'auth/SignIn', label: 'Sign In' },
+  // { value: 'auth/Register', label: 'Register' },
+  // { value: 'auth/SignIn', label: 'Sign In' },
 ];
 // # - Destructure it and take out direct the properties
 const Navbar = ({ login, isAuth }) => {

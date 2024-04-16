@@ -7,7 +7,6 @@ import styles from '../../../styles/scss/components/buttons/SignInButton.module.
 import { useSelector } from 'react-redux';
 
 const SignInButton = () => {
-  
   const { data: session, status } = useSession();
 
   const getTruncatedName = (name: string) => {
@@ -25,14 +24,19 @@ const SignInButton = () => {
   };
 
   const userProfile = useSelector((state) => state.profile.userProfile);
-  console.log("line:600", userProfile);
+  console.log('line:600', userProfile);
 
   return (
-    <div className="ml-auto flex gap-2" style={{ justifyContent: 'center', display: 'flex' }}>
+    <div
+      className="ml-auto flex gap-2"
+      style={{ justifyContent: 'center', display: 'flex' }}
+    >
       {session?.user ? (
         <>
           <div className={styles.containerSignIn}>
-            <p className="text-sky-600">{getTruncatedName(userProfile?.username || 'Guest')}</p>
+            <p className="text-sky-600">
+              hello&nbsp;{getTruncatedName(userProfile?.username || 'Guest')}
+            </p>
             <button className="text-red-500" onClick={handleSignOut}>
               <GoSignOut className="inline-block align-text-bottom mr-1" />
             </button>

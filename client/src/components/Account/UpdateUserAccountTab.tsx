@@ -1,11 +1,11 @@
 import Nav from '../Nav/Nav';
-import ChangePasswordComponent from '@/src/components/Profile/ChangePasswordComponent.js';
+import UpdateProfileComponent from '@/src/components/Account/Profile/UpdateProfileComponent.js';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 // import Layout from '../../components/Layout/Layout';
 import Link from 'next/link';
-import styles from '../../styles/scss/pages/profile/Profile.module.scss';
+import styles from '../../styles/scss/pages/account/Profile.module.scss';
 
 const UpdateUserAccountTab: React.FC = () => {
   const { data: session } = useSession(); // Retrieve session information
@@ -26,7 +26,7 @@ const UpdateUserAccountTab: React.FC = () => {
         {session ? (
           <div className={styles.mainContainer}>
             {/* <h2>Test</h2> */}
-            <ChangePasswordComponent userId={session.user.userId}  />
+            <UpdateProfileComponent userId={session.user.userId}  />
           </div>
         ) : (
           <div className={styles.mainContainer}>

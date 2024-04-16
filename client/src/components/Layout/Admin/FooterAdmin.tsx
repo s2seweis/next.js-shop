@@ -10,10 +10,10 @@ const FooterAdmin: React.FC = () => {
           <a href="https://www.facebook.com/" className={styles.socialIcon}>
             <FaFacebook />
           </a>
-          <h5>a product from ...</h5>
+          <h5>Admin Dashboard ...</h5>
         </div>
         <p className={styles.copyRight}>
-          &copy; {new Date().getFullYear()} Your need some instructions?
+          &copy; {new Date().getFullYear()} IT - Solutions 
         </p>
       </div>
     </footer>

@@ -6,24 +6,20 @@ import {
   AiFillSetting,
 } from 'react-icons/ai';
 import { IoPerson } from 'react-icons/io5';
-import Link from 'next/link'; // Import Link from next/link
+import Link from 'next/link';
 import styles from '../../styles/scss/layout/public/DrowDownMenu.module.scss';
 import SignInButton from '../Buttons/SignInButton/SignInButton';
 import { useSession } from 'next-auth/react';
 import { useSelector } from 'react-redux';
 
-
 const DropdownMenu: React.FC = () => {
   const { data: session, status } = useSession();
-  // console.log("line:1", session);
-
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  // Function to get the truncated name
   const getTruncatedName = (name: string) => {
     if (!name || name.length <= 0) {
       return 'Guest';
@@ -35,7 +31,6 @@ const DropdownMenu: React.FC = () => {
   };
 
   const userProfile = useSelector((state) => state.profile.userProfile);
-  console.log("line:400", userProfile);
 
   return (
     <div className={styles.dropdown}>
@@ -57,10 +52,7 @@ const DropdownMenu: React.FC = () => {
               justifyContent: 'center',
             }}
           >
-            {/* {getTruncatedName(
-              session?.user?.userData?.login || session?.user.name,
-            )} */}
-            {userProfile?.username || 'Guest'}
+            {userProfile ? userProfile.username : 'Guest'}
           </div>
         </div>
       </div>
@@ -76,11 +68,13 @@ const DropdownMenu: React.FC = () => {
               <AiOutlineBars /> Home
             </div>
           </Link>
-          <Link href="/profile/Profile">
-            <div className={styles.menuLink}>
-              <IoPerson /> Profile
-            </div>
-          </Link>
+          {userProfile && ( // Render profile links only if userProfile exists
+            <Link href="/user/Account">
+              <div className={styles.menuLink}>
+                <IoPerson /> Profile
+              </div>
+            </Link>
+          )}
           <SignInButton />
         </div>
       )}

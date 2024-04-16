@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AuthProvider from '../utils/context/AuthProviderMerged';
 import Loader from '../components/Loader/Loader'; // Import the Loader component
-import '../styles/scss/global.scss';
+import '../styles/scss/global/global.scss';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import { BrowserRouter as Router } from 'react-router-dom';
 

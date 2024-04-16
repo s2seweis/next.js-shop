@@ -3,7 +3,7 @@
 // import { useAuth } from '../../context/AuthProviderMerged';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Layout from '../Layout/Layout';
+import Layout from '../../components/Layout/Layout';
 import { useSession } from 'next-auth/react';
 
 const IsAuthUser = (WrappedComponent) => (props) => {

@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaRegWindowClose, FaAngleDown, FaAngleRight } from 'react-icons/fa';
 import { useSidebarContext } from '../../utils/context/SidebarContext';
 import Link from 'next/link';
-import styles from '../../styles/scss/layout/public/Sidebar.module.scss'; // Import your CSS Modules styles
+import styles from '../../styles/scss/layout/public/Sidebar.module.scss';
 import { menuItems } from './menuItems';
 import SignInButton from '../Buttons/SignInButton/SignInButton';
+import { useSelector } from 'react-redux';
 
 const Sidebar: React.FC = () => {
+  const userProfile = useSelector((state) => state.profile.userProfile);
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
@@ -16,10 +18,7 @@ const Sidebar: React.FC = () => {
     const storedActiveSubMenu = localStorage.getItem('activeSubMenu');
 
     if (isSidebarOpen) {
-      // Only update state if the sidebar is open
-      setActiveMenu(
-        storedActiveMenu || getActiveMenu(window.location.pathname),
-      );
+      setActiveMenu(storedActiveMenu || getActiveMenu(window.location.pathname));
       setActiveSubMenu(storedActiveSubMenu || null);
     }
   }, [isSidebarOpen]);
@@ -39,23 +38,17 @@ const Sidebar: React.FC = () => {
       return window.location.pathname === href;
     }
     return false;
-    // return false;
   };
 
   const getActiveMenu = (path: string) => {
-    return path === '/'
-      ? 'Home'
-      : menuItems.find((item) => item.path === path)?.title || null;
+    return path === '/' ? 'Home' : menuItems.find((item) => item.path === path)?.title || null;
   };
 
   const renderSubMenu = (submenus: { title: string; path: string }[]) => (
     <div className={styles.submenu}>
       {submenus.map((submenu) => (
         <Link key={submenu.path} href={submenu.path}>
-          <span
-            className={`${styles.submenuLink} ${isLinkActive(submenu.path) ? styles.active : ''
-              }`}
-          >
+          <span className={`${styles.submenuLink} ${isLinkActive(submenu.path) ? styles.active : ''}`}>
             {submenu.title}
           </span>
         </Link>
@@ -73,48 +66,46 @@ const Sidebar: React.FC = () => {
 
   return (
     <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ''}`}>
-      <div
-        className={styles.overlay}
-        ref={overlayRef}
-        onClick={handleOverlayClick}
-      ></div>
+      <div className={styles.overlay} ref={overlayRef} onClick={handleOverlayClick}></div>
       <div className={styles.sidebarToggle} onClick={toggleSidebar}>
         <FaRegWindowClose />
       </div>
       <nav className={styles.nav}>
-        <div
-          className="logo"
-          style={{ display: 'flex', justifyContent: 'center' }}
-        >
+        <div className="logo" style={{ display: 'flex', justifyContent: 'center' }}>
           <div style={{ width: '80px', marginTop: '40px' }}>
             <SignInButton />
           </div>
         </div>
 
         <div className={styles.navLinks}>
-          {menuItems.map((menuItem) => (
-            <span
-              key={menuItem.path || menuItem.title}
-              className={`${styles.navLink} ${isSubMenuActive(menuItem.title) ? styles.active : ''
-                }`}
-              onClick={() => handleMenuClick(menuItem.title)}
-            >
-              <div className="test1">
-                {menuItem.title}{' '}
-              </div>
-              <div className="test2" style={{ }}>
-                {menuItem.submenus && isSubMenuActive(menuItem.title) ? (
+          {menuItems.map((menuItem) => {
+            // Only render the "Account" menu item if userProfile is available
+            if (menuItem.title === 'Account' && !userProfile) {
+              return null;
+            }
 
-                  <FaAngleDown style={{ right: '28px', position: 'absolute', marginTop:"-20px" }} />
-                ) : (
-                  <FaAngleRight style={{ right: '28px', position: 'absolute', marginTop:"-20px" }} />
-                )}
-              </div>
-              {menuItem.submenus &&
-                isSubMenuActive(menuItem.title) &&
-                renderSubMenu(menuItem.submenus)}
-            </span>
-          ))}
+            if (menuItem.title === 'Admin' && (!userProfile || userProfile.role !== 'admin')) {
+              return null;
+            }
+
+            return (
+              <span
+                key={menuItem.path || menuItem.title}
+                className={`${styles.navLink} ${isSubMenuActive(menuItem.title) ? styles.active : ''}`}
+                onClick={() => handleMenuClick(menuItem.title)}
+              >
+                <div className="test1">{menuItem.title}</div>
+                <div className="test2" style={{}}>
+                  {menuItem.submenus && isSubMenuActive(menuItem.title) ? (
+                    <FaAngleDown style={{ right: '34px', position: 'absolute', marginTop: '-20px' }} />
+                  ) : (
+                    <FaAngleRight style={{ right: '34px', position: 'absolute', marginTop: '-20px' }} />
+                  )}
+                </div>
+                {menuItem.submenus && isSubMenuActive(menuItem.title) && renderSubMenu(menuItem.submenus)}
+              </span>
+            );
+          })}
         </div>
         <div className="controllerContainer" style={{ marginTop: '60%' }}></div>
       </nav>

@@ -49,29 +49,18 @@ const Home = () => {
                 <Link href="/admin/AdminDashboard">
                   Admin (visible for admin)
                 </Link>
-                <Link href="/profile/Server">
-                  Server (only visible for admin and user)
+                <Link href="/checkout/Page">
+                  Checkout (only visible for admin and user)
                 </Link>
                 <Link href="auth/Register">Register (visible for all)</Link>
                 <Link href="auth/SignIn">
                   Sign In (visible for all) - Other Route
                 </Link>
-                <Link href="test/Github">Github API (visible for admin)</Link>
-                <Link href="download/DownloadApp">App Download Button</Link>
+                <Link href="download/DownloadApp">App Download Button (visible for all)</Link>
               </h4>
+        
               <h4>
-                Authentication with Button
-                <Link href="/profile/Dashboard">
-                  Dashboard (Auth Provider) with SignInButton
-                </Link>
-                <Link href="/profile/UserProfile">
-                  Profile (Auth Provider) with SignInButton
-                </Link>
-              </h4>
-              <AuthButton />
-              <h4>
-                Redux Test
-                <Link href="test/Redux">Redux</Link>
+                Products Redux Test: Post, Get, Delete & Update
                 <Link href="/product/Products">
                   Get/Delete Products - Redux/ API Call
                 </Link>
@@ -81,16 +70,9 @@ const Home = () => {
                 <Link href="/product/UpdateProducts">
                   Update Products - Redux/ API Call
                 </Link>
-                <Link href="/profile/Profile">
-                  User Profile & Profile Component
-                </Link>
-                <Link href="/profile/UpdateProfile">
-                  User Profile & Update Profile
-                </Link>
               </h4>
               <h4>
                 Test Component
-                <Link href="/test/Register">Register</Link>
                 <Link href="/user/Account">User Account</Link>
               </h4>
             </div>

@@ -25,7 +25,7 @@ const AdminSidebar = () => {
     <nav className={styles.contentAdminWrapperSidebar}>
       <div style={{ display: 'flex', height: '90vh' }}>
         <Sidebar
-          width={'150px'}
+          width={'167px'}
           collapsedWidth={'60px'}
           defaultCollapsed={true}
         >

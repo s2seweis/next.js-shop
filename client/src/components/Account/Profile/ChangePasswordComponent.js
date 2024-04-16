@@ -1,9 +1,9 @@
 // ChangePasswordComponent.jsx
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPassword, updatePassword } from '../../redux/slices/passwordSlice';
-import styles from '../../styles/scss/components/profile/UpdateProfile.module.scss';
-import Loader from '../Loader/Loader'; // Import the Loader component
+import { fetchPassword, updatePassword } from '../../../redux/slices/passwordSlice';
+import styles from '../../../styles/scss/components/account/UpdateProfile.module.scss';
+import Loader from '../../Loader/Loader'; // Import the Loader component
 import { notification } from 'antd'; // Import notification component from Ant Design
 
 const ChangePasswordComponent = ({ userId }) => {

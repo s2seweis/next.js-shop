@@ -5,8 +5,10 @@
   border-radius: 5px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 350px;
+  // width: 350px;
+  width: -webkit-fill-available;
   // margin-top: 80px;
+  // height: 640px;
 }
 
 .profileInfo {

@@ -1,7 +1,7 @@
 import { useAuth } from '../../utils/context/AuthProviderMerged';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Nav from '../../caomponents/Nav/Nav';
+import Nav from '../../components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/profile/Profile.module.scss';
 import AuthButton from '../../components/Buttons/AuthButton/AuthButton.js';
 

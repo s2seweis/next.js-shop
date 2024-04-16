@@ -7,13 +7,13 @@ export const menuItems = [
     submenus: [
       { title: 'Home', path: '/' },
       { title: 'Contact', path: '/contact/ContactForm' },
-      { title: 'SignIn', path: '/auth/SignIn' },
-      { title: 'Register', path: '/auth/Register' },
+      // { title: 'SignIn', path: '/auth/SignIn' },
+      // { title: 'Register', path: '/auth/Register' },
     ],
   },
   {
     title: 'Admin',
-    path: '/posts',
+    path: '/admin',
     submenus: [
       { title: 'Dashboard', path: '/admin/AdminDashboard' },
       // { title: 'SignIn', path: '/auth/SignIn' },
@@ -21,11 +21,10 @@ export const menuItems = [
     ],
   },
   {
-    title: 'Profile',
-    path: '/dashboard',
+    title: 'Account',
+    path: '/user',
     submenus: [
-      { title: 'User Profile', path: '/profile/UserProfile' },
-      { title: 'Orders', path: '/profile/server' },
+      { title: 'User Account', path: '/user/Account' }
     ],
   },
   {

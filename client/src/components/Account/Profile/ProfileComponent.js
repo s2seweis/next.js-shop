@@ -2,9 +2,9 @@
 
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchUserProfile } from '../../redux/slices/profileSlice';
-import styles from '../../styles/scss/components/profile/Profile.module.scss';
-import Loader from '../Loader/Loader'; // Import the Loader component
+import { fetchUserProfile } from '../../../redux/slices/profileSlice';
+import styles from '../../../styles/scss/components/account/Profile.module.scss';
+import Loader from '../../Loader/Loader'; // Import the Loader component
 import Link from 'next/link';
 
 const ProfileComponent = ({ userId }) => {
