@@ -2,7 +2,7 @@ import { useAuth } from '../../utils/context/AuthProviderMerged';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Nav from '../../components/Nav/Nav';
-import styles from '@/src/styles/scss/pages/profile/Dashboard.module.scss';
+import styles from '@/src/styles/scss/pages/Account/Dashboard.module.scss';
 import AuthButton from '../../components/Buttons/AuthButton/AuthButton.js';
 import Layout from '@/src/components/Layout/Layout';
 
