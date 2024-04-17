@@ -2,15 +2,15 @@
 // import { useDocumentTitle, useScrollTop } from 'hooks';
 import { LoadingOutlined } from '@ant-design/icons';
 import React, { lazy, Suspense } from 'react';
-import UserTab from '../../components/Account/UserTab'
+import UserTab from '@/src/components/Account/UserTab'
 import Layout from '@/src/components/Layout/Layout';
 
 const UserAccountTab = lazy(
-  () => import('../../components/Account/UserAccountTab'),
+  () => import('@/src/components/Account/UserAccountTab'),
 );
-const UpdateUserAccountTab = lazy(() => import('../../components/Account/UpdateUserAccountTab'));
-const ChangePasswordComponent = lazy(() => import('../../components/Account/ChangePasswordAccountTab'));
-const PreferenceTab = lazy(() => import('../../components/Account/PreferenceTab'));
+const UpdateUserAccountTab = lazy(() => import('@/src/components/Account/UpdateUserAccountTab'));
+const ChangePasswordComponent = lazy(() => import('@/src/components/Account/ChangePasswordAccountTab'));
+const PreferenceTab = lazy(() => import('@/src/components/Account/PreferenceTab'));
 // const UserOrdersTab = lazy(() => import('../components/UserOrdersTab'));
 
 const Loader = () => (

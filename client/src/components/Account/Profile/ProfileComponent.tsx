@@ -3,8 +3,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserProfile } from '../../../redux/slices/profileSlice';
-import styles from '../../../styles/scss/components/account/Profile.module.scss';
-import Loader from '../../Loader/Loader'; // Import the Loader component
+import styles from '@/src/styles/scss/components/account/Profile.module.scss';
+import Loader from '@/src/components/Loader/Loader'; // Import the Loader component
 
 const ProfileComponent = ({ userId }) => {
   const dispatch = useDispatch();

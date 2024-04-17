@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../../styles/scss/components/account/AccountTab.module.scss';
+import styles from '@/src/styles/scss/components/account/AccountTab.module.scss';
 
 const UserTab = (props) => {
   const { children } = props;

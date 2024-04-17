@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchUserPreference, updateUserPreference } from '../../../redux/slices/userPreferencSlice';
-import styles from '../../../styles/scss/components/account/UpdateProfile.module.scss';
-import Loader from '../../Loader/Loader'; // Import the Loader component
+import { fetchUserPreference, updateUserPreference } from '../../../redux/slices/userPreferenceSlice';
+import styles from '@/src/styles/scss/components/account/UpdateProfile.module.scss';
+import Loader from '@/src/components/Loader/Loader'; // Import the Loader component
 import { notification } from 'antd'; // Import notification component from Ant Design
 import Select from 'react-select';
 
 const PreferenceComponent = ({ userId }) => {
+  console.log("line: 3", userId);
+  
   const dispatch = useDispatch();
   const userPreference = useSelector((state) => state.preference.userPreference);
   console.log("line:1", userPreference);
 
-  const status = useSelector((state) => state.profile.status);
-  const error = useSelector((state) => state.profile.error);
+  const status = useSelector((state) => state.preference.status);
+  console.log("line:4", status);
+  
+  const error = useSelector((state) => state.preference.error);
 
   // State to manage form data
   const [formData, setFormData] = useState({
