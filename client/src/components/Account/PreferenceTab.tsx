@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import styles from '@/src/styles/scss/pages/account/Profile.module.scss';
+import styles from '../../styles/scss/pages/account/Profile.module.scss';
 
 const PreferenceTab: React.FC = () => {
   const { data: session } = useSession(); // Retrieve session information
