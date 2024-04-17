@@ -77,6 +77,6 @@
     "src/app/context/AuthContext.tsx",
     ".next/types/**/*.ts",
     "src/components/Layout/Admin/routes.ts"
-, "src/app/not-found.tsx"  ],
+, "src/app/not-found.tsx", "src/components/Account/Profile/PreferencesComponent.jsx"  ],
   "exclude": ["node_modules", ".next"]
 }

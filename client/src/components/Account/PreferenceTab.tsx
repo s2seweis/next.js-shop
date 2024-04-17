@@ -1,5 +1,5 @@
 import Nav from '../Nav/Nav';
-import PreferencesComponent from '@/src/components/Account/Profile/PreferencesComponent.js';
+import PreferencesComponent from '../../components/Account/Profile/PreferencesComponent';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';

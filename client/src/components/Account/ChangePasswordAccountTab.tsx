@@ -1,5 +1,5 @@
 import Nav from '../Nav/Nav';
-import ChangePasswordComponent from '@/src/components/Account/Profile/ChangePasswordComponent.js';
+import ChangePasswordComponent from '../../components/Account/Profile/ChangePasswordComponent';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';

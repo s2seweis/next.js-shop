@@ -1,5 +1,5 @@
 import Nav from '../Nav/Nav';
-import UpdateProfileComponent from '@/src/components/Account/Profile/UpdateProfileComponent.js';
+import UpdateProfileComponent from '@/src/components/Account/Profile/UpdateProfileComponent';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
