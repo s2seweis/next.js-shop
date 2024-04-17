@@ -13,18 +13,15 @@ export const options: NextAuthOptions = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        email: {
-          label: 'Email:',
-          type: 'text',
-          placeholder: 'your-cool-email',
-        },
-        password: {
-          label: 'Password:',
-          type: 'password',
-          placeholder: 'your-awesome-password',
-        },
+        email: { label: 'Email:', type: 'text', placeholder: 'your-cool-email' },
+        password: { label: 'Password:', type: 'password', placeholder: 'your-awesome-password' },
       },
       async authorize(credentials) {
+        if (!credentials || !credentials.email || !credentials.password) {
+          // Handle missing credentials
+          return null;
+        }
+
         const { email, password } = credentials;
 
         try {
