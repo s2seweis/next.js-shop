@@ -13,7 +13,7 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     if (!isLoggedIn) {
       router.push('/');
-    }
+    
   }, [isLoggedIn, router]);
 
   if (!isLoggedIn) {
