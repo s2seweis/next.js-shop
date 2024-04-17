@@ -33,14 +33,12 @@ export const options: NextAuthOptions = {
 
           // Check if the response is successful
           if (response.data) {
-            // const { user_id } = response.data;
             return {
               ...response.data,
               jwt: response.data.token,
               email: email,
               userId: response.data.userid,
               role: response.data.role,
-              // name:response.data.name
             };
           } else {
             return null; // Return null if user not found
@@ -55,7 +53,7 @@ export const options: NextAuthOptions = {
 
   callbacks: {
     async jwt({ token, user, account, profile }) {
-      if (account) {
+      if (account && 'jwt' in user) {
         token.jwt = user.jwt;
         token.email = user.email;
         token.userId = user.userId;
