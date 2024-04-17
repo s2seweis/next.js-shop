@@ -1,7 +1,11 @@
-import type { NextAuthOptions } from 'next-auth';
+import { NextAuthOptions } from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import axios from 'axios';
+
+interface CustomUser {
+  userId: string; // Define the userId property in the custom user interface
+}
 
 export const options: NextAuthOptions = {
   providers: [
@@ -56,7 +60,7 @@ export const options: NextAuthOptions = {
       if (account && 'jwt' in user) {
         token.jwt = user.jwt;
         token.email = user.email;
-        token.userId = user.userId;
+        token.userId = (user as CustomUser).userId; // Cast user to CustomUser to access userId property
         token.role = user.role;
 
         // Modify the token object to include additional data from dummyData
