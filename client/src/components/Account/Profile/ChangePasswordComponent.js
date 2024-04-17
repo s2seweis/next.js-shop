@@ -75,6 +75,7 @@ const ChangePasswordComponent = ({ userId }) => {
               name="userId"
               value={formData.userId}
               onChange={handleInputChange}
+              disabled
             />
           </div>
           <div className={styles.formGroup}>

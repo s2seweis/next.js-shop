@@ -59,9 +59,8 @@ project-root/
 
 Next: 
 1. Deploy it to netlify
-2. Add UserPreferences
+2. Avoid Callback functions with HOC/ lift state instead - more elegant way ?
 3. Optimize Server Side rendering 
 4. SEO Optimization
-5. Avoid Callback functions with HOC/ lift state instead - more elegant way ?
-6. Add Google Auth/ Facbook Auth
-7. Nodemailer - Reset Password
+5. Add Google Auth/ Facbook Auth
+6. Nodemailer - Reset Password

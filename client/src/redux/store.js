@@ -4,6 +4,7 @@ import counterReducer from './slices/counterSlice';
 import productReducer from './slices/productSlice';
 import profileReducer from './slices/profileSlice';
 import passwordReducer from './slices/passwordSlice';
+import preferenceReducer from './slices/userPreferencSlice';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -19,7 +20,8 @@ const persistedReducer = persistReducer(
   persistConfig,
   counterReducer,
   profileReducer,
-  passwordReducer
+  passwordReducer,
+  preferenceReducer
 );
 
 // Create the Redux store with persistedReducer
@@ -29,6 +31,7 @@ const store = configureStore({
     products: productReducer, // This reducer won't be persisted
     profile: profileReducer, // This reducer won't be persisted
     password: passwordReducer, // This reducer won't be persisted
+    preference: preferenceReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),});
 

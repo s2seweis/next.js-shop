@@ -1,12 +1,12 @@
 import Nav from '../Nav/Nav';
-import ChangePasswordComponent from '@/src/components/Account/Profile/ChangePasswordComponent.js';
+import PreferencesComponent from '@/src/components/Account/Profile/PreferencesComponent.js';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from '../../styles/scss/pages/account/Profile.module.scss';
 
-const ChangePasswordAccountTab: React.FC = () => {
+const PreferenceTab: React.FC = () => {
   const { data: session } = useSession(); // Retrieve session information
   console.log("line:1",session );
   
@@ -23,7 +23,7 @@ const ChangePasswordAccountTab: React.FC = () => {
         <Nav />
         {session ? (
           <div className={styles.mainContainer}>
-            <ChangePasswordComponent userId={session.user.userId}  />
+            <PreferencesComponent userId={session.user.userId}  />
           </div>
         ) : (
           <div className={styles.mainContainer}>
@@ -41,4 +41,4 @@ const ChangePasswordAccountTab: React.FC = () => {
   );
 };
 
-export default ChangePasswordAccountTab;
+export default PreferenceTab;

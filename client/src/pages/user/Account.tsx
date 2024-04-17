@@ -10,6 +10,7 @@ const UserAccountTab = lazy(
 );
 const UpdateUserAccountTab = lazy(() => import('../../components/Account/UpdateUserAccountTab'));
 const ChangePasswordComponent = lazy(() => import('../../components/Account/ChangePasswordAccountTab'));
+const PreferenceTab = lazy(() => import('../../components/Account/PreferenceTab'));
 // const UserOrdersTab = lazy(() => import('../components/UserOrdersTab'));
 
 const Loader = () => (
@@ -37,10 +38,10 @@ const UserAccount = () => {
           <div index={2} label="Password">
             <Suspense fallback={<Loader />}>{ <ChangePasswordComponent />}</Suspense>
           </div>
-          <div index={3} label="Orders">
-            <Suspense fallback={<Loader />}>{/* <UserOrdersTab /> */}</Suspense>
+          <div index={3} label="Preferences">
+            <Suspense fallback={<Loader />}> <PreferenceTab /> </Suspense>
           </div>
-          <div index={4} label="Preferences">
+          <div index={4} label="Orders">
             <Suspense fallback={<Loader />}>{/* <UserOrdersTab /> */}</Suspense>
           </div>
         </UserTab>
