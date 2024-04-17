@@ -1,22 +1,42 @@
 import Nav from '@/src/components/Nav/Nav';
-import styles from '@/src/styles/scss/pages/checkout/Checkout.module.scss';
-import IsAuthUser from '@/src/utils/authHocs/isAuthUser';
-
-interface HomeProps {
-  isAuth: boolean; // Specify the type of 'isAuth' as boolean
-}
+import Layout from '../../components/Layout/Layout';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+import { useSelector } from 'react-redux';
 
 const Checkout = () => {
+  const userProfile = useSelector((state) => state.profile.userProfile);
+  const { data: session } = useSession();
+  console.log("line: 500", session);
+
+  const key = userProfile?.role;
+  console.log("line: 501", key);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (key !== 'admin' && key !== 'user') { // Changed logical operator
+      router.push('/');
+    }
+  }, [key, router]);
+
   return (
-    <div className={styles.serverMain}>
-      <Nav />
-      <div className={styles.serverContainer}>
-        <main className={styles.serverContainerAlign}>
-          <h3 style={{ textAlign: 'center' }}>Hello Checkout</h3>
-        </main>
-      </div>
+    <div>
+      {(key === 'admin' || key === 'user') ? ( // Changed logical operator
+        <Layout>
+          <div style={{display:"flex", justifyContent:"center", height:"100vh", alignItems:"center"}}>
+            <Nav />
+            <h4>Checkout</h4>
+          </div>
+        </Layout>
+      ) : (
+        <div style={{display:"flex", justifyContent:"center", height:"100vh", alignItems:"center"}} className="lockedContainer">
+          <h1 className="text-5xl">You Shall Not Pass - Checkout!</h1>
+        </div>
+      )}
     </div>
   );
 };
 
-export default IsAuthUser(Checkout);
+export default Checkout;

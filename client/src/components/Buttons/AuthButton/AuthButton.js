@@ -1,35 +1,35 @@
-// AuthButton.js
-import React from 'react';
-import { useAuth } from '../../../utils/context/AuthProviderMerged';
-import styles from '../../../styles/scss/components/buttons/AuthButton.module.scss';
+// // AuthButton.js
+// import React from 'react';
+// import { useAuth } from '../../../utils/context/AuthProviderMerged';
+// import styles from '../../../styles/scss/components/buttons/AuthButton.module.scss';
 
-const AuthButton = () => {
-  const { isLoggedIn, login, logout } = useAuth();
+// const AuthButton = () => {
+//   const { isLoggedIn, login, logout } = useAuth();
 
-  const handleLogin = () => {
-    login();
-  };
+//   const handleLogin = () => {
+//     login();
+//   };
 
-  const handleLogout = () => {
-    logout();
-  };
+//   const handleLogout = () => {
+//     logout();
+//   };
 
-  return (
-    <div
-      className={styles.loginButtonContainer}
-      style={{ display: 'flex', justifyContent: 'center' }}
-    >
-      {isLoggedIn ? (
-        <button className={styles.buttonLogout} onClick={handleLogout}>
-          Logout
-        </button>
-      ) : (
-        <button className={styles.buttonLogin} onClick={handleLogin}>
-          Login
-        </button>
-      )}
-    </div>
-  );
-};
+//   return (
+//     <div
+//       className={styles.loginButtonContainer}
+//       style={{ display: 'flex', justifyContent: 'center' }}
+//     >
+//       {isLoggedIn ? (
+//         <button className={styles.buttonLogout} onClick={handleLogout}>
+//           Logout
+//         </button>
+//       ) : (
+//         <button className={styles.buttonLogin} onClick={handleLogin}>
+//           Login
+//         </button>
+//       )}
+//     </div>
+//   );
+// };
 
-export default AuthButton;
+// export default AuthButton;
