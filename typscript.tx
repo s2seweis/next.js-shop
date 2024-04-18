@@ -1,0 +1,14 @@
+Some TypeScript keywords:
+
+1. type: Used to define new types or aliases for existing types. Example: type MyType = number | string;
+2. interface: Used to define object types with named properties and their types. Example: interface Person { name: string; age: number; }
+3. enum: Used to define a set of named constants. Example: enum Color { Red, Green, Blue }
+4. class: Used to define classes with properties and methods. Example: class MyClass {}
+5. implements: Used in classes to implement an interface. Example: class MyClass implements MyInterface {}
+6. extends: Used in classes to inherit from another class. Example: class ChildClass extends ParentClass {}
+7. readonly: Used to make properties or array elements read-only. Example: readonly myArray: number[];
+8. implements: Used in classes to implement an interface. Example: class MyClass implements MyInterface {}
+9. public/private/protected: Used to specify the visibility of class members. Example: class MyClass { private myProp: string; }
+10. export/import: Used to export and import modules. Example: export class MyClass {} / import { MyClass } from './MyModule';
+11. namespace/module: Used to encapsulate code. Example: namespace MyNamespace {} / module MyModule {}
+12. typeof: Used to get the type of a variable or expression. Example: let x: number; type T = typeof x;

@@ -1,19 +1,26 @@
 // ChangePasswordComponent.jsx
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPassword, updatePassword } from '@/src/redux/slices/passwordSlice';
+import { fetchPassword, updatePassword } from '../../../redux/slices/passwordSlice';
 import styles from '@/src/styles/scss/components/account/UpdateProfile.module.scss';
 import Loader from '@/src/components/Loader/Loader'; // Import the Loader component
 import { notification } from 'antd'; // Import notification component from Ant Design
 
-const ChangePasswordComponent = ({ userId }) => {
-  console.log("line:0", userId);
-  const dispatch = useDispatch();
-  const password = useSelector((state) => state.password.password); // Corrected state selection
-  console.log("line:1", password);
 
-  const status = useSelector((state) => state.password.status);
-  const error = useSelector((state) => state.password.error);
+interface PasswordState {
+  password: {
+    password: any;
+    userId: string;
+    status: string;
+    error: string;
+  };
+}
+
+const ChangePasswordComponent = ({ userId }: { userId: string }) => {
+  const dispatch = useDispatch();
+  const password = useSelector((state: PasswordState) => state.password.password);
+  const status = useSelector((state: PasswordState) => state.password.status);
+  const error = useSelector((state: PasswordState) => state.password.error);
 
   // State to manage form data
   const [formData, setFormData] = useState({
@@ -36,7 +43,7 @@ const ChangePasswordComponent = ({ userId }) => {
     }
   }, [password]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -44,9 +51,9 @@ const ChangePasswordComponent = ({ userId }) => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    await dispatch(updatePassword({ userId, formData }));
+    dispatch(updatePassword({ userId, formData }));
     notification.success({
       message: 'Password Update Successful',
       description: 'Your Password has been updated successfully.',

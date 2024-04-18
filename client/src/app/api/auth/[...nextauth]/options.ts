@@ -1,10 +1,10 @@
-import { NextAuthOptions } from 'next-auth';
+import type { NextAuthOptions, User, Profile } from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import axios from 'axios';
 
-interface CustomUser {
-  userId: string; // Define the userId property in the custom user interface
+interface ProfileWithDummyData extends Profile {
+  dummyData?: { userId: string };
 }
 
 export const options: NextAuthOptions = {
@@ -39,10 +39,8 @@ export const options: NextAuthOptions = {
           if (response.data) {
             return {
               ...response.data,
-              jwt: response.data.token,
               email: email,
               userId: response.data.userid,
-              role: response.data.role,
             };
           } else {
             return null; // Return null if user not found
@@ -57,15 +55,19 @@ export const options: NextAuthOptions = {
 
   callbacks: {
     async jwt({ token, user, account, profile }) {
-      if (account && 'jwt' in user) {
-        token.jwt = user.jwt;
-        token.email = user.email;
-        token.userId = (user as CustomUser).userId; // Cast user to CustomUser to access userId property
-        token.role = user.role;
+      // console.log("line:2", user);
+      // console.log("line:3", account);
+      // console.log("line:4", profile);
 
-        // Modify the token object to include additional data from dummyData
-        if (profile && profile.dummyData) {
-          token.userId = profile.dummyData.userId;
+      if (account) {
+        if ('userid' in user) {
+          token.userId = user.userid;
+        }
+
+        // Check if 'dummyData' exists in profile and assert its type
+        if (profile && 'dummyData' in profile) {
+          const dummyData = profile.dummyData as { userId: string }; // Adjust the type according to your actual data structure
+          token.userId = dummyData.userId;
           // Add other data from dummyData if needed
         }
       }
@@ -73,32 +75,59 @@ export const options: NextAuthOptions = {
     },
 
     async session({ session, token }) {
-      if (token) {
-        session.user.jwt = token.jwt; // Add username to session object
-        session.user.email = token.email; // Add email to session object
-        session.user.userId = token.userId;
-        session.user.role = token.role;
+      // console.log("line:50", session);
+      // console.log("line:51", token);
+
+      if (token && session.user) {
+        // Define the type of session.user
+        interface UserWithUserId extends User {
+          userId: string;
+        }
+
+        // Use type assertion to specify 'userId' property in session.user
+        const userWithUserId = session.user as UserWithUserId;
+
+        // Type assertion to specify that token.userId is a string
+        const userId = token.userId as string;
+
+        // Assign userId to userWithUserId.userId
+        userWithUserId.userId = userId;
 
         // Add additional data from dummyData to the session object if available
-        if (token.userId) {
-          session.user.userId = token.userId;
+        if (token.userId && 'dummyData' in token) {
+          const dummyData = token.dummyData as { userId: string }; // Adjust the type according to your actual data structure
+          userWithUserId.userId = dummyData.userId;
+          // Add other data from dummyData if needed
         }
       }
 
       return session;
     },
 
-    async signIn({ profile }) {
+    async signIn({ profile, email }) {
+      console.log("line:600", profile);
+      console.log("line:601", email);
+    
       try {
+        // Check if profile exists before accessing its properties
+        const profileEmail = profile?.email;
+        const profileName = profile?.name;
+    
         // Make a POST request to your API route
         const response = await axios.post('http://localhost:3005/register-oauth', {
-          email: profile.email,
-          full_name: profile.name
+          email: profileEmail,
+          full_name: profileName
         });
-
-        // Store the userId in profile.dummyData
-        profile.dummyData = { userId: response.data.user.userId };
-        
+    
+        // Check if profile exists before modifying it
+        if (profile) {
+          // Type assertion to specify the profile type with 'dummyData'
+          const profileWithDummyData = profile as ProfileWithDummyData;
+          
+          // Store the userId in profile.dummyData
+          profileWithDummyData.dummyData = { userId: response.data.user.userId };
+        }
+    
         // Return the modified profile object
         return true;
       } catch (error) {
