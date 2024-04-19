@@ -1,10 +1,12 @@
 import { configureStore} from '@reduxjs/toolkit';
 import logger from 'redux-logger'
+// ###
 import counterReducer from './slices/counterSlice';
 import productReducer from './slices/productSlice';
 import profileReducer from './slices/profileSlice';
 import passwordReducer from './slices/passwordSlice';
 import preferenceReducer from './slices/userPreferenceSlice';
+// ###
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
