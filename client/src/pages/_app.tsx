@@ -5,9 +5,9 @@ import '../styles/scss/global/global.scss';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { store, persistor } from '../redux/store.js'; // Import store and persistor
+import { store } from '@/src/redux/store'; // Import store and persistor
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react'; // Import PersistGate
+// import { PersistGate } from 'redux-persist/integration/react'; // Import PersistGate
 
 const App = ({ Component, pageProps }) => {
   const [loading, setLoading] = useState(true);
@@ -24,7 +24,7 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <Provider store={store}>
-      <PersistGate loading={<Loader />} persistor={persistor}>
+      {/* <PersistGate loading={<Loader />} persistor={persistor}> */}
         {' '}
         {/* Use PersistGate */}
         <AuthProvider>
@@ -38,7 +38,7 @@ const App = ({ Component, pageProps }) => {
             )}
           </ProSidebarProvider>
         </AuthProvider>
-      </PersistGate>
+      {/* </PersistGate> */}
     </Provider>
   );
 };

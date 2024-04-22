@@ -1,48 +1,20 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import logger from 'redux-logger';
-import counterReducer from './slices/counterSlice';
-import productReducer from './slices/productSlice';
-import profileReducer from './slices/profileSlice';
-import passwordReducer from './slices/passwordSlice';
-import preferenceReducer from './slices/userPreferenceSlice';
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import profileReducer from '@/src/redux/slices/profileSlice';
 
-// Define persist config
-const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['counter', 'profile', 'password'] // Add the names of reducers you want to persist
-};
-
-// Combine reducers
-const rootReducer = combineReducers({
-  counter: counterReducer,
-  products: productReducer,
-  profile: profileReducer,
-  password: passwordReducer,
-  preference: preferenceReducer
+export const store = configureStore({
+  reducer: {
+    profile: profileReducer,
+  },
 });
 
-// Wrap rootReducer with persistReducer
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-// Create store
-const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
-});
-
-// Create persistor
-const persistor = persistStore(store);
-
-// Define types
+// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
-export type AppStore = typeof store;
 
-export { store, persistor };
-
-e.g. 
-
-// https://codesandbox.io/p/sandbox/redux-toolkit-typescript-27t5c?file=%2Fsrc%2Fstore%2Fstore.ts%3A2%2C11
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>
