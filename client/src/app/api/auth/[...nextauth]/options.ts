@@ -104,9 +104,10 @@ export const options: NextAuthOptions = {
       return session;
     },
 
-    async signIn({ profile, email }) {
-      console.log("line:600", profile);
-      console.log("line:601", email);
+    // async signIn({ profile, email }) {
+    async signIn({ profile }) {
+      // console.log("line:600", profile);
+      // console.log("line:601", email);
     
       try {
         // Check if profile exists before accessing its properties

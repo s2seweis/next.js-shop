@@ -24,7 +24,7 @@ const SignInButton = () => {
   };
 
   const userProfile = useSelector((state) => state.profile.userProfile);
-  console.log('line:600', userProfile);
+  // console.log('line:600', userProfile);
 
   return (
     <div

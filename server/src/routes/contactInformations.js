@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/contact-information", async (req, res) => {
   try {
     const contactinformation = await ContactInformationRepo.find();
-    console.log("line:500", contactinformation);
+    // console.log("line:500", contactinformation);
 
     res.send(contactinformation);
   } catch (error) {

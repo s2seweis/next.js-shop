@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/notification-preference", async (req, res) => {
   try {
     const accountStatus = await NotificationPreferencesRepo.find();
-    console.log("line:500", accountStatus);
+    // console.log("line:500", accountStatus);
 
     res.send(accountStatus);
   } catch (error) {

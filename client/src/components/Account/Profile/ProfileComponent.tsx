@@ -6,9 +6,17 @@ import { fetchUserProfile } from '../../../redux/slices/profileSlice';
 import styles from '@/src/styles/scss/components/account/Profile.module.scss';
 import Loader from '@/src/components/Loader/Loader'; // Import the Loader component
 
+import { useAppSelector } from '@/src/redux/hooks';
+
 const ProfileComponent = ({ userId }) => {
+  
   const dispatch = useDispatch();
+
   const userProfile = useSelector((state) => state.profile.userProfile);
+  console.log('line:100', userProfile);
+
+  const userProfile1 = useAppSelector((state) => state.profile.userProfile);
+  console.log('line:101', userProfile1);
 
   const status = useSelector((state) => state.profile.status);
   const error = useSelector((state) => state.profile.error);
@@ -30,7 +38,7 @@ const ProfileComponent = ({ userId }) => {
 
   return (
     <div className={styles.profileContainer}>
-      <h1>User Profile</h1>
+      <h1>User Profile Landing</h1>
       <div className={styles.profileInfo}>
         <p>
           <strong>Id:</strong> {userProfile.userId}
@@ -58,9 +66,7 @@ const ProfileComponent = ({ userId }) => {
         </div>
       </div>
 
-      <div className={styles.buttonContainer}>
-    </div>
-
+      <div className={styles.buttonContainer}></div>
     </div>
   );
 };

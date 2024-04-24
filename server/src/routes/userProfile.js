@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/userprofile", async (req, res) => {
   try {
     const userprofile = await UsersProfileRepo.find();
-    console.log("line:500", userprofile);
+    // console.log("line:500", userprofile);
 
     const dateOfBirthArray = userprofile.map((item) => item.dateOfBirth);
 

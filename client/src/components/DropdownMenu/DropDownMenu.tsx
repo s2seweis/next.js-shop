@@ -29,7 +29,7 @@ const DropdownMenu: React.FC = () => {
   };
 
   const userProfile = useSelector((state) => state.profile.userProfile);
-  console.log("line:555", userProfile);
+  // console.log("line:555", userProfile);
   
 
   return (

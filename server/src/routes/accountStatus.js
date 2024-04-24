@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/account-status", async (req, res) => {
   try {
     const accountStatus = await AccountStatusRepo.find();
-    console.log("line:500", accountStatus);
+    // console.log("line:500", accountStatus);
 
     res.send(accountStatus);
   } catch (error) {

@@ -134,7 +134,7 @@ router.put("/password/:user_id", async (req, res) => {
 
 router.delete("/users/:user_id", async (req, res) => {
   const { user_id } = req.params;
-  console.log("line:500", user_id);
+  // console.log("line:500", user_id);
   const user = await UserRepo.delete(user_id);
 
   if (user) {

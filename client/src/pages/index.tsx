@@ -6,19 +6,23 @@ import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 import { useSession } from 'next-auth/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserProfile } from '../../src/redux/slices/profileSlice';
+import { useAppSelector } from '@/src/redux/hooks';
 
 const Home = () => {
   const { data: session } = useSession(); // Retrieve session information
-  console.log('line:1', session);
-  console.log('line:2', session?.user.userId);
+  // console.log('line:1', session);
+  // console.log('line:2', session?.user.userId);
 
   const dispatch = useDispatch();
 
   const status = useSelector((state) => state.profile.status);
-  console.log('line:3', status);
+  // console.log('line:3', status);
 
   const userProfile = useSelector((state) => state.profile.userProfile);
-  console.log("line:4", userProfile);
+  console.log("line:100", userProfile);
+
+  const userProfile1 = useAppSelector((state) => state.profile.userProfile);
+  console.log('line:101', userProfile1);
 
   useEffect(() => {
       if (status === 'idle' && session?.user.userId) {

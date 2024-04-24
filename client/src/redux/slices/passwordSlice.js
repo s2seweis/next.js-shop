@@ -15,7 +15,7 @@ export const fetchPassword = createAsyncThunk(
       const response = await axios.get(
         `http://localhost:3005/password/${userId}`,
       );
-      console.log('line:500', response);
+      // console.log('line:500', response);
       return response.data;
     } catch (error) {
       throw new Error('Failed to fetch user password');
