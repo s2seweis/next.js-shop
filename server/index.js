@@ -12,16 +12,6 @@ const deliveryShopConfig = {
     rejectUnauthorized: false,
   },
 };
-// const deliveryShopConfig = {
-//   host: 'ec2-107-21-67-46.compute-1.amazonaws.com',
-//   port: 5432,
-//   database: 'd1gch85sbm0pt5',
-//   user: 'uvftaacwpaegoj',
-//   password: '346f1cff02ecdc129738d2d8a0596a6ee854252f8434e643890b97010c96f536',
-//   ssl: {
-//     rejectUnauthorized: false,
-//   },
-// };
 
 pool
   .connect(deliveryShopConfig)

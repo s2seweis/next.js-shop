@@ -2,7 +2,7 @@
 
 ### Get product by ID
 
-http://localhost:3005/product/3
+http://localhost:3005/product/11
 
 ### - Get all Assets
 
@@ -41,7 +41,7 @@ content-type: application/json
 
 ### Delete product
 
-DELETE http://localhost:3005/product/13703 HTTP/1.1 
+DELETE http://localhost:3005/product/12 HTTP/1.1 
 content-type: application/json
 
 
