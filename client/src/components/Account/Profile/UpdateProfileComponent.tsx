@@ -1,29 +1,49 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserProfile, updateUserProfile } from '@/src/redux/slices/profileSlice';
 import styles from '@/src/styles/scss/components/account/UpdateProfile.module.scss';
 import Loader from '@/src/components/Loader/Loader'; // Import the Loader component
 import Select from 'react-select';
 import { notification } from 'antd'; // Import notification component from Ant Design
+import { useAppSelector, useAppDispatch } from '@/src/redux/hooks';
 
-const UpdateProfileComponent = ({ userId }) => {
-  const dispatch = useDispatch();
-  const userProfile = useSelector((state) => state.profile.userProfile);
-  console.log("line:1", userProfile);
 
-  const status = useSelector((state) => state.profile.status);
-  const error = useSelector((state) => state.profile.error);
+interface UserProfile {
+  userId: string;
+  username: string;
+  fullName: string;
+  email: string;
+  role: string;
+  profilePictureUrl: string;
+}
+
+interface ProfileComponentProps {
+  userId: string;
+}
+
+interface SelectOption {
+  value: string;
+  label: string;
+}
+
+const UpdateProfileComponent: React.FC<ProfileComponentProps> = ({ userId }) => {
+  const dispatch = useAppDispatch();
+  // const userProfile = useSelector((state) => state.profile.userProfile);
+  const userProfile = useAppSelector((state) => state.profile.userProfile) as UserProfile | null;
+
+
+  const status = useAppSelector((state) => state.profile.status);
+  const error = useAppSelector((state) => state.profile.error);
 
   // State to manage form data
   const [formData, setFormData] = useState({
     username: '',
-    fullname: '',
+    full_name: '',
     email: '',
     role: '',
-    imageUrl: '',
+    profile_picture_url: '',
     // Add more fields as needed
   });
-
+  
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchUserProfile(userId));
@@ -45,7 +65,7 @@ const UpdateProfileComponent = ({ userId }) => {
   }, [userProfile]);
 
   // Function to handle form input changes
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -53,16 +73,17 @@ const UpdateProfileComponent = ({ userId }) => {
     });
   };
 
-  // Function to handle role selection change
-  const handleRoleChange = (selectedOption) => {
-    setFormData({
-      ...formData,
-      role: selectedOption.value,
-    });
+  const handleRoleChange = (selectedOption: SelectOption | null) => {
+    if (selectedOption) {
+      setFormData({
+        ...formData,
+        role: selectedOption.value,
+      });
+    }
   };
 
   // Function to handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     // Dispatch action to update user profile
     await dispatch(updateUserProfile({ userId, formData }));

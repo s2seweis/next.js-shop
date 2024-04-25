@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import DownloadButton from '../../components/Buttons/DownloadButton/BownloadButton';
+import DownloadButton from '../../components/Buttons/DownloadButton/DownloadButton';
 import styles from '../../styles/scss/pages/download/DownloadPage.module.scss';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 

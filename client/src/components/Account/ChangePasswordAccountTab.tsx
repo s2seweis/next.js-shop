@@ -22,7 +22,6 @@ interface UserWithUserId extends User {
 
 const ChangePasswordAccountTab: React.FC = () => {
   const { data: session } = useSession(); // Retrieve session information
-  console.log("line:1", session);
 
   // Ensure that userId is of type UserWithUserId
   const userId = (session?.user as UserWithUserId)?.userId;

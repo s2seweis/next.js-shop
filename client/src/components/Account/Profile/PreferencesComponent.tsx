@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserPreference, updateUserPreference } from '../../../redux/slices/userPreferenceSlice';
 import styles from '@/src/styles/scss/components/account/UpdateProfile.module.scss';
 import Loader from '@/src/components/Loader/Loader'; // Import the Loader component
 import { notification } from 'antd'; // Import notification component from Ant Design
 import Select from 'react-select';
+import { useAppSelector, useAppDispatch } from '@/src/redux/hooks';
 
-const PreferenceComponent = ({ userId }) => {
-  const dispatch = useDispatch();
-  const userPreference = useSelector((state) => state.preference.userPreference);
-  console.log("line:700", userPreference);
-  
-  const status = useSelector((state) => state.preference.status);
-  const error = useSelector((state) => state.preference.error);
-  
+interface ProfileComponentProps {
+  userId: string;
+}
+
+// interface SelectOption {
+//   value: string;
+//   fieldName: string;
+// }
+
+  const PreferenceComponent: React.FC<ProfileComponentProps> = ({ userId }) => {
+  const dispatch = useAppDispatch();
+  const userPreference = useAppSelector((state) => state.preference.userPreference);  
+  console.log("line:1", userPreference);
+  const status = useAppSelector((state) => state.profile.status);
+  console.log("line:2", status);
+  const error = useAppSelector((state) => state.preference.error);  
+  console.log("line:3", error);
   // State to manage form data
   const [formData, setFormData] = useState({
     language: '',
@@ -23,10 +32,10 @@ const PreferenceComponent = ({ userId }) => {
     theme: '',
     userId: null,
   });
-  console.log("line:800", userPreference);
 
   useEffect(() => {
-    if (status === 'idle') {
+    // if (status === 'idle') {
+    if (status === 'succeeded') {
       dispatch(fetchUserPreference(userId));
     }
   }, [dispatch, status, userId]);
@@ -44,14 +53,14 @@ const PreferenceComponent = ({ userId }) => {
     }
   }, [userPreference]);
 
-  const handleSelectChange = (fieldName, selectedOption) => {
+  const handleSelectChange = (fieldName: string, selectedOption: { value: string; label: string; } | null) => {
     setFormData({
       ...formData,
-      [fieldName]: selectedOption.value,
+      [fieldName]: selectedOption?.value,
     });
   };
 
-  const handleCheckboxChange = (e) => {
+  const handleCheckboxChange = (e: { target: { name: any; checked: any; }; }) => {
     const { name, checked } = e.target;
     setFormData({
       ...formData,
@@ -59,7 +68,7 @@ const PreferenceComponent = ({ userId }) => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     await dispatch(updateUserPreference({ userId, formData }));
     notification.success({

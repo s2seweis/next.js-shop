@@ -1,26 +1,17 @@
 // ChangePasswordComponent.jsx
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchPassword, updatePassword } from '../../../redux/slices/passwordSlice';
+// import { fetchPassword, updatePassword } from '../../../redux/slices/passwordSlice';
+import { fetchPassword, updatePassword } from '@/src/redux/slices/passwordSlice';
 import styles from '@/src/styles/scss/components/account/UpdateProfile.module.scss';
 import Loader from '@/src/components/Loader/Loader'; // Import the Loader component
 import { notification } from 'antd'; // Import notification component from Ant Design
-
-
-interface PasswordState {
-  password: {
-    password: any;
-    userId: string;
-    status: string;
-    error: string;
-  };
-}
+import { useAppSelector, useAppDispatch } from '@/src/redux/hooks';
 
 const ChangePasswordComponent = ({ userId }: { userId: string }) => {
-  const dispatch = useDispatch();
-  const password = useSelector((state: PasswordState) => state.password.password);
-  const status = useSelector((state: PasswordState) => state.password.status);
-  const error = useSelector((state: PasswordState) => state.password.error);
+  const dispatch = useAppDispatch();
+  const password = useAppSelector((state) => state.profile.userProfile);
+  const status = useAppSelector((state) => state.profile.error);
+  const error = useAppSelector((state) => state.profile.status);
 
   // State to manage form data
   const [formData, setFormData] = useState({

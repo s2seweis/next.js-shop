@@ -15,7 +15,7 @@ const DownloadButton: React.FC = () => {
 
     if (
       window.matchMedia('(display-mode: standalone)').matches ||
-      window.navigator.standalone
+      (window.navigator as any).standalone // Type assertion added here
     ) {
       setIsAppInstalled(true);
     }

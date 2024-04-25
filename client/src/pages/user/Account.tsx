@@ -10,9 +10,7 @@ interface TabProps extends HTMLAttributes<HTMLDivElement> {
   label: string;
 }
 
-const UserAccountTab = lazy(
-  () => import('@/src/components/Account/UserAccountTab')
-);
+const UserAccountTab = lazy(() => import('@/src/components/Account/UserAccountTab'));
 const UpdateUserAccountTab = lazy(() => import('@/src/components/Account/UpdateUserAccountTab'));
 const ChangePasswordComponent = lazy(() => import('@/src/components/Account/ChangePasswordAccountTab'));
 const PreferenceTab = lazy(() => import('@/src/components/Account/PreferenceTab'));

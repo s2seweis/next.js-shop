@@ -7,28 +7,29 @@ import { IoPerson } from 'react-icons/io5';
 import Link from 'next/link';
 import styles from '../../styles/scss/layout/public/DrowDownMenu.module.scss';
 import SignInButton from '../Buttons/SignInButton/SignInButton';
-import { useSession } from 'next-auth/react';
-import { useSelector } from 'react-redux';
+// import { useSession } from 'next-auth/react';
+// import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/src/redux/hooks';
 
 const DropdownMenu: React.FC = () => {
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const getTruncatedName = (name: string) => {
-    if (!name || name.length <= 0) {
-      return 'Guest';
-    } else if (name.length <= 10) {
-      return name;
-    } else {
-      return name.substring(0, 10) + '.';
-    }
-  };
+  // const getTruncatedName = (name: string) => {
+  //   if (!name || name.length <= 0) {
+  //     return 'Guest';
+  //   } else if (name.length <= 10) {
+  //     return name;
+  //   } else {
+  //     return name.substring(0, 10) + '.';
+  //   }
+  // };
 
-  const userProfile = useSelector((state) => state.profile.userProfile);
+  const userProfile = useAppSelector((state) => state.profile.userProfile);
   // console.log("line:555", userProfile);
   
 

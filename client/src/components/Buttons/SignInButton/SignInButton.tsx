@@ -4,10 +4,10 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import { GoSignIn, GoSignOut } from 'react-icons/go';
 import React from 'react';
 import styles from '../../../styles/scss/components/buttons/SignInButton.module.scss'; // import the SCSS file
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/src/redux/hooks';
 
 const SignInButton = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   const getTruncatedName = (name: string) => {
     if (!name || name.length <= 0) {
@@ -23,8 +23,7 @@ const SignInButton = () => {
     await signOut({ callbackUrl: '/auth/SignIn' });
   };
 
-  const userProfile = useSelector((state) => state.profile.userProfile);
-  // console.log('line:600', userProfile);
+  const userProfile = useAppSelector((state) => state.profile.userProfile);
 
   return (
     <div

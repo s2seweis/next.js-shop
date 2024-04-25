@@ -4,31 +4,37 @@ import styles from '@/src/styles/scss/pages/home/Home.module.scss';
 import Link from 'next/link';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 import { useSession } from 'next-auth/react';
-import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserProfile } from '../../src/redux/slices/profileSlice';
-import { useAppSelector } from '@/src/redux/hooks';
+import { useAppSelector, useAppDispatch } from '@/src/redux/hooks';
+import { RootState } from '../../src/redux/store';
 
-const Home = () => {
+interface User {
+  userId?: string;
+  name?: string | null | undefined;
+  email?: string | null | undefined;
+  image?: string | null | undefined;
+  // Add other properties as needed
+}
+
+// Extend the User interface to include the userId property
+interface UserWithUserId extends User {
+  userId: string;
+}
+
+const Home: React.FC = () => {
   const { data: session } = useSession(); // Retrieve session information
-  // console.log('line:1', session);
-  // console.log('line:2', session?.user.userId);
-
-  const dispatch = useDispatch();
-
-  const status = useSelector((state) => state.profile.status);
-  // console.log('line:3', status);
-
-  const userProfile = useSelector((state) => state.profile.userProfile);
-  console.log("line:100", userProfile);
-
-  const userProfile1 = useAppSelector((state) => state.profile.userProfile);
-  console.log('line:101', userProfile1);
-
+  console.log("line:99", session);
+  
+  const dispatch = useAppDispatch();
+  const status = useAppSelector((state: RootState) => state.profile.status);
+  console.log("line:100", status);
+  
   useEffect(() => {
-      if (status === 'idle' && session?.user.userId) {
-      dispatch(fetchUserProfile(session?.user.userId));
+    if (status === 'idle' && (session?.user as UserWithUserId)?.userId) {
+      // Check if 'userId' property exists in 'session.user' before accessing it
+      dispatch(fetchUserProfile((session?.user as UserWithUserId).userId));
     }
-  }, [dispatch, status, session?.user.userId]); // Dispatch only when status or userId changes
+  }, [dispatch, status, session?.user as UserWithUserId]); // Dispatch only when status or userId changes
 
   return (
     <div className={styles.homeContainer}>

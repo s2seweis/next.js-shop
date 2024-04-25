@@ -6,8 +6,23 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from '@/src/styles/scss/pages/Account/Profile.module.scss';
 
+interface User {
+  userId?: string;
+  name?: string | null | undefined;
+  email?: string | null | undefined;
+  image?: string | null | undefined;
+  // Add other properties as needed
+}
+
+// Extend the User interface to include the userId property
+interface UserWithUserId extends User {
+  userId: string;
+}
+
+
 const UserAccountTab: React.FC = () => {
   const { data: session } = useSession(); // Retrieve session information  
+  
   const router = useRouter();
 
   useEffect(() => {
@@ -16,12 +31,14 @@ const UserAccountTab: React.FC = () => {
     }
   }, [session, router]);
 
+  const userId = (session?.user as UserWithUserId)?.userId;
+  
   return (
     <div>
         <Nav />
         {session ? (
           <div className={styles.mainContainer}>
-            <ProfileComponent userId={session.user.userId}  />
+            <ProfileComponent userId={userId ?? ''}  />
           </div>
         ) : (
           <div className={styles.mainContainer}>

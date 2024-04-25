@@ -1,25 +1,29 @@
-// ProfileComponent.jsx
-
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserProfile } from '../../../redux/slices/profileSlice';
 import styles from '@/src/styles/scss/components/account/Profile.module.scss';
 import Loader from '@/src/components/Loader/Loader'; // Import the Loader component
 
-import { useAppSelector } from '@/src/redux/hooks';
+import { useAppSelector, useAppDispatch } from '@/src/redux/hooks';
 
-const ProfileComponent = ({ userId }) => {
-  
-  const dispatch = useDispatch();
+interface UserProfile {
+  userId: string;
+  username: string;
+  fullName: string;
+  email: string;
+  role: string;
+  profilePictureUrl: string;
+}
 
-  const userProfile = useSelector((state) => state.profile.userProfile);
-  console.log('line:100', userProfile);
+interface ProfileComponentProps {
+  userId: string;
+}
 
-  const userProfile1 = useAppSelector((state) => state.profile.userProfile);
-  console.log('line:101', userProfile1);
+const ProfileComponent: React.FC<ProfileComponentProps> = ({ userId }) => {
+  const dispatch = useAppDispatch();
 
-  const status = useSelector((state) => state.profile.status);
-  const error = useSelector((state) => state.profile.error);
+  const userProfile = useAppSelector((state) => state.profile.userProfile) as UserProfile | null;
+  const status = useAppSelector((state) => state.profile.status);
+  const error = useAppSelector((state) => state.profile.error);
 
   useEffect(() => {
     if (status === 'idle') {
