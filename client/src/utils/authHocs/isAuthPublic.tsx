@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import Layout from '../../components/Layout/Layout';
 
-const IsAuthPublic = (WrappedComponent) => (props) => {
-
+const IsAuthPublic = <P extends object>(WrappedComponent: ComponentType<P>) => (props: P) => {
   return (
     <div>
       <Layout>

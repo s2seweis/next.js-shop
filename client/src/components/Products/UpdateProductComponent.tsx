@@ -1,8 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react';
 import styles from '../../styles/scss/components/products/UpdateProduct.module.scss';
 import Select from 'react-select';
-import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts, updateProduct } from '../../redux/slices/productSlice';
+import { useAppSelector, useAppDispatch } from '@/src/redux/hooks';
+
+interface Product {
+  productid: string;
+  productname: string;
+  price: string;
+  category: string;
+}
+
+interface FormData {
+  [key: string]: Partial<Product>;
+}
 
 const categoriesOptions = [
   { value: 'Adidas', label: 'Adidas' },
@@ -10,12 +21,12 @@ const categoriesOptions = [
   { value: 'Puma', label: 'Puma' },
 ];
 
-const UpdateProducts = () => {
-  const [updateFormData, setUpdateFormData] = useState({});
-  const [selectedProductId, setSelectedProductId] = useState(null);
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);
-  const status = useSelector((state) => state.products.status);
+const UpdateProducts: React.FC = () => {
+  const [updateFormData, setUpdateFormData] = useState<FormData>({});
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
+  const dispatch = useAppDispatch();
+  const products = useAppSelector((state) => state.products.products);
+  const status = useAppSelector((state) => state.products.status);
 
   useEffect(() => {
     if (status === 'idle') {
@@ -23,43 +34,43 @@ const UpdateProducts = () => {
     }
   }, [dispatch, status]); // Dispatch only when status changes
 
-  const handleToggleUpdateForm = (productId) => {
+  const handleToggleUpdateForm = (productid: string | null) => {
     setUpdateFormData((prevFormData) => {
-      if (selectedProductId !== productId) {
-        const productToUpdate =
-          products.length > 0
-            ? products.find((product) => product.productid === productId)
-            : undefined;
-
+      if (selectedProductId !== productid) {
+        const productToUpdate = products.find((product) => product.productid === productid);
+  
+        // Convert productid to string and handle null case
+        const productIdString = productid || '';
+  
         return {
           ...prevFormData,
-          [productId]: { ...productToUpdate } || {},
+          [productIdString]: { ...productToUpdate } || {},
         };
       }
-
+  
       return prevFormData;
     });
-
+  
     setSelectedProductId((prevProductId) =>
-      prevProductId === productId ? null : productId,
+      prevProductId === productid ? null : productid,
     );
   };
 
-  const handleUpdateFormDataChange = (productId, field, value) => {
+  const handleUpdateFormDataChange = (productid: string, field: keyof Partial<Product>, value: string) => {
     setUpdateFormData((prevFormData) => ({
       ...prevFormData,
-      [productId]: { ...prevFormData[productId], [field]: value },
+      [productid]: { ...prevFormData[productid], [field]: value },
     }));
   };
 
-  const handleUpdateProduct = async (e, productId) => {
+  const handleUpdateProduct = async (e: FormEvent<HTMLFormElement>, productid: string) => {
     e.preventDefault();
-    const { productname, price, category } = updateFormData[productId] || {};
+    const { productname, price, category } = updateFormData[productid] || {};
 
     try {
       await dispatch(
         updateProduct({
-          productId,
+          productid,
           updatedData: { productname, price, category },
         }),
       );
@@ -150,7 +161,7 @@ const UpdateProducts = () => {
                           className={styles.inputField}
                         />
                         <label htmlFor={`newPrice_${product.productid}`}>
-                          price:
+                          Price:
                         </label>
                         <input
                           type="number"

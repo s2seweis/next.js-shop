@@ -1,7 +1,7 @@
 import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/product/Product.module.scss';
-import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic.tsx';
-import ProductComponent from '../../components/Products/ProductComponent.js';
+import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
+import ProductComponent from '@/src/components/Products/ProductComponent';
 
 const Products = () => {
   return (

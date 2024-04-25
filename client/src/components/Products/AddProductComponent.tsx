@@ -1,77 +1,85 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import Select from 'react-select';
-import styles from '../../styles/scss/components/products/AddProductComponent.module.scss';
-import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts, addProduct } from '../../redux/slices/productSlice';
+import styles from '../../styles/scss/components/products/AddProductComponent.module.scss';
+import { useAppSelector, useAppDispatch } from '@/src/redux/hooks';
+import { notification } from 'antd';
 
-const categoryOptions = [
+interface SelectOption {
+  value: string;
+  label: string;
+}
+
+const categoryOptions: SelectOption[] = [
   { value: 'Nike', label: 'Nike' },
   { value: 'Puma', label: 'Puma' },
   { value: 'Adidas', label: 'Adidas' },
 ];
 
-const AddProductsComponent = () => {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);
+const AddProductsComponent: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const products = useAppSelector((state) => state.products.products);
   console.log('line:1', products);
-  // const status = useSelector((state) => state.products.status);
-  // const error = useSelector((state) => state.products.error);
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    ProductName: string;
+    Price: string;
+    Category: string | null; // Updated type to string
+  }>({
     ProductName: '',
     Price: '',
     Category: null,
   });
+  console.log("Line:2", formData);
+  
 
-  const [successMessage, setSuccessMessage] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [productData, setProductData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const data = {
-    ProductName: formData.ProductName,
-    Price: formData.Price,
-    // Category: formData.Category,
-    Category: formData.Category?.value,
-  };
-  console.log('line:2', data);
-
-  const handleAddProduct = async (e, data) => {
+  const handleAddProduct = async (e: FormEvent<HTMLFormElement>, data: typeof formData) => {
     e.preventDefault(); // Prevent form submission
     try {
-      dispatch(addProduct(data));
+      await dispatch(addProduct(data));
+      notification.success({
+        message: 'Add Product Successful',
+        description: 'Your product has been added successfully.',
+        duration: 3,
+      });
+      setSuccessMessage('Product added successfully.');
     } catch (error) {
       console.error('Error adding product:', error);
+      setErrorMessage('Failed to add product.');
     }
   };
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     // Use a regular expression to allow any characters for ProductName
-    const newValue =
-      name === 'ProductName' ? value : value.replace(/[^0-9.]/g, '');
+    const newValue = name === 'ProductName' ? value : value.replace(/[^0-9.]/g, '');
 
     setFormData((prevFormData) => ({ ...prevFormData, [name]: newValue }));
   };
 
-  const handleCategoryChange = (selectedOption) => {
-    setFormData({ ...formData, Category: selectedOption });
+  const handleCategoryChange = (selectedOption: SelectOption | null) => {
+    if (selectedOption) {
+      setFormData({
+        ...formData,
+        Category: selectedOption.value, // Extract the value from the selected option
+      });
+    }
   };
 
   useEffect(() => {
     dispatch(fetchProducts());
     setIsLoading(false);
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.postRequestContainer}>
-      <h2 className={styles.productsHeading}>Add AddProducts</h2>
-      <form
-        className={styles.formPost}
-        onSubmit={(e) => handleAddProduct(e, data)}
-      >
+      <h2 className={styles.productsHeading}>Add Products</h2>
+      <form className={styles.formPost} onSubmit={(e) => handleAddProduct(e, formData)}>
         <div className={styles.formGroup}>
           <label htmlFor="ProductName">Product Name:</label>
           <input
@@ -104,7 +112,7 @@ const AddProductsComponent = () => {
           <Select
             id="Category"
             name="Category"
-            value={formData.Category}
+            value={categoryOptions.find(option => option.value === formData.Category)} // Set the value using the option that matches the selected value
             onChange={handleCategoryChange}
             options={categoryOptions}
             required
@@ -116,13 +124,10 @@ const AddProductsComponent = () => {
           </button>
         </div>
       </form>
-      {successMessage && (
-        <p className={styles.successMessage}>{successMessage}</p>
-      )}
+      {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
       {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
-
       {isLoading ? (
-        <p>Loading...4</p>
+        <p>Loading...</p>
       ) : (
         <div className={styles.userDataContainer}>
           <h3>Product Data:</h3>
@@ -132,7 +137,7 @@ const AddProductsComponent = () => {
                 <div key={product.productid} className={styles.productCard}>
                   <p className={styles.productName}>{product.productname}</p>
                   <p className={styles.productPrice}>${product.price}</p>
-                  <p className={styles.productCategorya}>{product.category}</p>
+                  <p className={styles.productCategory}>{product.category}</p>
                 </div>
               ))
             ) : (

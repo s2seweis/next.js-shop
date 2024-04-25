@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts, deleteProduct } from '../../redux/slices/productSlice';
 import styles from '../../styles/scss/components/products/Products.module.scss';
+import { useAppSelector, useAppDispatch } from '@/src/redux/hooks';
+import { notification } from 'antd'; // Import notification component from Ant Design
 
-const ProductComponent = () => {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);
-  console.log('line:100', products);
-  const status = useSelector((state) => state.products.status);
-  const error = useSelector((state) => state.products.error);
+const ProductComponent: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const products = useAppSelector((state) => state.products.products);
+  console.log("line:1", products);
+  
+  const status = useAppSelector((state) => state.products.status);
+  const error = useAppSelector((state) => state.products.error);
 
   useEffect(() => {
     if (status === 'idle') {
@@ -16,16 +18,23 @@ const ProductComponent = () => {
     }
   }, [dispatch, status]); // Dispatch only when status changes
 
-  const handleDeleteProduct = async (productId) => {
+  const handleDeleteProduct = async (productid: string) => {
+    console.log("line:998", productid);
+    
     try {
-      dispatch(deleteProduct(productId));
+      await dispatch(deleteProduct(productid));
+      notification.success({
+        message: 'Delete Product Successful',
+        description: 'Your Product has been deleted successfully.',
+        duration: 3,
+      });
     } catch (error) {
       console.error('Error deleting product:', error);
     }
   };
 
   if (status === 'loading') {
-    return <div>Loading...2</div>;
+    return <div>Loading...</div>;
   }
 
   if (status === 'failed') {

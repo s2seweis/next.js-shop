@@ -22,12 +22,9 @@ interface UserWithUserId extends User {
 }
 
 const Home: React.FC = () => {
-  const { data: session } = useSession(); // Retrieve session information
-  console.log("line:99", session);
-  
+  const { data: session } = useSession(); // Retrieve session information  
   const dispatch = useAppDispatch();
   const status = useAppSelector((state: RootState) => state.profile.status);
-  console.log("line:100", status);
   
   useEffect(() => {
     if (status === 'idle' && (session?.user as UserWithUserId)?.userId) {

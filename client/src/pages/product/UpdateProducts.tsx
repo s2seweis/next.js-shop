@@ -1,7 +1,7 @@
 import Nav from '@/src/components/Nav/Nav';
 import styles from '@/src/styles/scss/pages/product/Product.module.scss';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
-import UpdateProductComponent from '../../components/Products/UpdateProductComponent.js';
+import UpdateProductComponent from '@/src/components/Products/UpdateProductComponent';
 
 const UpdateProducts = () => {
   return (
