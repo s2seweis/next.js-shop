@@ -8,8 +8,8 @@ import Footer from '../Admin/FooterAdmin';
 
 interface AdminLayoutProps {
   children: ReactNode;
-  login: boolean; // Assuming login is a boolean
-  isAuth: boolean; // Assuming isAuth is a boolean
+  // login: boolean; // Assuming login is a boolean
+  // isAuth: boolean; // Assuming isAuth is a boolean
 }
 
 const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {

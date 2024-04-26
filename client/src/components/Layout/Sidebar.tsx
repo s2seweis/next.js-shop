@@ -5,12 +5,12 @@ import Link from 'next/link';
 import styles from '../../styles/scss/layout/public/Sidebar.module.scss';
 import { menuItems } from './menuItems';
 import SignInButton from '../Buttons/SignInButton/SignInButton';
-import { useSelector } from 'react-redux';
+import { useAppSelector} from '@/src/redux/hooks';
 
 const Sidebar: React.FC = () => {
-  const userProfile = useSelector((state) => state.profile.userProfile);
+  const userProfile = useAppSelector((state) => state.profile.userProfile);
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [, setActiveMenu] = useState<string | null>(null);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
 
   useEffect(() => {

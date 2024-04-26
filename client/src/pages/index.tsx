@@ -77,6 +77,7 @@ const Home: React.FC = () => {
               <h4>
                 Test Component
                 <Link href="/user/Account">User Account</Link>
+                <Link href="/test/Redux">Counter</Link>
               </h4>
             </div>
           </main>

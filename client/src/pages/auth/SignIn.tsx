@@ -25,13 +25,21 @@ const SignIn = () => {
     });
 
     // Check if signIn function returns an error
-    if (result.error) {
-      setErrorMessage('Authentication failed. Please check your credentials.');
+    if (result) {
+      // Check if signIn function returns an error
+      if (result.error) {
+        setErrorMessage('Authentication failed. Please check your credentials.');
+      } else {
+        // Clear error message if sign-in successful
+        setErrorMessage('');
+        router.push('/');
+      }
     } else {
-      // Clear error message if sign-in successful
-      setErrorMessage('');
-      router.push('/');
+      // Handle the case where result is undefined
+      console.error('Sign-in result is undefined.');
     }
+
+
   };
 
   const handleGitHubSignIn = async () => {

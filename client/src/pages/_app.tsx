@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import AuthProvider from '../utils/context/AuthProviderMerged';
+import ProvidersWrapper from '../utils/context/AuthProviderMerged';
 import Loader from '../components/Loader/Loader'; // Import the Loader component
 import '../styles/scss/global/global.scss';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { store } from '@/src/redux/store'; // Import store and persistor
+import { store } from '@/src/redux/store'; // Import store
 import { Provider } from 'react-redux';
-// import { PersistGate } from 'redux-persist/integration/react'; // Import PersistGate
 
-const App = ({ Component, pageProps }) => {
-  const [loading, setLoading] = useState(true);
+interface AppProps {
+  Component: React.ComponentType<any>; // Component prop can be any React component
+}
+
+const App: React.FC<AppProps> = ({ Component }) => {
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     // Simulate some asynchronous operation
@@ -25,20 +28,17 @@ const App = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       {/* <PersistGate loading={<Loader />} persistor={persistor}> */}
-        {' '}
-        {/* Use PersistGate */}
-        <AuthProvider>
-          <ProSidebarProvider>
-            {loading ? (
-              <Loader /> // Show the loader while loading
-            ) : (
-              <Router>
-                <Component />
-              </Router>
-            )}
-          </ProSidebarProvider>
-        </AuthProvider>
-      {/* </PersistGate> */}
+      <ProvidersWrapper>
+        <ProSidebarProvider>
+          {loading ? (
+            <Loader /> // Show the loader while loading
+          ) : (
+            <Router>
+              <Component />
+            </Router>
+          )}
+        </ProSidebarProvider>
+      </ProvidersWrapper>
     </Provider>
   );
 };

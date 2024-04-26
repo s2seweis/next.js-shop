@@ -7,12 +7,9 @@ import { IoPerson } from 'react-icons/io5';
 import Link from 'next/link';
 import styles from '../../styles/scss/layout/public/DrowDownMenu.module.scss';
 import SignInButton from '../Buttons/SignInButton/SignInButton';
-// import { useSession } from 'next-auth/react';
-// import { useSelector } from 'react-redux';
 import { useAppSelector } from '@/src/redux/hooks';
 
 const DropdownMenu: React.FC = () => {
-  // const { data: session, status } = useSession();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -30,8 +27,6 @@ const DropdownMenu: React.FC = () => {
   // };
 
   const userProfile = useAppSelector((state) => state.profile.userProfile);
-  // console.log("line:555", userProfile);
-  
 
   return (
     <div className={styles.dropdown}>

@@ -2,13 +2,13 @@ import Nav from '@/src/components/Nav/Nav';
 import AdminLayout from '../../components/Layout/Admin/AdminLayout';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { useSession } from 'next-auth/react';
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSession } from 'next-auth/react';
+import { useAppSelector } from '@/src/redux/hooks';
 
 const AdminDashboard = () => {
 
-  const userProfile = useSelector((state) => state.profile.userProfile);
-  const { data: session } = useSession();
+  const userProfile = useAppSelector((state) => state.profile.userProfile);
+  // const { data: session } = useSession();
   const key = userProfile?.role;
   const router = useRouter();
 

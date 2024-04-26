@@ -1,7 +1,6 @@
 // src/components/ContactForm.tsx
 import React, { useState } from 'react';
 import styles from '@/src/styles/scss/pages/contact/Contact.module.scss';
-import { useSession } from 'next-auth/react';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 
 interface FormData {
@@ -11,7 +10,6 @@ interface FormData {
 }
 
 const Contact: React.FC = () => {
-  const { data: session } = useSession();
 
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -47,7 +45,7 @@ const Contact: React.FC = () => {
         }}
       >
         <div className={styles.card}>
-          <h3 style={{ marginTop: '100px', textAlign: '' }}>Contact</h3>
+          <h3 style={{ marginTop: '100px'}}>Contact</h3>
           <form className={styles.contactForm} onSubmit={handleSubmit}>
             <label className={styles.formLabel}>
               Name:

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Icon } from './Icon.tsx';
+import { Icon } from '@/src/components/Layout/Admin/Icon';
 import styles from '@/src/styles/scss/layout/admin/Side.module.scss';
 import {
   Sidebar,
@@ -11,7 +11,7 @@ import {
 import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { GITHUB } from './routes.ts';
+import { GITHUB } from '@/src/components/Layout/Admin/routes';
 
 const AdminSidebar = () => {
   const { collapseSidebar } = useProSidebar();

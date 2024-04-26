@@ -2,16 +2,26 @@ import { useEffect, useState } from 'react';
 import styles from '../../styles/scss/pages/test/Github.module.scss';
 import IsAuthPublic from '@/src/utils/authHocs/isAuthPublic';
 
+interface UserData {
+  login: string;
+  avatar_url: string;
+  name: string;
+  location: string;
+  followers: number;
+  following: number;
+  public_repos: number;
+}
+
 const GithubProfile = () => {
   const userId = '58604870'; // Your GitHub user ID
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await fetch(`https://api.github.com/user/${userId}`);
         if (response.ok) {
-          const data = await response.json();
+          const data: UserData = await response.json();
           setUserData(data);
         } else {
           console.error('Failed to fetch user data');
@@ -41,7 +51,7 @@ const GithubProfile = () => {
           <p>Public Repos: {userData.public_repos}</p>
         </div>
       ) : (
-        <p>Loading...3</p>
+        <p>Loading...</p>
       )}
     </div>
   );

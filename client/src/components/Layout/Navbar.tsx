@@ -13,7 +13,7 @@ const options = [
 // # - Destructure it and take out direct the properties
 const Navbar = () => {
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [, setIsMenuOpen] = useState(false);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 

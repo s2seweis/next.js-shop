@@ -3,6 +3,7 @@ import styles from '../../styles/scss/components/products/UpdateProduct.module.s
 import Select from 'react-select';
 import { fetchProducts, updateProduct } from '../../redux/slices/productSlice';
 import { useAppSelector, useAppDispatch } from '@/src/redux/hooks';
+import { notification } from 'antd'; // Import notification component from Ant Design
 
 interface Product {
   productid: string;
@@ -38,19 +39,19 @@ const UpdateProducts: React.FC = () => {
     setUpdateFormData((prevFormData) => {
       if (selectedProductId !== productid) {
         const productToUpdate = products.find((product) => product.productid === productid);
-  
+
         // Convert productid to string and handle null case
         const productIdString = productid || '';
-  
+
         return {
           ...prevFormData,
           [productIdString]: { ...productToUpdate } || {},
         };
       }
-  
+
       return prevFormData;
     });
-  
+
     setSelectedProductId((prevProductId) =>
       prevProductId === productid ? null : productid,
     );
@@ -74,6 +75,11 @@ const UpdateProducts: React.FC = () => {
           updatedData: { productname, price, category },
         }),
       );
+      notification.success({
+        message: 'Update Successful',
+        description: 'Your product has been updated successfully.',
+        duration: 3,
+      });
       setSelectedProductId(null);
     } catch (error) {
       console.error('Error updating product:', error);
@@ -92,20 +98,18 @@ const UpdateProducts: React.FC = () => {
               {products.map((product) => (
                 <div
                   key={product.productid}
-                  className={`${styles['product-container']} ${
-                    selectedProductId === product.productid ? styles.open : ''
-                  }`}
+                  className={`${styles['product-container']} ${selectedProductId === product.productid ? styles.open : ''
+                    }`}
                 >
                   <div className={styles['product-info']}>
                     <span className={styles['product-name']}>
                       {product.productname}
                     </span>
                     <button
-                      className={`${styles['toggle-button']} ${
-                        selectedProductId === product.productid
+                      className={`${styles['toggle-button']} ${selectedProductId === product.productid
                           ? styles.red
                           : ''
-                      }`}
+                        }`}
                       onClick={() => handleToggleUpdateForm(product.productid)}
                     >
                       {selectedProductId === product.productid
@@ -180,23 +184,23 @@ const UpdateProducts: React.FC = () => {
                         <label htmlFor={`newCategory_${product.productid}`}>
                           Category:
                         </label>
+
                         <Select
                           id={`newCategory_${product.productid}`}
                           options={categoriesOptions}
                           value={{
-                            value:
-                              updateFormData[product.productid]?.category || '',
-                            label:
-                              updateFormData[product.productid]?.category || '',
+                            value: updateFormData[product.productid]?.category || '',
+                            label: updateFormData[product.productid]?.category || '',
                           }}
                           onChange={(selectedOption) =>
                             handleUpdateFormDataChange(
                               product.productid,
                               'category',
-                              selectedOption.value,
+                              selectedOption ? selectedOption.value : '', // Add null check here
                             )
                           }
                         />
+
                       </div>
                       <div className={styles['form-fields-second']}>
                         <button
