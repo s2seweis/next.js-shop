@@ -1,5 +1,6 @@
-const app = require("../server/src/app.js");
-const pool = require("./src/pool/pool.js");
+const app = require('./src/app.js');
+const pool = require('./src/pool/pool.js');
+const path = require("path");
 
 // Database configuration for 'DeliveryShopDB'
 const deliveryShopConfig = {
@@ -21,8 +22,7 @@ pool
     // Database configuration for 'assets'
     const carsConfig = {
       ...deliveryShopConfig,
-      database: "Assets",
-      // copying the DeliveryShopDB configuration and changing the database name
+      database: 'Assets',
     };
 
     // Connect to the 'assets' database
@@ -31,9 +31,18 @@ pool
   .then(() => {
     console.log('Connected to the "Assets" database');
 
-    // Start the server
-    app().listen(3005, () => {
-      console.log("Listening on port 3005");
+    // Start the server with a dynamic port for Heroku
+    const PORT = process.env.PORT || 3005;
+
+    const expressApp = app();
+
+    expressApp.listen(PORT, () => {
+      console.log(`Listening on port ${PORT}`);
+    });
+
+    // Define the route handler for the root path
+    expressApp.get('/', (req, res) => {
+      res.sendFile(path.join(__dirname, 'index.html'));
     });
   })
   .catch((err) => console.error(err));
