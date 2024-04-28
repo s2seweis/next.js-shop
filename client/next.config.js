@@ -1,20 +1,15 @@
+/** @type {import('next').NextConfig} */
+const withPWA = require('next-pwa')({
+  disable: process.env.NODE_ENV === 'development',
+  dest: 'public',
+});
+
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 
-module.exports = {
+module.exports = withPWA({
   reactStrictMode: true,
   swcMinify: true,
-
-  async redirects() {
-    return [
-      {
-        source: '/about',
-        destination: '/client/about', // Update to your actual page route
-        permanent: true,
-      },
-      // Add more redirects as needed
-    ];
-  },
 
   webpack: (config, { isServer }) => {
     // Add CopyPlugin to copy _redirects file
@@ -23,8 +18,8 @@ module.exports = {
         new CopyPlugin({
           patterns: [
             {
-              from: path.resolve(__dirname, 'client', '_redirects'),
-              to: path.resolve(__dirname, 'client', '.next'), // Copy to .next directory in client folder
+              from: path.resolve(__dirname, '_redirects'),
+              to: path.resolve(__dirname, '.next'), // Copy to .next directory
             },
           ],
         })
@@ -33,4 +28,4 @@ module.exports = {
 
     return config;
   },
-};
+});
