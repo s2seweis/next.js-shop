@@ -3,3 +3,4 @@
   publish = ".next"
   command = "npm run build"
 
+git
