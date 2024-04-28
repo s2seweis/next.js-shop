@@ -1,9 +1,0 @@
-{
-    "name": "client",
-    "homepage": "/client",
-    "scripts": {
-      "build": "next build",
-      "start": "next start"
-    }
-  }
-  
